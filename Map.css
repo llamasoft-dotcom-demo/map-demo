@@ -28,7 +28,7 @@
     margin-left: 14px;
 }
 
-#airport-map{
+#airport-map {
     width: 800px;
     height: 600px;
     float: left;
@@ -46,6 +46,10 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+#airport-recents-list li {
+    cursor: pointer;
 }
 
 #exercise-toggle {
