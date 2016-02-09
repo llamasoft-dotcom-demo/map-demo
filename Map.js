@@ -27,10 +27,17 @@ var MapFcns = {
                 $('#setting-code').text(currAirport.Code);
                 $('#setting-city').text(currAirport.City);
                 $('#setting-state').text(currAirport.State);
-                $('#setting-fullname').text(currAirport.FullSiteName);
                 $('#setting-lat').text(currAirport.Latitude);
                 $('#setting-long').text(currAirport.Longitude);
-                
+
+                // this one is rather large...and since I'm moving the whole table to right of the map..protect against overflow
+                // also I'm peeling off the AIRPORT_CODE_X part and just making X...the rest seems like its just taking up space for no reason
+                var useName = currAirport.FullSiteName.split('_')[2];
+                var fullNameElement = document.createElement('p');
+                fullNameElement.innerHTML = useName;
+                $('#setting-fullname').empty();
+                $('#setting-fullname').append(fullNameElement);
+
                 // only add a marker if its not already there
                 if (MapFcns.markerVault.indexOf(currAirport.Code) == -1){
                     var pos = {lat: currAirport.Latitude, lng: currAirport.Longitude};
