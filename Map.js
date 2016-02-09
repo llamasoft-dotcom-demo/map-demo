@@ -33,8 +33,9 @@ var MapFcns = {
                 
                 // only add a marker if its not already there
                 if (MapFcns.markerVault.indexOf(currAirport.Code) == -1){
+                    var pos = {lat: currAirport.Latitude, lng: currAirport.Longitude};
                     var marker = new google.maps.Marker({
-                        position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
+                        position: pos,
                         map: globalMap,
                         title: currAirport.Code
                     });
@@ -48,6 +49,9 @@ var MapFcns = {
 
                     // add to the marker vault to prevent dups 
                     MapFcns.markerVault.push(currAirport.Code);
+
+                    // center the map to what just got added
+                    globalMap.setCenter(pos);
                 }
             }
     }
