@@ -7,10 +7,13 @@ var MapFcns = {
         var airportList = $('#airport-list');
             airportList.html('');
             airportList.append('<option value=""></option>');
-        for (var i in sites) {
-            var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
+
+        // sort the array first
+        var sortedSites = _.sortBy(sites, function(i){ return i.Code.toLowerCase(); });
+        _.each(sortedSites, function(i){
+            var newOption = $('<option value="' + i.Code + '">' + i.Code + '</option>');
             airportList.append(newOption);
-        }
+        });
     },
     
     siteListChange: function() {
@@ -20,11 +23,20 @@ var MapFcns = {
                 var currAirport = _.findWhere(sites, {Code: airportCode});
                 $('#setting-code').text(currAirport.Code);
                 $('#setting-city').text(currAirport.City);
+                $('#setting-state').text(currAirport.State);
+                $('#setting-fullname').text(currAirport.FullSiteName);
+                $('#setting-lat').text(currAirport.Latitude);
+                $('#setting-long').text(currAirport.Longitude);
                 
                 var marker = new google.maps.Marker({
                     position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
                     map: globalMap,
                     title: currAirport.Code
+                });
+
+                // add a listener to the click event here...for now, just make this remove the marker
+                marker.addListener('click', function(){
+                    marker.setMap(null);
                 });
             }
     }
