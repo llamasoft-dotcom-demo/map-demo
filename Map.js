@@ -3,6 +3,9 @@ var globalMap;
 $(function() {
 
 var MapFcns = {
+    // keep a list of already added markers so the user can't add duplicates
+    markerVault: [],
+
     loadSiteList: function () {
         var airportList = $('#airport-list');
             airportList.html('');
@@ -28,16 +31,24 @@ var MapFcns = {
                 $('#setting-lat').text(currAirport.Latitude);
                 $('#setting-long').text(currAirport.Longitude);
                 
-                var marker = new google.maps.Marker({
-                    position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
-                    map: globalMap,
-                    title: currAirport.Code
-                });
+                // only add a marker if its not already there
+                if (MapFcns.markerVault.indexOf(currAirport.Code) == -1){
+                    var marker = new google.maps.Marker({
+                        position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
+                        map: globalMap,
+                        title: currAirport.Code
+                    });
 
-                // add a listener to the click event here...for now, just make this remove the marker
-                marker.addListener('click', function(){
-                    marker.setMap(null);
-                });
+                    // add a listener to the click event here...for now, just make this remove the marker
+                    marker.addListener('click', function(){
+                        marker.setMap(null);
+                        // remove from the vault as well
+                        MapFcns.markerVault.splice(MapFcns.markerVault.indexOf(currAirport.Code), 1);
+                    });
+
+                    // add to the marker vault to prevent dups 
+                    MapFcns.markerVault.push(currAirport.Code);
+                }
             }
     }
 }
