@@ -4,7 +4,7 @@
         <title>Map Sample</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAmVmjxQHAU3dM-8TEPD4BjKsf-9OAip4&callback=airportMap.initMap"></script>
         <script src="siteData.js"></script>
         <script src="Map.js"></script>
         <link href="Map.css" rel="stylesheet">
@@ -29,22 +29,23 @@
             
             <p>
             Currently this page loads a list of airports into a drop down. You can select an airport
-            and it&quot;s code and city will display in the data table. A marker will be placed on the
-            map displaying the airport. If you roll your mouse over the marker the airport&quot;s code
+            and it&apos;s code and city will display in the data table. A marker will be placed on the
+            map displaying the airport. If you roll your mouse over the marker the airport&apos;s code
             will be displayed.
             </p>
             
             <p>
             The current code is very simple. Many improvements need to be made:
+			</p>
             <ul>
               <li>Fill in the rest of the data in the table when a user selects an airport.</li>
               <li>Allow a user to remove a marker</li>
               <li>Sort the list so it is easier to find airports</li>
             </ul>
-            </p>
             
             <p>
             Some more things to think about
+            </p>
             <ul>
               <li>We are constantly struggling with displaying as much data as simply and
               streamlined as possible. Is there something you can do with the layout to show
@@ -55,7 +56,6 @@
               <li>If a user selects an airport that is not currently shown on the map, how do they find it?
               Can you make this easier?</li>
             </ul>
-            </p>
             </div>
         </div>
         
@@ -64,7 +64,7 @@
         
         <div id="airport-data">
             <div id="airport-controls">        
-                Airports: <select id="airport-list">
+                Airports: <select id="airport-select">
                 </select>
             </div>
             
@@ -78,14 +78,16 @@
                     <div>Longitude</div>
                 </div>
                 <div id="setting-value">
-                    <div id="setting-code"></div>
-                    <div id="setting-city"></div>
-                    <div id="setting-state"></div>
-                    <div id="setting-name"></div>
-                    <div id="setting-lat"></div>
-                    <div id="setting-long"></div>
+                    <div id="airport-code"></div>
+                    <div id="airport-city"></div>
+                    <div id="airport-state"></div>
+                    <div id="airport-name"></div>
+                    <div id="airport-lat"></div>
+                    <div id="airport-long"></div>
                 </div>
             </div>
         </div>
+		
+		<ul id="airport-list"></ul>
     </body>
 </html>

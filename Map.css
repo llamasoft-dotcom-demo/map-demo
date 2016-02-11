@@ -15,7 +15,7 @@
 #airport-settings #setting-value {
     width: calc(100% - 128px);
     margin-left: 128px;
-    min-widtH: 240px;
+    min-width: 240px;
     text-align: left;
 }
 
@@ -41,4 +41,73 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+#remove-marker-link {
+	text-decoration: none;
+}
+
+#airport-list {
+	white-space: nowrap;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	padding: 0px;
+	margin-left: 12px;
+	padding-bottom: 12px;
+}
+
+#airport-list > li {
+	display: inline-block;
+	height: 100px;
+	border: 2px solid black;
+	padding-bottom: 10px;
+	margin-right: 10px;
+}
+
+#airport-list > li div
+{
+	padding: 0px 10px 0px 10px;
+}
+
+#airport-list > li > div.airport-list-titlebar  {
+	padding: 0px;
+	margin: 0px 0px 5px 0px;
+	width: 100%;
+}
+
+#airport-list > li > div.airport-list-titlebar > div.letter-code {
+	display: inline-block;
+	padding: 5px 10px 5px 10px;
+	font-weight: bold;
+	float: left;
+}
+
+#airport-list > li > div.airport-list-titlebar > div.remove-button {
+	background-color: black;
+	color: white;
+	display: inline-block;
+	padding: 5px 10px 5px 10px;
+	font-weight: bold;
+	float: right;
+	/* Disables text cursor, as well as highlighting of text in all major browsers */
+	cursor: default;
+	-moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+#airport-list > li > div.airport-list-titlebar > div.remove-button:hover {
+	background-color: #333333;
+}
+
+#airport-list > li > div.airport-list-titlebar > div.remove-button:active {
+	background-color: #808080;
+}
+
+#airport-list > li > div.airport-list-titlebar > div.airport-code {
+	width: 50px;
+	margin: 0 auto;
+	display: inline-block;
+	padding: 5px 10px 5px 10px;
 }
