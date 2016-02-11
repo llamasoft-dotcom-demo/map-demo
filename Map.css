@@ -1,26 +1,22 @@
-#airport-settings {
-    width: calc(100% - 8px);
-    border: 2px solid black;
-    height: 128px;
-    padding: 4px;
-    margin: 10px 14px 10px 0px;
+.jumbotron{
+    background-color: #EEEEEE;
+    padding: 15px;
+    font-size: 0.8em;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
-#airport-settings #setting-name {
-    width: 128px;
-    float: left;
-    border-right: 1px solid black;
+.done{
+    color: #FF0000;
 }
 
-#airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
-    text-align: left;
+caption{
+    font-weight: bold;
+    text-align: center;
 }
 
-#airport-settings #setting-value div {
-    margin-left: 14px;
+.table-responsive.info-window .table{
+    margin-bottom: 0px;
 }
 
 #airport-map{
@@ -28,8 +24,8 @@
     height: 600px;
 }
 
-#airport-data {
-    margin: 12px;
+#airport-list{
+    max-width: 10em;
 }
 
 #exercise-toggle {
