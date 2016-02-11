@@ -1,0 +1,715 @@
+{"airports": [
+    {
+      "code": "YEG",
+      "city": "Edmonton",
+      "state": "AB",
+      "fullSiteName": "AIRPORT_YEG_Edmonton International Airport",
+      "lat": 53.3097,
+      "lng": -113.58
+    },
+    {
+      "code": "YYC",
+      "city": "Calgary",
+      "state": "AB",
+      "fullSiteName": "AIRPORT_YYC_Calgary International Airport",
+      "lat": 51.1341,
+      "lng": -114.007
+    },
+    {
+      "code": "ANC",
+      "city": "Anchorage",
+      "state": "AK",
+      "fullSiteName": "AIRPORT_ANC_Ted Stevens Anchorage International",
+      "lat": 61.1744,
+      "lng": -149.996
+    },
+    {
+      "code": "BHM",
+      "city": "Birmingham",
+      "state": "AL",
+      "fullSiteName": "AIRPORT_BHM_Birmingham-Shuttlesworth International Airport",
+      "lat": 33.5606,
+      "lng": -86.7493
+    },
+    {
+      "code": "HSV",
+      "city": "Huntsville",
+      "state": "AL",
+      "fullSiteName": "AIRPORT_HSV_Huntsville International Airport",
+      "lat": 34.6495,
+      "lng": -86.7762
+    },
+    {
+      "code": "LIT",
+      "city": "Little Rock",
+      "state": "AR",
+      "fullSiteName": "AIRPORT_LIT_Bill and Hillary Clinton National Airport",
+      "lat": 34.7276,
+      "lng": -92.2209
+    },
+    {
+      "code": "PHX",
+      "city": "Phoenix",
+      "state": "AZ",
+      "fullSiteName": "AIRPORT_PHX_Phoenix Sky Harbor International Airport",
+      "lat": 33.4377,
+      "lng": -112.031
+    },
+    {
+      "code": "SAN",
+      "city": "San Diego",
+      "state": "CA",
+      "fullSiteName": "AIRPORT_SAN_San Diego International Airport",
+      "lat": 32.7299,
+      "lng": -117.196
+    },
+    {
+      "code": "LGB",
+      "city": "Long Beach",
+      "state": "CA",
+      "fullSiteName": "AIRPORT_LGB_Long Beach Airport",
+      "lat": 33.8187,
+      "lng": -118.144
+    },
+    {
+      "code": "MHR",
+      "city": "Sacramento",
+      "state": "CA",
+      "fullSiteName": "AIRPORT_MHR_Sacramento Mather Airport",
+      "lat": 38.5667,
+      "lng": -121.297
+    },
+    {
+      "code": "OAK",
+      "city": "Oakland",
+      "state": "CA",
+      "fullSiteName": "AIRPORT_OAK_Oakland International Airport",
+      "lat": 37.7126,
+      "lng": -122.213
+    },
+    {
+      "code": "ONT",
+      "city": "Ontario",
+      "state": "CA",
+      "fullSiteName": "AIRPORT_ONT_LA Ontario International Airport",
+      "lat": 34.0622,
+      "lng": -117.595
+    },
+    {
+      "code": "FAT",
+      "city": "Fresno",
+      "state": "CA",
+      "fullSiteName": "AIRPORT_FAT_Fresno Yosemite International Airport",
+      "lat": 36.7678,
+      "lng": -119.717
+    },
+    {
+      "code": "LAX",
+      "city": "Los Angeles",
+      "state": "CA",
+      "fullSiteName": "AIRPORT_LAX_Los Angeles International",
+      "lat": 33.9425,
+      "lng": -118.407
+    },
+    {
+      "code": "SJC",
+      "city": "San Jose",
+      "state": "CA",
+      "fullSiteName": "AIRPORT_SJC_Norman Y Mineta San Jose International Airport",
+      "lat": 37.3577,
+      "lng": -121.931
+    },
+    {
+      "code": "DEN",
+      "city": "Denver",
+      "state": "CO",
+      "fullSiteName": "AIRPORT_DEN_Denver International Airport",
+      "lat": 39.8384,
+      "lng": -104.672
+    },
+    {
+      "code": "FLL",
+      "city": "Fort Lauderdale",
+      "state": "FL",
+      "fullSiteName": "AIRPORT_FLL_Fort Lauderdale–Hollywood International Airport",
+      "lat": 26.0715,
+      "lng": -80.1329
+    },
+    {
+      "code": "JAX",
+      "city": "Jacksonville",
+      "state": "FL",
+      "fullSiteName": "AIRPORT_JAX_Jacksonville International Airport",
+      "lat": 30.4916,
+      "lng": -81.6765
+    },
+    {
+      "code": "MCO",
+      "city": "Orlando",
+      "state": "FL",
+      "fullSiteName": "AIRPORT_MCO_Orlando International Airport",
+      "lat": 28.4395,
+      "lng": -81.3114
+    },
+    {
+      "code": "RSW",
+      "city": "Fort Myers",
+      "state": "FL",
+      "fullSiteName": "AIRPORT_RSW_Southwest Florida International Airport",
+      "lat": 26.5232,
+      "lng": -81.7547
+    },
+    {
+      "code": "PIE",
+      "city": "Clearwater",
+      "state": "FL",
+      "fullSiteName": "AIRPORT_PIE_St Petersburg–Clearwater International Airport",
+      "lat": 27.9065,
+      "lng": -82.6911
+    },
+    {
+      "code": "PNS",
+      "city": "Pensacola",
+      "state": "FL",
+      "fullSiteName": "AIRPORT_PNS_Pensacola International Airport",
+      "lat": 30.4757,
+      "lng": -87.1945
+    },
+    {
+      "code": "PBI",
+      "city": "West Palm Beach",
+      "state": "FL",
+      "fullSiteName": "AIRPORT_PBI_Palm Beach International Airport",
+      "lat": 26.6908,
+      "lng": -80.0876
+    },
+    {
+      "code": "MIA",
+      "city": "Miami",
+      "state": "FL",
+      "fullSiteName": "AIRPORT_MIA_Miami International",
+      "lat": 25.7833,
+      "lng": -80.2667
+    },
+    {
+      "code": "ABY",
+      "city": "Albany",
+      "state": "GA",
+      "fullSiteName": "AIRPORT_ABY_Southwest Georgia Regional Airport",
+      "lat": 31.5324,
+      "lng": -84.188
+    },
+    {
+      "code": "ATL",
+      "city": "Atlanta",
+      "state": "GA",
+      "fullSiteName": "AIRPORT_ATL_Hartsfield-Jackson Atlanta International Airport",
+      "lat": 33.6408,
+      "lng": -84.4499
+    },
+    {
+      "code": "KOA",
+      "city": "Kona",
+      "state": "HI",
+      "fullSiteName": "AIRPORT_KOA_Kona International Airport",
+      "lat": 19.7333,
+      "lng": -156.038
+    },
+    {
+      "code": "HNL",
+      "city": "Honolulu",
+      "state": "HI",
+      "fullSiteName": "AIRPORT_HNL_Honolulu International Airport",
+      "lat": 21.3354,
+      "lng": -157.919
+    },
+    {
+      "code": "OGG",
+      "city": "Maui",
+      "state": "HI",
+      "fullSiteName": "AIRPORT_OGG_Kahului Airport",
+      "lat": 20.8933,
+      "lng": -156.443
+    },
+    {
+      "code": "DSM",
+      "city": "Des Moines",
+      "state": "IA",
+      "fullSiteName": "AIRPORT_DSM_Des Moines International Airport",
+      "lat": 41.5334,
+      "lng": -93.6481
+    },
+    {
+      "code": "CID",
+      "city": "Cedar Rapids",
+      "state": "IA",
+      "fullSiteName": "AIRPORT_CID_The Eastern Iowa Airport",
+      "lat": 41.8895,
+      "lng": -91.7003
+    },
+    {
+      "code": "BOI",
+      "city": "Boise",
+      "state": "ID",
+      "fullSiteName": "AIRPORT_BOI_Boise Airport",
+      "lat": 43.5709,
+      "lng": -116.222
+    },
+    {
+      "code": "RFD",
+      "city": "Rockford",
+      "state": "IL",
+      "fullSiteName": "AIRPORT_RFD_Chicago Rockford International Airport",
+      "lat": 42.2019,
+      "lng": -89.0958
+    },
+    {
+      "code": "ORD",
+      "city": "Chicago, Il",
+      "state": "IL",
+      "fullSiteName": "AIRPORT_ORD_Chicago O'Hare International",
+      "lat": 41.9786,
+      "lng": -87.9047
+    },
+    {
+      "code": "IND",
+      "city": "Indianapolis, IN",
+      "state": "IN",
+      "fullSiteName": "AIRPORT_IND_Indianapolis International",
+      "lat": 39.7172,
+      "lng": -86.2947
+    },
+    {
+      "code": "SBN",
+      "city": "South Bend",
+      "state": "IN",
+      "fullSiteName": "AIRPORT_SBN_San Antonio International Airport",
+      "lat": 41.7005,
+      "lng": -86.3108
+    },
+    {
+      "code": "FWA",
+      "city": "Fort Wayne",
+      "state": "IN",
+      "fullSiteName": "AIRPORT_FWA_Fort Wayne International Airport",
+      "lat": 40.9893,
+      "lng": -85.191
+    },
+    {
+      "code": "ICT",
+      "city": "Wichita",
+      "state": "KS",
+      "fullSiteName": "AIRPORT_ICT_Wichita Mid-Continent Airport ",
+      "lat": 37.6536,
+      "lng": -97.4302
+    },
+    {
+      "code": "CVG",
+      "city": "Covington",
+      "state": "KY",
+      "fullSiteName": "AIRPORT_CVG_Cincinnati Northern Kentucky International Airport",
+      "lat": 39.0577,
+      "lng": -84.6628
+    },
+    {
+      "code": "SDF",
+      "city": "Louisville, KY",
+      "state": "KY",
+      "fullSiteName": "AIRPORT_SDF_Louisville International (Standiford Field)",
+      "lat": 38.1744,
+      "lng": -85.7361
+    },
+    {
+      "code": "SHV",
+      "city": "Shreveport",
+      "state": "LA",
+      "fullSiteName": "AIRPORT_SHV_Shreveport Regional Airport",
+      "lat": 32.4551,
+      "lng": -93.8259
+    },
+    {
+      "code": "MSY",
+      "city": "New Orleans",
+      "state": "LA",
+      "fullSiteName": "AIRPORT_MSY_Louis Armstrong New Orleans International Airport",
+      "lat": 29.983,
+      "lng": -90.257
+    },
+    {
+      "code": "LFT",
+      "city": "Lafayette",
+      "state": "LA",
+      "fullSiteName": "AIRPORT_LFT_Lafayette Regional Airport",
+      "lat": 30.2083,
+      "lng": -91.9933
+    },
+    {
+      "code": "LAN",
+      "city": "Lansing",
+      "state": "MI",
+      "fullSiteName": "AIRPORT_LAN_Capital Region International Airport",
+      "lat": 42.7749,
+      "lng": -84.5895
+    },
+    {
+      "code": "DTW",
+      "city": "Detroit",
+      "state": "MI",
+      "fullSiteName": "AIRPORT_DTW_Detroit Metropolitan Wayne County Airport",
+      "lat": 42.2294,
+      "lng": -83.3433
+    },
+    {
+      "code": "MSP",
+      "city": "Minneapolis",
+      "state": "MN",
+      "fullSiteName": "AIRPORT_MSP_Minneapolis–Saint Paul International Airport",
+      "lat": 44.881,
+      "lng": -93.2007
+    },
+    {
+      "code": "MSP",
+      "city": "Minneapolis",
+      "state": "MN",
+      "fullSiteName": "AIRPORT_MSP_Minneapolis–Saint Paul International Airport",
+      "lat": 44.881,
+      "lng": -93.2007
+    },
+    {
+      "code": "SGF",
+      "city": "Springfield",
+      "state": "MO",
+      "fullSiteName": "AIRPORT_SGF_Springfield-Branson National Airport",
+      "lat": 37.2384,
+      "lng": -93.3963
+    },
+    {
+      "code": "STL",
+      "city": "St Louis",
+      "state": "MO",
+      "fullSiteName": "AIRPORT_STL_Lambert–St. Louis International Airport",
+      "lat": 38.7409,
+      "lng": -90.364
+    },
+    {
+      "code": "JAN",
+      "city": "Jackson",
+      "state": "MS",
+      "fullSiteName": "AIRPORT_JAN_Jackson-Evers International Airport",
+      "lat": 32.3084,
+      "lng": -90.0736
+    },
+    {
+      "code": "BIL",
+      "city": "Billings",
+      "state": "MT",
+      "fullSiteName": "AIRPORT_BIL_Billings Logan International Airport",
+      "lat": 45.8035,
+      "lng": -108.538
+    },
+    {
+      "code": "CLT",
+      "city": "Charlotte",
+      "state": "NC",
+      "fullSiteName": "AIRPORT_CLT_Charlotte Douglas International Airport",
+      "lat": 35.2227,
+      "lng": -80.9463
+    },
+    {
+      "code": "GSO",
+      "city": "Greensboro",
+      "state": "NC",
+      "fullSiteName": "AIRPORT_GSO_Piedmont Triad International Airport",
+      "lat": 36.1038,
+      "lng": -79.9427
+    },
+    {
+      "code": "RDU",
+      "city": "Raleigh/Durham",
+      "state": "NC",
+      "fullSiteName": "AIRPORT_RDU_Raleigh–Durham International Airport",
+      "lat": 35.8727,
+      "lng": -78.7954
+    },
+    {
+      "code": "OMA",
+      "city": "Omaha",
+      "state": "NE",
+      "fullSiteName": "AIRPORT_OMA_Eppley Airfield",
+      "lat": 41.3,
+      "lng": -95.9
+    },
+    {
+      "code": "ABQ",
+      "city": "Albuquerque",
+      "state": "NM",
+      "fullSiteName": "AIRPORT_ABQ_Albuquerque International Sunport",
+      "lat": 35.0495,
+      "lng": -106.623
+    },
+    {
+      "code": "LAS",
+      "city": "Las Vegas",
+      "state": "NV",
+      "fullSiteName": "AIRPORT_LAS_McCarran International Airport",
+      "lat": 36.0813,
+      "lng": -115.143
+    },
+    {
+      "code": "RNO",
+      "city": "Reno",
+      "state": "NV",
+      "fullSiteName": "AIRPORT_RNO_Reno–Tahoe International Airport",
+      "lat": 39.5066,
+      "lng": -119.775
+    },
+    {
+      "code": "LCK",
+      "city": "Columbus",
+      "state": "OH",
+      "fullSiteName": "AIRPORT_LCK_Rickenbacker International Airport",
+      "lat": 39.9974,
+      "lng": -82.8877
+    },
+    {
+      "code": "CLE",
+      "city": "Cleveland",
+      "state": "OH",
+      "fullSiteName": "AIRPORT_CLE_Cleveland Hopkins International Airport",
+      "lat": 41.4118,
+      "lng": -81.8346
+    },
+    {
+      "code": "DAY",
+      "city": "Dayton",
+      "state": "OH",
+      "fullSiteName": "AIRPORT_DAY_James M Cox Dayton International Airport",
+      "lat": 39.8983,
+      "lng": -84.2215
+    },
+    {
+      "code": "OKC",
+      "city": "Oklahoma city",
+      "state": "OK",
+      "fullSiteName": "AIRPORT_OKC_Will Rogers World Airport",
+      "lat": 35.3982,
+      "lng": -97.5975
+    },
+    {
+      "code": "TUL",
+      "city": "Tulsa",
+      "state": "OK",
+      "fullSiteName": "AIRPORT_TUL_Tulsa International Airport",
+      "lat": 36.1883,
+      "lng": -95.8892
+    },
+    {
+      "code": "YHM",
+      "city": "Hamilton",
+      "state": "ON",
+      "fullSiteName": "AIRPORT_YHM_John C Munro Hamilton International Airport",
+      "lat": 43.1634,
+      "lng": -79.9262
+    },
+    {
+      "code": "YYZ",
+      "city": "Toronto",
+      "state": "ON",
+      "fullSiteName": "AIRPORT_YYZ_Toronto Pearson International Airport",
+      "lat": 43.6851,
+      "lng": -79.6151
+    },
+    {
+      "code": "PDX",
+      "city": "Portland",
+      "state": "OR",
+      "fullSiteName": "AIRPORT_PDX_Portland International Airport",
+      "lat": 45.5892,
+      "lng": -122.593
+    },
+    {
+      "code": "YMX",
+      "city": "Montreal",
+      "state": "PQ",
+      "fullSiteName": "AIRPORT_YMX_Montreal–Mirabel International Airport",
+      "lat": 45.6763,
+      "lng": -74.0395
+    },
+    {
+      "code": "YOW",
+      "city": "Ottawa",
+      "state": "PQ",
+      "fullSiteName": "AIRPORT_YOW_Ottawa Macdonald-Cartier International Airport",
+      "lat": 45.3267,
+      "lng": -75.6584
+    },
+    {
+      "code": "YUL",
+      "city": "Montreal",
+      "state": "PQ",
+      "fullSiteName": "AIRPORT_YUL_Montreal–Pierre Elliott Trudeau International Airport ",
+      "lat": 45.4562,
+      "lng": -73.7458
+    },
+    {
+      "code": "CAE",
+      "city": "Columbia",
+      "state": "SC",
+      "fullSiteName": "AIRPORT_CAE_Columbia Metropolitan Airport",
+      "lat": 33.9434,
+      "lng": -81.1168
+    },
+    {
+      "code": "GSP",
+      "city": "Greenville",
+      "state": "SC",
+      "fullSiteName": "AIRPORT_GSP_Greenville-Spartanburg International Airport",
+      "lat": 34.8907,
+      "lng": -82.2169
+    },
+    {
+      "code": "FSD",
+      "city": "Sioux Falls",
+      "state": "SD",
+      "fullSiteName": "AIRPORT_FSD_Sioux Falls Regional Airport",
+      "lat": 43.5819,
+      "lng": -96.7434
+    },
+    {
+      "code": "BNA",
+      "city": "Nashville",
+      "state": "TN",
+      "fullSiteName": "AIRPORT_BNA_Nashville International Airport",
+      "lat": 36.1344,
+      "lng": -86.6681
+    },
+    {
+      "code": "TYS",
+      "city": "Knoxville",
+      "state": "TN",
+      "fullSiteName": "AIRPORT_TYS_McGhee Tyson Airport",
+      "lat": 35.8066,
+      "lng": -83.9888
+    },
+    {
+      "code": "MEM",
+      "city": "Memphis",
+      "state": "TN",
+      "fullSiteName": "AIRPORT_MEM_Memphis International",
+      "lat": 35.0667,
+      "lng": -89.9667
+    },
+    {
+      "code": "AUS",
+      "city": "Austin",
+      "state": "TX",
+      "fullSiteName": "AIRPORT_AUS_Austin-Bergstrom International Airport",
+      "lat": 30.2026,
+      "lng": -97.6655
+    },
+    {
+      "code": "DFW",
+      "city": "Dallas",
+      "state": "TX",
+      "fullSiteName": "AIRPORT_DFW_Dallas Fort Worth International Airport",
+      "lat": 32.8663,
+      "lng": -97.0398
+    },
+    {
+      "code": "ELP",
+      "city": "El Paso",
+      "state": "TX",
+      "fullSiteName": "AIRPORT_ELP_El Paso International Airport",
+      "lat": 31.798,
+      "lng": -106.394
+    },
+    {
+      "code": "IAH",
+      "city": "Houston",
+      "state": "TX",
+      "fullSiteName": "AIRPORT_IAH_George Bush Intercontinental Airport",
+      "lat": 29.9787,
+      "lng": -95.3414
+    },
+    {
+      "code": "SAT",
+      "city": "San Antonio",
+      "state": "TX",
+      "fullSiteName": "AIRPORT_SAT_San Antonio International Airport",
+      "lat": 29.5255,
+      "lng": -98.4723
+    },
+    {
+      "code": "MFE",
+      "city": "Mc Allen",
+      "state": "TX",
+      "fullSiteName": "AIRPORT_MFE_McAllen-Miller International Airport",
+      "lat": 26.1808,
+      "lng": -98.241
+    },
+    {
+      "code": "LRD",
+      "city": "Laredo",
+      "state": "TX",
+      "fullSiteName": "AIRPORT_LRD_Laredo International Airport",
+      "lat": 27.5431,
+      "lng": -99.4554
+    },
+    {
+      "code": "SLC",
+      "city": "Salt Lake City",
+      "state": "UT",
+      "fullSiteName": "AIRPORT_SLC_Salt Lake City International Airport",
+      "lat": 40.7861,
+      "lng": -111.98
+    },
+    {
+      "code": "ORF",
+      "city": "Norfolk",
+      "state": "VA",
+      "fullSiteName": "AIRPORT_ORF_Norfolk International Airport",
+      "lat": 36.8984,
+      "lng": -76.2115
+    },
+    {
+      "code": "ROA",
+      "city": "Roanoke",
+      "state": "VA",
+      "fullSiteName": "AIRPORT_ROA_oke Regional Airport",
+      "lat": 37.3206,
+      "lng": -79.9698
+    },
+    {
+      "code": "RIC",
+      "city": "Richmond",
+      "state": "VA",
+      "fullSiteName": "AIRPORT_RIC_Richmond International Airport",
+      "lat": 37.5082,
+      "lng": -77.3324
+    },
+    {
+      "code": "GEG",
+      "city": "Spokane",
+      "state": "WA",
+      "fullSiteName": "AIRPORT_GEG_Spokane International Airport",
+      "lat": 47.6251,
+      "lng": -117.538
+    },
+    {
+      "code": "BFI",
+      "city": "Seattle",
+      "state": "WA",
+      "fullSiteName": "AIRPORT_BFI_Boeing Field International Airport",
+      "lat": 47.5375,
+      "lng": -122.304
+    },
+    {
+      "code": "MKE",
+      "city": "Milwaukee",
+      "state": "WI",
+      "fullSiteName": "AIRPORT_MKE_General Mitchell International Airport",
+      "lat": 42.9472,
+      "lng": -87.9049
+    }
+  ]
+} 

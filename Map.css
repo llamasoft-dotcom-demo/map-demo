@@ -1,3 +1,8 @@
+html {
+    font-size: 62.5%;
+    font-family: Arial;
+}
+
 #airport-settings {
     width: calc(100% - 8px);
     border: 2px solid black;
@@ -6,24 +11,24 @@
     margin: 10px 14px 10px 0px;
 }
 
-#airport-settings #setting-name {
-    width: 128px;
-    float: left;
-    border-right: 1px solid black;
-}
+    #airport-settings #setting-name {
+        width: 128px;
+        float: left;
+        border-right: 1px solid black;
+    }
 
-#airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
-    text-align: left;
-}
+    #airport-settings #setting-value {
+        width: calc(100% - 128px);
+        margin-left: 128px;
+        min-width: 240px;
+        text-align: left;
+    }
 
-#airport-settings #setting-value div {
-    margin-left: 14px;
-}
+        #airport-settings #setting-value div {
+            margin-left: 14px;
+        }
 
-#airport-map{
+#airport-map {
     width: 800px;
     height: 600px;
 }
@@ -39,6 +44,88 @@
 #instruction-toggle {
     line-height: 44px;
     vertical-align: text-bottom;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: bold;
+}
+
+.sub-list-city {
+    display: none;
+}
+
+.sub-list-code {
+    display: none;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+.airportList-new {
+    height: 150px;
+    width: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+    border: 3px solid black;
+    position:relative;
+}
+
+.reset_btn{
+    position:absolute;
+    top:20px;
+    right:22px;
+    width:50px;
+    border:1px solid black;
+    height:auto;
+    padding:5px;
+    cursor:pointer;
+    user-select:none;
+}
+
+.airport-List-new {
+    border: 1px solid black;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+}
+
+.state-item {
+    font-size: 2rem;
+    padding: 10px;
+    text-align: center;
+    background-color: #c2c2c2;
+    transition: all 0.3s ease;
+}
+
+    .state-item:hover {
+        background-color: #808080;
+    }
+
+    .state-item a {
+        color: black;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .state-item a:hover {
+            color: white;
+            text-shadow: 0 0 10px blue;
+        }
+
+ul.sub-list-city {
+    background-color: #808080;
+    font-size: 1.75rem;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.sub-list-code{
+    font-size:1.25rem;
+    list-style-type:none;
+    padding:0;
+    margin:0;
+
 }
