@@ -102,9 +102,12 @@ manageArray = {
             city = data[i].city;
             state = data[i].state;
 
-            string = "<li><h3 class=\"my-airport-list-title\">" + code + " " + title + "</h3><p class=\"my-airport-list-city-state\">" + city + ", " + state + "</p><div data-code=\"" + code + "\" class=\"remove-airport_btn btn\">Delete</li>";
+            string = "<li><h3 class=\"my-airport-list-title\">" + code + " " + title + "</h3><p class=\"my-airport-list-city-state\">" + city + ", " + state + "</p><div data-code=\"" + code + "\" id=\"remove-airport_btn-" + i + "\" class=\"remove-airport_btn btn\">Delete</li>";
             $myAirportList.append(string);
+            deleteBtn(i);
         };
+
+        
     },
     removeAirport: function (value) {
         var i;
@@ -301,21 +304,6 @@ function loadEvents() {
         manageArray.updateMyAirports(myAirports_arr);
         console.log("Airport added.");
 
-        //remove array event
-        $removeAirportBtn = $(".remove-airport_btn");
-        $removeAirportBtn.click(function (e) {
-            e.preventDefault();
-            $this = $(this);
-            $code = $this.attr("data-code");
-
-            manageArray.removeAirport($code);
-            manageArray.updateMyAirports(myAirports_arr);
-            mapControls.setMapOnAll(null);
-            mapControls.updateMarkers();
-            mapControls.setMapOnAll(map_obj);
-            return false;
-        });
-
         mapControls.setMapOnAll(null);
         mapControls.updateMarkers();
         mapControls.setMapOnAll(map_obj);
@@ -370,3 +358,19 @@ function loadEvents() {
     })
 };
 
+function deleteBtn(id) {
+    //remove array event
+    $removeAirportBtn = $("#remove-airport_btn-"+id+"");
+    $removeAirportBtn.click(function (e) {
+        e.preventDefault();
+        $this = $(this);
+        $code = $this.attr("data-code");
+
+        manageArray.removeAirport($code);
+        manageArray.updateMyAirports(myAirports_arr);
+        mapControls.setMapOnAll(null);
+        mapControls.updateMarkers();
+        mapControls.setMapOnAll(map_obj);
+        return false;
+    });
+}
