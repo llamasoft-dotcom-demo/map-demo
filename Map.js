@@ -5,10 +5,13 @@ var previousStateActive = false;
 var previousCity = false;
 var previousCityActive = false;
 
+var myAirports = []
+
 
 var generatePage = generatePage | {}
+var checkArray = checkArray | {}
 
-
+var prevInfoWindow = false;
 
 
 $(function () {
@@ -17,60 +20,81 @@ $(function () {
 
     generatePage = {
         makeListState: function () {
-            console.log(airportData);
-            airportList = $(".airportList-new");
-            airportList.append('<ul class="airport-List-new"></ul>');
-            listObj = $(".airport-List-new")
+            airportList = $(".states.section-1");
+            airportList.append('<div class="list state-list"></div>');
+            listObj = $(".state-list");
 
             for (var i = 0; i < airportData.length; i++) {
-                string = "<li class=\"state-item\" id=\"" + airportData[i].state + "\"><a href=\"#\" class=\"openCity\">" + airportData[i].state + "</a></li>";
+                string = "<div class=\"item state-item\" id=\"" + airportData[i].state + "\"><div class=\"openCity\">" + airportData[i].state + "</div></div>";
                 if (!document.getElementById(airportData[i].state)) {
                     listObj.append(string)
                 }
             }
         },
-        addAirportCitysToState: function () {
+        makeListCity: function () {
+            airportList = $(".city.section-2");
+            airportList.append('<div class="list city-list"></div>');
+            listObj = $(".city-list");
             for (var i = 0; i < airportData.length; i++) {
-
-
                 state = airportData[i].state
-                cityTrim = airportData[i].city.replace(/ /g, '');
+                cityTrim = airportData[i].city.replace(/(\s|, )/g, '');
                 city = airportData[i].city;
 
-                li = '<li><a href=\"#\" class=\"openCode\">' + city + '</a></li>'
-                ul = '<ul id="' +cityTrim + '" class="sub-list-city ' + cityTrim + '">' + li + '</ul>';
+                string = '<div class="item city-item ' + state + '" id="' + cityTrim + '" ><div class="' + state + " " + cityTrim + '">' + city + '</div></div>'
 
-                if (document.getElementById(state)) {
-                    document.getElementById(state).innerHTML += ul
-                }
+                listObj.append(string)
             }
         },
-        addAirportCodeToCity: function () {
+        makeListCode: function () {
+            airportList = $(".airport.section-3");
+            airportList.append('<div class="list airport-list"></div>');
+            listObj = $(".airport-list");
             for (var i = 0; i < airportData.length; i++) {
+                code = airportData[i].code
+                cityTrim = airportData[i].city.replace(/(\s|, )/g, '');
+                city = airportData[i].city;
+                state = airportData[i].state;
+                lat = airportData[i].lat;
+                lng = airportData[i].lng;
 
                 str = airportData[i].fullSiteName
-
-                cityTrim = airportData[i].city.replace(/ /g, '');
-                city = airportData[i].city;
-                code = airportData[i].code;
-
 
                 var myRegexp = /^AIRPORT_..._([\w\s]*)/g;
                 var match = myRegexp.exec(str);
 
 
+                string = '<div class="item code-item ' + cityTrim + '" data-state="' + state + '" data-city="' + city + '" data-lat="' + lat + '" data-lng="' + lng + '" data-title="' + match[1] + '" data-code="' + code + '">' +
+                    '<div class=\"' + code + '\">[' + code + '] ' + match[1] + '</div></div>'
 
-                li = '<li>' + match[1]+ " (" + code + ')</li>'
-                ul = '<ul id="' + code + '" class="sub-list-code ' + code + '">' + li + '</ul>';
-
-                
-
-                if (document.getElementById(cityTrim)) {
-                    document.getElementById(cityTrim).innerHTML += ul
-                }
+                listObj.append(string)
             }
         }
     }
+    checkArray = {
+        checkIfNotEmpty: function (data) {
+            if (data.length > 0) {
+                return true
+            } else {
+                return false
+            };
+        },
+        containsObject: function (obj, list) {
+            var i;
+            for (i = 0; i < list.length; i++) {
+                if (list[i].code == obj) {
+                    return true;
+                }
+            }
+            return false;
+        },
+        checkIfMax: function (data, num) {
+            if (data.length > num) {
+                return true
+            }
+        }
+    }
+
+
 
 
     $.ajax({
@@ -83,102 +107,148 @@ $(function () {
             airportData = data.airports
             initPageBuild()
         },
-    })
+    });
 
     function initPageBuild() {
-        generatePage.makeListState()
-        generatePage.addAirportCitysToState()
-        generatePage.addAirportCodeToCity()
-        loadEvents()
+        generatePage.makeListState();
+        generatePage.makeListCity();
+        generatePage.makeListCode();
+        loadEvents();
+
+
     }
 
 
 
 
     function loadEvents() {
-        $("a.openCity").click(function (e) {
+        $(".state-item").click(function (e) {
             e.preventDefault();
 
 
             $this = $(this);
-
-
-           if ($this.hasClass("active")) {
-               return false
-           }
-
-            $(".instructionText").text("Please select a city")
-           $this.addClass("active");
-
-            thisState = "#" + $this.text() + " ul"
-            thisStateText = "#" + $this.text()
-
-
-
+            state = $this.attr("id");
             if (previousState) {
-                previousState.css({ "display": "none" })
-                previousStateActive.removeClass("active")
+                previousState.toggle();
             }
 
-            if (previousCity) {
-                previousCity.css({ "display": "none" });
-                previousCityActive.removeClass("active");
-            }
+            $('.code-item.active').css({ "display": "none" });
+            $('.code-item').removeClass("active");
 
-            previousState = $(thisState)
-            previousStateActive = $($this)
-
-            $(thisState).toggle()
-            $(".sub-list-code").css({ "display": "none" })
-
+            cityClass = $(".city-item." + state + "")
+            cityClass.css({ "display": "table" });
+            previousState = cityClass;
 
             return false;
         })
-        $("a.openCode").click(function (e) {
+        $(".city-item").click(function (e) {
             e.preventDefault();
+
+
             $this = $(this);
-
-            if ($this.hasClass("active")) {
-                return false
-            }
-            $(".instructionText").text("Please select an airport")
-            $this.addClass("active");
-
-            thisCity = "#" + $this.text().replace(/ /g, '') + " ul"
-
-            if (previousCity) {
-                previousCity.css({ "display": "none" })
-                previousCityActive.removeClass("active");
-
-            }
-
-            previousCity = $(thisCity);
-            previousCityActive = $($this);
-
-            $(thisCity).css({ "display": "block" })
-
-
-
-            return false;
-        })
-        $("div.reset_btn").click(function (e) {
-            e.preventDefault();
-            $(".instructionText").text("Please select a state")
-            if (previousState) {
-                previousState.css({ "display": "none" })
-                previousStateActive.removeClass("active")
-            }
-
+            city = $this.attr("id");
             if (previousCity) {
                 previousCity.css({ "display": "none" });
-                previousCityActive.removeClass("active");
             }
 
+            codeClass = $(".code-item." + city + "")
+            codeClass.css({ "display": "table" });
+            codeClass.addClass("active")
+            previousCity = codeClass;
 
+            return false;
+        })
+        $(".code-item").click(function (e) {
+            e.preventDefault();
+
+            var max = 2;
+
+            $this = $(this);
+            airportBtn = $(".my-airports_btn")
+
+            title = $this.attr('data-title');
+            code = $this.attr('data-code');
+            state = $this.attr('data-state');
+            city = $this.attr('data-city');
+            lat = $this.attr('data-lat');
+            lng = $this.attr('data-lng');
+            airportObj = {
+                "title": title,
+                "code": code,
+                "state": state,
+                "city": city,
+                "location": { "lat": parseInt(lat), "lng": parseInt(lng) }
+            }
+            if (checkArray.checkIfNotEmpty(myAirports)) {
+                if (checkArray.containsObject(code, myAirports)) {
+                    console.log("You have already selected this airport.\n" +
+                        "Please select another.")
+                    return false
+                }
+
+                if (checkArray.checkIfMax(myAirports, max)) {
+                    console.log("You have more than " + max + " this airports selected.\n" +
+                        "Please remove one to continue.")
+                    return false
+                }
+
+            }
+
+            myAirports.push(airportObj)
+            console.log("Airport added.");
+            updateMyAirports(myAirports)
+
+            return false;
+        })
+        $("div.my-airports_btn").click(function (e) {
+            e.preventDefault();
+
+            containers = $(".container");
+            openContainer = $(".my-airports-container");
+
+            containers.animate({
+                opacity: 0
+            }, function () {
+                containers.css({ "display": "none" });
+                openContainer.css({ "display": "initial" })
+                openContainer.animate({
+                    opacity: 1
+                })
+            })
+
+
+
+
+            $(".instructionText").text("My Airports");
 
 
             return false;
         })
+        $("div.airport-finder_btn").click(function (e) {
+            e.preventDefault();
+
+            containers = $(".container");
+            openContainer = $(".airport-container");
+
+            containers.animate({
+                opacity: 0
+            }, function () {
+                containers.css({ "display": "none" });
+                openContainer.css({ "display": "initial" })
+                openContainer.animate({
+                    opacity: 1
+                })
+            })
+
+
+
+
+            $(".instructionText").text("Airport Finder");
+
+
+            return false;
+        })
+
     }
 
 
@@ -211,23 +281,49 @@ $(function () {
         }
     }
 
+    function updateMyAirports(data) {
+        myAirportsSection = $(".my-airports.section-1");
+        myAirportsSection.html("");
+        myAirportsSection.append("<ol class=\"my-airport-list\"></ol>");
 
-    MapFcns.loadSiteList();
-    $('#airport-list').change(MapFcns.siteListChange);
-    $('#exercise-toggle').click(function () {
-        var toggleCtl = $(this),
-             toggleVal = toggleCtl.text();
-        if (toggleVal == '-') {
-            toggleCtl.text('+');
-            $('#exercise-instructions').hide();
-        } else {
-            toggleCtl.text('-');
-            $('#exercise-instructions').show();
+        myAirportList = $(".my-airport-list");
+        airportBtn.text("My Airports: " + myAirports.length);
+
+        for (var i = 0; i < data.length; i++) {
+            var title = data[i].title;
+            var code = data[i].code;
+            var city = data[i].city;
+            var state = data[i].state;
+
+      
+
+            string = "<li><h3 class=\"my-airport-list-title\">" + code + " " + title + "</h3><p class=\"my-airport-list-city-state\">" + city + ", " + state + "</p><div data-code=\"" + code + "\" class=\"remove-airport_btn btn\">Delete</li>";
+            myAirportList.append(string)
         }
-    });
+        updateMarkers()
+        $("div.remove-airport_btn").click(function (e) {
+            e.preventDefault();
+            $this = $(this);
+            code = $this.attr("data-code");
+
+            removeAirport(code);
+
+            return false;
+        })
+    }
 
 
+    function removeAirport(value) {
+        var i;
 
+        for (var i = myAirports.length - 1; i >= 0; i--) {
+            if (myAirports[i].code == value) {
+                myAirports.splice(i, 1);
+            }
+        }
+        console.log("Airport removed.");
+        updateMyAirports(myAirports)
+    }
 });
 
 
@@ -235,14 +331,58 @@ $(function () {
 
 
 
+var markers = [];
+var map;
+function updateMarkers() {
+    clearMarkers();
+    markers = [];
+    for (var i = 0; i < myAirports.length; i++) {
 
 
-function initMap() {
-    // Callback function to create a map object and specify the DOM element for display.
-    globalMap = new google.maps.Map(document.getElementById('airport-map'), {
-        center: { lat: 42.2814, lng: -83.7483 },
-        scrollwheel: true,
-        zoom: 6
-    });
+        var contentString = "<h5>[" + myAirports[i].code + "] " + myAirports[i].title + "</h5>"
+                        
 
+        marker = new google.maps.Marker({
+            position: myAirports[i].location,
+            map: map,
+            title: myAirports[i].title,
+        });
+
+        marker.info = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+
+        marker.addListener('click', function () {
+            if (prevInfoWindow) {
+                prevInfoWindow.close();
+            }
+
+
+
+            prevInfoWindow = this.info;
+            this.info.open(map, this);
+        });
+
+
+        markers.push(marker);
+        marker.setMap(map);
+    }
 }
+function initMap() {
+    map = new google.maps.Map(document.getElementById('airport-map'), {
+        center: { lat: 39.50, lng:  -98.35 },
+        scrollwheel: true,
+        zoom: 3
+    });
+}
+
+function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
+function clearMarkers() {
+    setMapOnAll(null);
+}
+
