@@ -107,7 +107,7 @@ manageArray = {
             deleteBtn(i);
         };
 
-        
+
     },
     removeAirport: function (value) {
         var i;
@@ -127,7 +127,7 @@ mapControls = {
         map_obj = new google.maps.Map(document.getElementById('airport-map'), {
             center: { lat: 39.50, lng: -98.35 },
             scrollwheel: true,
-            zoom: 3
+            zoom: 7
         });
     },
     updateMarkers: function () {
@@ -163,6 +163,17 @@ mapControls = {
     setMapOnAll: function (map_obj) {
         for (var i = 0; i < markers_arr.length; i++) {
             markers_arr[i].setMap(map_obj);
+        }
+    },
+    updateMapView: function () {
+        if (markers_arr.length == 1) {
+            map_obj.panTo(markers_arr[0].getPosition());
+        } else if (markers_arr.length > 1) {
+            var bounds = new google.maps.LatLngBounds();
+            _.each(markers_arr, function (marker_obj) {
+                bounds.extend(marker_obj.getPosition());
+            });
+            map_obj.fitBounds(bounds);
         }
     }
 }
@@ -210,7 +221,7 @@ function loadEvents() {
     $containers = $(".container");
     $instructionText = $(".instructionText");
     $airportFinderBtn = $(".airport-finder_btn");
-   
+
 
     //shows available citys in state
     $stateItem.click(function (e) {
@@ -307,6 +318,7 @@ function loadEvents() {
         mapControls.setMapOnAll(null);
         mapControls.updateMarkers();
         mapControls.setMapOnAll(map_obj);
+        mapControls.updateMapView();
 
         return false;
     })
@@ -319,12 +331,12 @@ function loadEvents() {
 
         $containers.animate({
             opacity: 0
-        },100, function () {
+        }, 100, function () {
             $containers.css({ "display": "none" });
             $openContainer.css({ "display": "initial" });
             $openContainer.animate({
                 opacity: 1
-            },100);
+            }, 100);
         });
 
 
@@ -344,12 +356,12 @@ function loadEvents() {
 
         $containers.animate({
             opacity: 0
-        },100, function () {
+        }, 100, function () {
             $containers.css({ "display": "none" });
             $openContainer.css({ "display": "initial" });
             $openContainer.animate({
                 opacity: 1
-            },100);
+            }, 100);
         });
 
         $instructionText.text("Airport Finder");
@@ -360,7 +372,7 @@ function loadEvents() {
 
 function deleteBtn(id) {
     //remove array event
-    $removeAirportBtn = $("#remove-airport_btn-"+id+"");
+    $removeAirportBtn = $("#remove-airport_btn-" + id + "");
     $removeAirportBtn.click(function (e) {
         e.preventDefault();
         $this = $(this);
