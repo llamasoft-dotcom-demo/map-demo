@@ -86,4 +86,20 @@ sites = [{Code: "YEG", City: "Edmonton", State: "AB", FullSiteName: "AIRPORT_YEG
 {Code: "RIC", City: "Richmond", State: "VA", FullSiteName: "AIRPORT_RIC_Richmond International Airport", Latitude: 37.5082, Longitude: -77.3324},
 {Code: "GEG", City: "Spokane", State: "WA", FullSiteName: "AIRPORT_GEG_Spokane International Airport", Latitude: 47.6251, Longitude: -117.538},
 {Code: "BFI", City: "Seattle", State: "WA", FullSiteName: "AIRPORT_BFI_Boeing Field International Airport", Latitude: 47.5375, Longitude: -122.304},
-{Code: "MKE", City: "Milwaukee", State: "WI", FullSiteName: "AIRPORT_MKE_General Mitchell International Airport", Latitude: 42.9472, Longitude: -87.9049}];
+{ Code: "MKE", City: "Milwaukee", State: "WI", FullSiteName: "AIRPORT_MKE_General Mitchell International Airport", Latitude: 42.9472, Longitude: -87.9049 }];
+
+SitesModel = {    
+    Sites: sites.sort(propertyComparer("Code")),    
+};
+
+function propertyComparer(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+}

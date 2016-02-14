@@ -1,9 +1,13 @@
 #airport-settings {
-    width: calc(100% - 8px);
+    display: none;
+    position: absolute;
+    z-index: 99;
+    width: 700px;
     border: 2px solid black;
     height: 128px;
     padding: 4px;
-    margin: 10px 14px 10px 0px;
+    margin: 0px 14px 10px 0px;
+    background-color:white;
 }
 
 #airport-settings #setting-name {
@@ -23,13 +27,19 @@
     margin-left: 14px;
 }
 
+#settings-instructions
+{
+    text-align:right;
+    color: cornflowerblue;
+}
+
 #airport-map{
     width: 800px;
     height: 600px;
 }
 
 #airport-data {
-    margin: 12px;
+    margin: 0px;
 }
 
 #exercise-toggle {
@@ -41,4 +51,13 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+.ui-icon{
+    zoom:1.4;
+}
+
+#airport-controls-find{
+    display:flex;
+    flex-flow:row;
 }
