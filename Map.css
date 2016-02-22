@@ -1,5 +1,32 @@
+body{
+	background-color: #000;
+	font-family: sans-serif;
+}
+
+div#exercise-description{
+	background-color: #fff;
+	border-radius: 10px;
+	margin: 2.5% 2.5%;
+	padding: 1% 1%;
+}
+
+div#airport-map{
+	background-color: #fff;
+	margin: 2.5% 2.5%;
+	float: left;
+	width: 50%;
+}
+
+div#airport-data{
+	background-color: #fff;
+	border-radius: 10px;
+	margin: 2.5% 2.5% 2.5% 0%;
+	float: right;
+	padding: 1% 1%;
+	width: 40%;
+}
+
 #airport-settings {
-    width: calc(100% - 8px);
     border: 2px solid black;
     height: 128px;
     padding: 4px;
@@ -7,13 +34,12 @@
 }
 
 #airport-settings #setting-name {
-    width: 128px;
+	width: 25%;
     float: left;
     border-right: 1px solid black;
 }
 
 #airport-settings #setting-value {
-    width: calc(100% - 128px);
     margin-left: 128px;
     min-widtH: 240px;
     text-align: left;
