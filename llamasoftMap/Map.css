@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+}
+
+fieldset p {
+    color: orange; 
+    font: bold 14px Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+} /*Colleen added to draw attention to the directions.*/
+
+#marker {
+    padding-top: 10px;
+}
+#airport-settings {
+    width: calc(100% - 8px);
+    border: 2px solid black;
+    height: 128px;
+    padding: 4px;
+    margin: 10px 14px 10px 0px;
+}
+
+#airport-settings #setting-name {
+    width: 128px;
+    float: left;
+    border-right: 1px solid black;
+}
+
+#airport-settings #setting-value {
+    width: calc(100% - 128px);
+    margin-left: 128px;
+    min-widtH: 240px;
+    text-align: left;
+}
+
+#airport-settings #setting-value div {
+    margin-left: 20px;
+}
+
+#airport-map{
+    width: 50%; /*Colleen changed to a percentage from a static px to adjust to viewport size*/
+    height: 600px;
+    float: left;/*Colleen added to save screen real estate by having 'airport-map' and 'airport-data' appear side-by-side on larger screens. */
+    border: 4px orange solid;
+}
+
+#airport-data {
+    width: 48%;/*Colleen changed to a percentage from a static px to adjust to viewport size*/
+    float: right;/*Colleen added to save screen real estate by having 'airport-map' and 'airport-data' appear side-by-side on larger screens. */
+}
+
+#exercise-toggle {
+    cursor: pointer;
+}
+
+#instruction-toggle {
+    line-height: 44px;
+    vertical-align: text-bottom;
+    font-size: 32px;
+    font-weight: bold;
+}
