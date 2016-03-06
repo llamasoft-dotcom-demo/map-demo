@@ -1,0 +1,39 @@
+﻿<Window x:Class="llmap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Llamasoft Map Exercise - WPF version" Height="623" Width="644" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="532*"/>
+            <RowDefinition Height="39*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="MapImage" Margin="10,35,10,120" MouseWheel="MapImage_MouseWheel"/>
+        <Button x:Name="ZoomInButton" Content="+" HorizontalAlignment="Right" Margin="0,0,27,169" VerticalAlignment="Bottom" Width="23" RenderTransformOrigin="-0.174,-3.75" Click="ZoomInButton_Click" FontWeight="Normal" FontSize="16" Background="White"/>
+        <Button x:Name="ZoomOutButton" Content="-" HorizontalAlignment="Right" Margin="0,0,27,144" VerticalAlignment="Bottom" Width="23" RenderTransformOrigin="0.652,2.15" Click="ZoomOutButton_Click" FontWeight="Normal" FontSize="16" Background="White"/>
+        <ComboBox x:Name="AirportComboBox" HorizontalAlignment="Left" Margin="62,0,0,79" VerticalAlignment="Bottom" Width="54" RenderTransformOrigin="0.907,0.545" SelectionChanged="AirportComboBox_SelectionChanged"/>
+        <Label Content="Airport" HorizontalAlignment="Left" Margin="10,0,0,79" VerticalAlignment="Bottom"/>
+        <GroupBox x:Name="SiteInfoGroupBox" Header="" Margin="10,0,109,5" Height="109" VerticalAlignment="Bottom" Grid.RowSpan="2">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="112*"/>
+                    <ColumnDefinition Width="393*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="CityStateLabel" Content="CityStateLabel" RenderTransformOrigin="0.513,0.346" Grid.Row="0" Grid.Column="1"/>
+                <Label x:Name="FullNameLabel" Content="FullName" Margin="0,0,0,4" Grid.Row="1" Grid.Column="1"/>
+                <Label x:Name="LatLonLabel" Content="LatLabel" Margin="0" Grid.Row="2" Grid.Column="1"/>
+                <Label Content="City, State" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="26" Width="63"/>
+                <Label Content="Full name" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0" Height="26" Width="61"/>
+                <Label Content="Latitude, Longitude" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Grid.Row="2" Grid.Column="0" Height="26" Width="112"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="ClearButton" Content="Clear" HorizontalAlignment="Left" Margin="121,0,0,81" VerticalAlignment="Bottom" Width="75" Click="ClearButton_Click"/>
+        <Button x:Name="FindButton"  HorizontalAlignment="Left" Margin="201,0,0,81" VerticalAlignment="Bottom" Width="75" Click="FindButton_Click">
+            <AccessText>_Find</AccessText>
+        </Button>
+    </Grid>
+</Window>
