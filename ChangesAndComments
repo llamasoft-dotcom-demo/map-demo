@@ -1,0 +1,32 @@
+The current code is very simple. Many improvements need to be made:
+
+1) Fill in the rest of the data in the table when a user selects an airport.
+A) Made a change for two div elements. two div elements had same "id" . So I renamed the "div" (that displays the value of the fullSiteName into) id into "setting-fullName"
+--------------
+2) Allow a user to remove a marker
+A) Yes Implemented
+---------------
+3) Sort the list so it is easier to find airports
+A)  1) Implemented, used a sepeatrate global collection to store the details of the city codes or city names . The sorted those values and then displayed in dropdown box
+	2) Here, I also made changes in dropdown list values by thinking about the end-user in mind. I forked the project with City Codes dropdown values, but I changed them to City Names so that user 		can find city names easily instead of mapping city codes with city names. It can be implemented using either of the values ("codes or city-names"), but there is no difference in implementation
+-----------------
+Some more things to think about
+
+1) We are constantly struggling with displaying as much data as simply and streamlined as possible. Is there something you can do with the layout to show the same information using less screen real estate?
+A) 
+1) 	Here I thought little bit different . I mostly concentrated on the phrase "same information using less screen real estate" ( from your point), so I implemented "infoWindow" (inbuilt information 		window from Google Maps API). "infoWindows" displays all the details that we are displaying currently in table. So, we can get rid of table . I still left the table in the page so that you can 		see the how each of them looks to the end-user.
+2)  In the process of implementing this, I added two event listeners on the marker . One is "click", when single click is made on marker it's details get displayed in "infoWindow and when "dblclick" 		is made on marker, then entire marker gets deleted
+---------------------------------
+
+2) Regarding markers, what happens with the existing code when you select an item multiple times?
+A) In the existing code ( the one I forked from GitHub) , when the same city or code is chosen multiple markers are created in the same location. I handled this by using global collection (Array). 		Briefly about implementation, when a new marker is created in map, a string ( that included latitude and longitude locations) in pushed into the array. So that when a existing marker location is 		chosen, it alerts the user that "Location is already marked". When marker is removed , the corresponding string is removed from the array
+--------------------------------
+3) If a user selects an airport that is not currently shown on the map, how do they find it? Can you make this easier?
+A) Yes, it has been made easier. From now when the user choses an airport that cannot be seen on screen, then map gets the newly created marker's location as map's center. So that user can see newly created marker without moving the map to find .
+
+
+Additional Comments :
+--------------------
+
+1. I created multiple methods where I felt I can use those methods multiple times to reduce lines of code
+
