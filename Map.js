@@ -56,6 +56,9 @@ $(function() {
                         });
 
                     }
+
+                    //map pans to marker when it is placed
+                    globalMap.panTo(marker.getPosition());
                 }
         }
 }
