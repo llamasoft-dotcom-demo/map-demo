@@ -9,6 +9,10 @@ function sortByCode(lhs, rhs) {
         return 0;
 }
 
+//keeps track of which markers are currently being displayed on the map
+//this keeps duplicate markers from being created
+var markerSet = new Object();
+
 $(function() {
 
     var MapFcns = {
@@ -36,15 +40,22 @@ $(function() {
                     $('#setting-lat').text(currAirport.Latitude);
                     $('#setting-long').text(currAirport.Longitude);
                     
-                    var marker = new google.maps.Marker({
-                        position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
-                        map: globalMap,
-                        title: currAirport.Code
-                    });
+                    if (!(currAirport.Code in markerSet) || markerSet[currAirport.Code] != 1) {
+                        markerSet[currAirport.Code] = 1;
+                        
+                        var marker = new google.maps.Marker({
+                            position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
+                            map: globalMap,
+                            title: currAirport.Code
+                        });
 
-                    google.maps.event.addListener(marker, "click", function() {
-                        marker.setMap(null);
-                    });
+                        google.maps.event.addListener(marker, "click", function() {
+                            markerSet[currAirport.Code] = 0;
+
+                            marker.setMap(null);
+                        });
+
+                    }
                 }
         }
 }
