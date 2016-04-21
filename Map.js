@@ -1,103 +1,116 @@
-var globalMap;
-
 $(function() {
     var listItemTemplate;
+    var selectListItemTemplate;
     var airports = [];
+    var globalMap;
+    
+    // Init functions
+    function init() {
+        initHandlebars();
+        ListFunctions.loadAirportSelectList();
+        $('#airport-list').select2({
+        placeholder: 'Select an airport' 
+        });
+        $('#airport-list').change(ListFunctions.newAirportSelected);
+    }
+    
+    function initMap() {
+        // Callback function to create a map object and specify the DOM element for display.
+        globalMap = new google.maps.Map(document.getElementById('airport-map'), {
+            center: { lat: 42.2814, lng: -83.7483 },
+            scrollwheel: true,
+            zoom: 6
+        });
+    }
     
     function initHandlebars() {
         var source = $('#airport-list-item-template').html();
         listItemTemplate = Handlebars.compile(source);
+        
+        source = $('#select-list-item-template').html();
+        selectListItemTemplate = Handlebars.compile(source);
     }
-
-    var MapFcns = {
-        loadSiteList: function () {
+    // eo init functions
+    
+    // Helper functions
+    function findAirportIndex(code) {
+        return _.findIndex(airports, function(item) {
+            return item.Code == code;
+        });
+    }
+    
+    function scrollTo(element) {
+        $('#sidebar').animate({
+            scrollTop: element.offset().top
+        });
+    }
+    // eo helper functions
+    
+    // Functions for controlling data in and interacting with the airport list
+    var ListFunctions = {
+        deleteAirport: function(code, index = false) {
+            if (!index) {
+                index = findAirportIndex(code);
+            }
+            
+            airports.splice(index, 1);
+            $('[data-code="' + code + '"]').remove();
+        },
+        
+        loadAirportSelectList: function() {
             var airportList = $('#airport-list');
             airportList.html('');
             airportList.append('<option value=""></option>');
             
             var sortedSites = _.sortBy(sites, 'Code');
             for (var i in sites) {
-                var newOption = $('<option value="' + sortedSites[i].Code + '">' + sortedSites[i].Code + ' - ' + sortedSites[i].City + '</option>');
+                var newOption = selectListItemTemplate(sortedSites[i]);
                 airportList.append(newOption);
             }
         },
         
-        siteListChange: function() {
-            var ctl = $(this),
-                airportCode = ctl.val();
+        newAirportSelected: function() {
+            var listItem = $(this);
+            var code = listItem.val();
             
-            if (!airportCode) return;    
+            if (!code) return;
             
-            if(!_.findWhere(airports, { Code: airportCode })) {
-                var currAirport = _.findWhere(sites, { Code: airportCode });
+            if(!_.findWhere(airports, { Code: code })) {
+                var selectedAirport = _.findWhere(sites, { Code: code });
                 
-                // The FullSiteNameAbbr property contains some redundant information, in the form of AIRPORT_{Code}_{Name}. We only need the name.
-                currAirport.FullSiteNameAbbr = currAirport.FullSiteName.split("_", 3)[2];
+                // The FullSiteNameAbbr property contains some redundant information, 
+                // in the form of AIRPORT_{Code}_{Name}. We only need the name.
+                selectedAirport.FullSiteNameAbbr = selectedAirport.FullSiteName.split("_", 3)[2];
                 
-                $('#setting-code').text(currAirport.Code);
-                $('#setting-city').text(currAirport.City);
-                
-                var marker = new google.maps.Marker({
-                    position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
-                    map: globalMap,
-                    title: currAirport.Code + ' - ' + currAirport.FullSiteNameAbbr + ' (' + currAirport.City + ') - Click for more info...',
-                    animation: google.maps.Animation.DROP
-                });
-                
-                globalMap.setCenter(marker.getPosition());
-                
-                currAirport.marker = marker;
+                var marker = MapFunctions.addMarker(selectedAirport);
+                selectedAirport.marker = marker;
                                
-                airports.push(currAirport);
+                airports.push(selectedAirport);
                 airports = _.sortBy(airports, 'FullSiteNameAbbr');
-                var newItemIndex = _.findIndex(airports, function(item) {
-                    return item.Code == airportCode;
-                });
                 
-                var newListItem = listItemTemplate(currAirport);
+                // Finding the index here allows us to add it in the correct order to the html list
+                var newAirportIndex = findAirportIndex(code);
+                
+                var newListItem = listItemTemplate(selectedAirport);
                 $('.airport-list-item.active').removeClass('active');
                 
                 var newDomElement;
-                if (newItemIndex == 0) {
+                if (newAirportIndex == 0) {
                     newDomElement = $('#selected-airport-list').prepend(newListItem)
                 } else {
-                    newDomElement = $('.airport-list-item:nth-of-type(' + newItemIndex + ')').after(newListItem);
+                    newDomElement = $('.airport-list-item:nth-of-type(' + newAirportIndex + ')').after(newListItem);
                 }
                 
-                marker.addListener('click', function() {
-                   MapFcns.selectAirport(airportCode);
-                });
+                scrollTo(newDomElement);
                 
-                $('#sidebar').animate({
-                   scrollTop: newDomElement.offset().top
-                });
-                
-
-                $('[data-delete="' + airportCode + '"]').click(MapFcns.deleteMarker);
-                $('[data-code="' + airportCode + '"]').click(MapFcns.selectAirport);
+                $('[data-delete="' + code + '"]').click(MapFunctions.deleteMarker);
+                $('[data-code="' + code + '"]').click(ListFunctions.selectExistingAirport);
             }
             
-            ctl.val(null).trigger('change'); // The trigger is so the dropdown actually shows the null value
+            listItem.val(null).trigger('change'); // The trigger is so the dropdown actually shows the null value
         },
         
-        deleteMarker: function() {
-            var btn = $(this);
-            var code = btn.data('delete');
-            
-            // Deal with marker
-            var airportIndex = _.findIndex(airports, function(item) {
-                return item.Code == code;
-            });
-            
-            var marker = airports[airportIndex].marker;
-            marker.setMap(null);
-            airports.splice(airportIndex, 1);
-            
-            // Deal with info card
-            $('[data-code="' + code + '"]').remove();
-        },
-        
-        selectAirport: function(code) {
+        selectExistingAirport: function(code) {
             if (code.target) { // This is an event, passed through a click handler
                 var btn = $(this);
                 code = btn.data('code');
@@ -105,16 +118,50 @@ $(function() {
                 var btn = $('[data-code="' + code + '"]');
             }
             
-            $('#sidebar').animate({
-                scrollTop: btn.offset().top
-            });
+            scrollTo(btn);
             
-            var marker = _.findWhere(airports, { Code: code }).marker;
-            if(!marker || btn.hasClass('active')) return;
+            var airport = _.findWhere(airports, { Code: code });
+            if(!airport || btn.hasClass('active')) return;
             
             $('.airport-list-item.active').removeClass('active');
             btn.addClass('active');
             
+            MapFunctions.selectMarker(airport);
+        }
+    };
+
+    // Functions for controlling data in and interacting with the map
+    var MapFunctions = {
+        addMarker: function(selectedAirport) {
+            var marker = new google.maps.Marker({
+                position: {lat: selectedAirport.Latitude, lng: selectedAirport.Longitude},
+                map: globalMap,
+                title: selectedAirport.Code + ' - ' + selectedAirport.FullSiteNameAbbr + ' (' + selectedAirport.City + ') - Click for more info...',
+                animation: google.maps.Animation.DROP
+            });
+            
+            marker.addListener('click', function() {
+                ListFunctions.selectExistingAirport(selectedAirport.Code);
+            });
+            
+            globalMap.setCenter(marker.getPosition());
+            
+            return marker;
+        },
+        
+        deleteMarker: function() {
+            var btn = $(this);
+            var code = btn.data('delete');
+            
+            var airportIndex = findAirportIndex(code);
+            var marker = airports[airportIndex].marker;
+            marker.setMap(null);
+            
+            ListFunctions.deleteAirport(code, index);
+        },
+        
+        selectMarker: function(airport) {
+            var marker = airport.marker;
             globalMap.setCenter(marker.getPosition());
             
             marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -124,19 +171,9 @@ $(function() {
         }
     };
     
-    initHandlebars();
-    MapFcns.loadSiteList();
-    $('#airport-list').select2({
-       placeholder: 'Select an airport' 
-    });
-    $('#airport-list').change(MapFcns.siteListChange);
+    // Global variables
+    window['globalMap'] = globalMap;
+    window['initMap'] = initMap;
     
-    window['initMap'] = function() {
-        // Callback function to create a map object and specify the DOM element for display.
-        globalMap = new google.maps.Map(document.getElementById('airport-map'), {
-            center: { lat: 42.2814, lng: -83.7483 },
-            scrollwheel: true,
-            zoom: 6
-        });
-    };
+    init();
 });
