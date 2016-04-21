@@ -1,111 +1,127 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>zhiggins Map Exercise</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
-        <link href="Map.css" rel="stylesheet">
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <span class="navbar-brand">LLamasoft Map Exercise</span>
-                </div>
-                <div class="collapse navbar-collapse" id="instructions-navbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Instructions <i class="fa fa-chevron-down"></i></a>
-                            <div class="dropdown-menu panel panel-default" style="width: 600px">
-                                <div class="panel-body">
-                                    <p>
-                                        In helping clients understand their supply chains, maps are an important visualization tool. In this exercise we would like
-                                        you to take some steps to help make this map more useful. This example uses Google Maps and their maps API to show
-                                        information about airports. While we do not use Google Maps and the maps API, the types of visualizations and map
-                                        interactions you are allowed with Google Maps are common. In order to do this exercise you will need to get an API
-                                        key for Google Maps if you do not already have one. Put the API key in the appropriate place in this file.
-                                    </p>
 
-                                    <p>
-                                        Currently this page loads a list of airports into a drop down. You can select an airport and it&#39;s code and city will
-                                        display in the data table. A marker will be placed on the map displaying the airport. If you roll your mouse over
-                                        the marker the airport&#39;s code will be displayed.
-                                    </p>
+<head>
+    <title>zhiggins Map Exercise</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
+    <link href="Map.css" rel="stylesheet">
+</head>
 
-                                    <p>
-                                        <strong>The current code is very simple. Many improvements need to be made:</strong>
-                                        <ul>
-                                            <li>Fill in the rest of the data in the table when a user selects an airport.</li>
-                                            <li>Allow a user to remove a marker</li>
-                                            <li>Sort the list so it is easier to find airports</li>
-                                        </ul>
-                                    </p>
-                                    <p>
-                                        <strong>Some more things to think about</strong>
-                                        <ul>
-                                            <li>We are constantly struggling with displaying as much data as simply and
-                                            streamlined as possible. Is there something you can do with the layout to show
-                                            the same information using less screen real estate?</li>
-                                            
-                                            <li>Regarding markers, what happens with the existing code when you select an item multiple times?</li>
-                                            
-                                            <li>If a user selects an airport that is not currently shown on the map, how do they find it?
-                                            Can you make this easier?</li>
-                                        </ul>
-                                    </p>
-                                </div>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <span class="navbar-brand">LLamasoft Map Exercise</span>
+            </div>
+            <div class="collapse navbar-collapse" id="instructions-navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Instructions <i class="fa fa-chevron-down"></i></a>
+                        <div class="dropdown-menu panel panel-default" style="width: 600px">
+                            <div class="panel-body">
+                                <p>
+                                    In helping clients understand their supply chains, maps are an important visualization tool. In this exercise we would like
+                                    you to take some steps to help make this map more useful. This example uses Google Maps
+                                    and their maps API to show information about airports. While we do not use Google Maps
+                                    and the maps API, the types of visualizations and map interactions you are allowed with
+                                    Google Maps are common. In order to do this exercise you will need to get an API key
+                                    for Google Maps if you do not already have one. Put the API key in the appropriate place
+                                    in this file.
+                                </p>
+
+                                <p>
+                                    Currently this page loads a list of airports into a drop down. You can select an airport and it&#39;s code and city will
+                                    display in the data table. A marker will be placed on the map displaying the airport.
+                                    If you roll your mouse over the marker the airport&#39;s code will be displayed.
+                                </p>
+
+                                <p>
+                                    <strong>The current code is very simple. Many improvements need to be made:</strong>
+                                    <ul>
+                                        <li>Fill in the rest of the data in the table when a user selects an airport.</li>
+                                        <li>Allow a user to remove a marker</li>
+                                        <li>Sort the list so it is easier to find airports</li>
+                                    </ul>
+                                </p>
+                                <p>
+                                    <strong>Some more things to think about</strong>
+                                    <ul>
+                                        <li>We are constantly struggling with displaying as much data as simply and streamlined
+                                            as possible. Is there something you can do with the layout to show the same information
+                                            using less screen real estate?</li>
+
+                                        <li>Regarding markers, what happens with the existing code when you select an item multiple
+                                            times?</li>
+
+                                        <li>If a user selects an airport that is not currently shown on the map, how do they
+                                            find it? Can you make this easier?</li>
+                                    </ul>
+                                </p>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div id="sidebar" class="col-md-3 sidebar">
+                <div class="wrapper">
+                <div class="row">
+                    <select id="airport-list" class="form-control" style="width: 100%"></select>
+                </div>
+                <div id="listGroupContainer" class="row">
+                    <div class="list-group" id="selected-airport-list">
+                    </div>
+                </div> 
+                <div class="push"></div>
+                </div>
+                <div class="footer text-center">
+                    <span class="text-muted">&copy; LLamasoft and Zachary Higgins, 2016</span>
                 </div>
             </div>
-        </nav>
-        
-        <div class="container">
-            <div class="row">
-                <div id="sidebar" class="col-md-3 sidebar">
-                    <div class="row">
-                        <select id="airport-list" class="form-control" style="width: 100%"></select>
-                    </div>
-                    <div id="listGroupContainer" class="row">
-                        <div class="list-group" id="selected-airport-list">
-                        </div>
-                    </div>
+            <div class="col-md-9 col-md-offset-3 main nopadding">
+                <div id="airport-map-container">
+                    <div id="airport-map"></div>
                 </div>
-                <div class="col-md-9 col-md-offset-3 main nopadding">
-                    <div id="airport-map-container">
-                        <div id="airport-map"></div>
-                    </div>
-                </div>
-            </div>   
+            </div>
         </div>
-        
-        <!-- Script section -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOFRdhRc-G-Tdi9eYKr-bHmLvAwjtQTdI&callback=initMap"></script>
-        <script src="siteData.js"></script>
-        <script src="Map.js"></script>
-        
-        <!-- Handlebars templates -->
-        <script id="airport-list-item-template" type="text/x-handlebars-template">
-            <span class="list-group-item clearfix airport-list-item active" data-code="{{Code}}">
+    </div>
+
+    <!-- Script section -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOFRdhRc-G-Tdi9eYKr-bHmLvAwjtQTdI&callback=initMap"></script>
+    <script src="siteData.js"></script>
+    <script src="Map.js"></script>
+
+    <!-- Handlebars templates -->
+    <script id="airport-list-item-template" type="text/x-handlebars-template">
+        <span class="list-group-item clearfix airport-list-item active" data-code="{{Code}}">
                 <span class="pull-right">
                     <button class="btn btn-xs btn-danger" data-delete="{{Code}}">
                         <i class="fa fa-times"></i>
                     </button>
                     </span>
-                <h4 class="list-group-item-heading">{{FullSiteNameAbbr}}</h4>
-                <p class="list-group-item-text">
-                    <strong>Code:</strong> {{Code}}<br>
-                    <strong>City:</strong> {{City}}, {{State}}<br>
-                    <strong>Lat:</strong> {{Latitude}} <strong>Lon:</strong> {{Longitude}}
-                </p>
-            </span>
-        </script>
-    </body>
+        <h4 class="list-group-item-heading">{{FullSiteNameAbbr}}</h4>
+        <p class="list-group-item-text">
+            <strong>Code:</strong> {{Code}}<br>
+            <strong>City:</strong> {{City}}, {{State}}<br>
+            <strong>Lat:</strong> {{Latitude}} <strong>Lon:</strong> {{Longitude}}
+        </p>
+        </span>
+    </script>
+
+    <script id="select-list-item-template" type="text/x-handlebars-template">
+        <option value="{{Code}}">{{Code}} - {{City}}</option>
+    </script>
+</body>
+
 </html>
