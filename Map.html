@@ -4,6 +4,7 @@
         <title>zhiggins Map Exercise</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
         <link href="Map.css" rel="stylesheet">
     </head>
     <body>
@@ -62,28 +63,30 @@
         </nav>
         
         <div class="container">
-        <div class="row">
-            <div id="sidebar" class="col-md-3 sidebar">
-                <div class="row">
-                    <select id="airport-list" class="form-control"></select>
-                </div>
-                <div id="listGroupContainer" class="row">
-                    <div class="list-group" id="selected-airport-list">
+            <div class="row">
+                <div id="sidebar" class="col-md-3 sidebar">
+                    <div class="row">
+                        <select id="airport-list" class="form-control" style="width: 100%"></select>
+                    </div>
+                    <div id="listGroupContainer" class="row">
+                        <div class="list-group" id="selected-airport-list">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-9 col-md-offset-3 main nopadding">
-                <div id="airport-map-container">
-                    <div id="airport-map"></div>
+                <div class="col-md-9 col-md-offset-3 main nopadding">
+                    <div id="airport-map-container">
+                        <div id="airport-map"></div>
+                    </div>
                 </div>
-            </div>
-        </div>   
+            </div>   
+        </div>
         
         <!-- Script section -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOFRdhRc-G-Tdi9eYKr-bHmLvAwjtQTdI&callback=initMap"></script>
         <script src="siteData.js"></script>
         <script src="Map.js"></script>
