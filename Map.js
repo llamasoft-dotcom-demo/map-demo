@@ -2,7 +2,6 @@ var globalMap;
 
 $(function() {
     var listItemTemplate;
-    //var markers = [];
     var airports = [];
     
     function initHandlebars() {
@@ -41,7 +40,7 @@ $(function() {
                 var marker = new google.maps.Marker({
                     position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
                     map: globalMap,
-                    title: currAirport.Code,
+                    title: currAirport.Code + ' - ' + currAirport.FullSiteNameAbbr + ' (' + currAirport.City + ') - Click for more info...',
                     animation: google.maps.Animation.DROP
                 });
                 
@@ -57,12 +56,17 @@ $(function() {
                 
                 var newListItem = listItemTemplate(currAirport);
                 $('.airport-list-item.active').removeClass('active');
+                
                 var newDomElement;
                 if (newItemIndex == 0) {
                     newDomElement = $('#selected-airport-list').prepend(newListItem)
                 } else {
                     newDomElement = $('.airport-list-item:nth-of-type(' + newItemIndex + ')').after(newListItem);
                 }
+                
+                marker.addListener('click', function() {
+                   MapFcns.selectAirport(airportCode);
+                });
                 
                 $('#sidebar').animate({
                    scrollTop: newDomElement.offset().top
@@ -93,9 +97,17 @@ $(function() {
             $('[data-code="' + code + '"]').remove();
         },
         
-        selectAirport: function() {
-            var btn = $(this);
-            var code = btn.data('code');
+        selectAirport: function(code) {
+            if (code.target) { // This is an event, passed through a click handler
+                var btn = $(this);
+                code = btn.data('code');
+            } else { // Code was passed directly from another function
+                var btn = $('[data-code="' + code + '"]');
+            }
+            
+            $('#sidebar').animate({
+                scrollTop: btn.offset().top
+            });
             
             var marker = _.findWhere(airports, { Code: code }).marker;
             if(!marker || btn.hasClass('active')) return;
