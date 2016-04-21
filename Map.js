@@ -101,6 +101,8 @@ $(function () {
 
                 $('[data-delete="' + code + '"]').click(MapFunctions.deleteMarker);
                 $('[data-code="' + code + '"]').click(ListFunctions.selectExistingAirport);
+            } else {
+                ListFunctions.selectExistingAirport(code);
             }
 
             listItem.val(null).trigger('change'); // The trigger is so the dropdown actually shows the null value
