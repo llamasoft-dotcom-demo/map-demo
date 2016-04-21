@@ -153,8 +153,8 @@ $(function() {
             var btn = $(this);
             var code = btn.data('delete');
             
-            var airportIndex = findAirportIndex(code);
-            var marker = airports[airportIndex].marker;
+            var index = findAirportIndex(code);
+            var marker = airports[index].marker;
             marker.setMap(null);
             
             ListFunctions.deleteAirport(code, index);
