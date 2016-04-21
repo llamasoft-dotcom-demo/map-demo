@@ -5,10 +5,12 @@ $(function() {
 var MapFcns = {
     loadSiteList: function () {
         var airportList = $('#airport-list');
-            airportList.html('');
-            airportList.append('<option value=""></option>');
+        airportList.html('');
+        airportList.append('<option value=""></option>');
+        
+        var sortedSites = _.sortBy(sites, 'Code');
         for (var i in sites) {
-            var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
+            var newOption = $('<option value="' + sortedSites[i].Code + '">' + sortedSites[i].Code + ' - ' + sortedSites[i].City + '</option>');
             airportList.append(newOption);
         }
     },
