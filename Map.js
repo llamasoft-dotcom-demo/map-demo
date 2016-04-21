@@ -37,7 +37,8 @@ $(function() {
                 var marker = new google.maps.Marker({
                     position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
                     map: globalMap,
-                    title: currAirport.Code
+                    title: currAirport.Code,
+                    animation: google.maps.Animation.DROP
                 });
                 
                 globalMap.setCenter(marker.getPosition());
