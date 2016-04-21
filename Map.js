@@ -48,11 +48,7 @@ $(function () {
 
     // Functions for controlling data in and interacting with the airport list
     var ListFunctions = {
-        deleteAirport: function (code, index = false) {
-            if (!index) {
-                index = findAirportIndex(code);
-            }
-
+        deleteAirport: function (code, index) {
             airports.splice(index, 1);
             $('[data-code="' + code + '"]').remove();
         },
