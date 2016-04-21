@@ -2,7 +2,8 @@ var globalMap;
 
 $(function() {
     var listItemTemplate;
-    var markers = [];
+    //var markers = [];
+    var airports = [];
     
     function initHandlebars() {
         var source = $('#airport-list-item-template').html();
@@ -25,8 +26,8 @@ $(function() {
         siteListChange: function() {
             var ctl = $(this),
                 airportCode = ctl.val();
-            if(airportCode && !_.has(markers, airportCode)) {
-                var currAirport = _.findWhere(sites, {Code: airportCode});
+            if(airportCode && !_.findWhere(airports, { Code: airportCode })) {
+                var currAirport = _.findWhere(sites, { Code: airportCode });
                 
                 // The FullSiteNameAbbr property contains some redundant information, in the form of AIRPORT_{Code}_{Name}. We only need the name.
                 currAirport.FullSiteNameAbbr = currAirport.FullSiteName.split("_", 3)[2];
@@ -43,11 +44,27 @@ $(function() {
                 
                 globalMap.setCenter(marker.getPosition());
                 
-                markers[currAirport.Code] = marker;
+                currAirport.marker = marker;
+                               
+                airports.push(currAirport);
+                airports = _.sortBy(airports, 'FullSiteNameAbbr');
+                var newItemIndex = _.findIndex(airports, function(item) {
+                    return item.Code == airportCode;
+                });
                 
                 var newListItem = listItemTemplate(currAirport);
                 $('.airport-list-item.active').removeClass('active');
-                $('#selected-airport-list').append(newListItem)
+                var newDomElement;
+                if (newItemIndex == 0) {
+                    newDomElement = $('#selected-airport-list').prepend(newListItem)
+                } else {
+                    newDomElement = $('.airport-list-item:nth-of-type(' + newItemIndex + ')').after(newListItem);
+                }
+                
+                $('#sidebar').animate({
+                   scrollTop: newDomElement.offset().top
+                });
+                
 
                 $('[data-delete="' + airportCode + '"]').click(MapFcns.deleteMarker);
                 $('[data-code="' + airportCode + '"]').click(MapFcns.selectAirport);
@@ -61,9 +78,13 @@ $(function() {
             var code = btn.data('delete');
             
             // Deal with marker
-            var marker = markers[code];
+            var airportIndex = _.findIndex(airports, function(item) {
+                return item.Code == code;
+            });
+            
+            var marker = airports[airportIndex].marker;
             marker.setMap(null);
-            delete markers[code];
+            delete airports[airportIndex];
             
             // Deal with info card
             $('[data-code="' + code + '"]').remove();
@@ -73,12 +94,11 @@ $(function() {
             var btn = $(this);
             var code = btn.data('code');
             
-            if(!_.has(markers, code) || btn.hasClass('active')) return;
+            var marker = _.findWhere(airports, { Code: code }).marker;
+            if(!marker || btn.hasClass('active')) return;
             
             $('.airport-list-item.active').removeClass('active');
             btn.addClass('active');
-            
-            var marker = markers[code];
             
             globalMap.setCenter(marker.getPosition());
             
