@@ -46,7 +46,7 @@ $(function() {
                 markers[currAirport.Code] = marker;
                 
                 var newListItem = listItemTemplate(currAirport);
-                $('.airport-list-item').removeClass('active');
+                $('.airport-list-item.active').removeClass('active');
                 $('#selected-airport-list').append(newListItem)
 
                 $('[data-delete="' + airportCode + '"]').click(MapFcns.deleteMarker);
@@ -75,13 +75,12 @@ $(function() {
             
             if(!_.has(markers, code) || btn.hasClass('active')) return;
             
-            $('.airport-list-item').removeClass('active');
+            $('.airport-list-item.active').removeClass('active');
             btn.addClass('active');
             
             var marker = markers[code];
             
             globalMap.setCenter(marker.getPosition());
-            globalMap.setZoom(6);
             
             marker.setAnimation(google.maps.Animation.BOUNCE);
             setTimeout(function() {
