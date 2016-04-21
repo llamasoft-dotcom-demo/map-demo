@@ -6,8 +6,17 @@
     left: 0;
 }
 
-#airport-data {
-    margin: 12px;
+#selected-airport-list {
+    margin-top: 15px;
+}
+
+.airport-list-item {
+    margin: 2px 10px;
+}
+
+.airport-list-item:hover {
+    background-color: #E6E6E6;
+    cursor: pointer;
 }
 
 .main {
@@ -19,6 +28,10 @@
     overflow-x: auto;
     overflow-y: auto;
     left: 0
+}
+
+.nopadding {
+   padding: 0 !important;
 }
 
 .sidebar {
@@ -33,21 +46,4 @@
     overflow-y: auto;
     background-color: #f5f5f5;
     border-right: 1px solid #eee;
-}
-
-.nopadding {
-   padding: 0 !important;
-}
-
-#selected-airport-list {
-    margin-top: 15px;
-}
-
-.airport-list-item {
-    margin: 2px 10px;
-}
-
-.airport-list-item:hover {
-    background-color: #E6E6E6;
-    cursor: pointer;
 }
