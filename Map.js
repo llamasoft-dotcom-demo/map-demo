@@ -114,6 +114,9 @@ $(function() {
     
     initHandlebars();
     MapFcns.loadSiteList();
+    $('#airport-list').select2({
+       placeholder: 'Select an airport' 
+    });
     $('#airport-list').change(MapFcns.siteListChange);
     
     window['initMap'] = function() {
