@@ -78,13 +78,14 @@ $(function() {
             var code = btn.data('delete');
             
             // Deal with marker
+            console.log(airports);
             var airportIndex = _.findIndex(airports, function(item) {
                 return item.Code == code;
             });
             
             var marker = airports[airportIndex].marker;
             marker.setMap(null);
-            delete airports[airportIndex];
+            airports.splice(airportIndex, 1);
             
             // Deal with info card
             $('[data-code="' + code + '"]').remove();
