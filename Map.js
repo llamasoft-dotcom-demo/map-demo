@@ -46,9 +46,11 @@ $(function() {
                 markers[currAirport.Code] = marker;
                 
                 var newListItem = listItemTemplate(currAirport);
+                $('.airport-list-item').removeClass('active');
                 $('#selected-airport-list').append(newListItem)
 
                 $('[data-delete="' + airportCode + '"]').click(MapFcns.deleteMarker);
+                $('[data-code="' + airportCode + '"]').click(MapFcns.selectAirport);
                 
                 ctl.val(null).trigger('change'); // The trigger is so the dropdown actually shows the null value
             }
@@ -65,6 +67,26 @@ $(function() {
             
             // Deal with info card
             $('[data-code="' + code + '"]').remove();
+        },
+        
+        selectAirport: function() {
+            var btn = $(this);
+            var code = btn.data('code');
+            
+            if(!_.has(markers, code) || btn.hasClass('active')) return;
+            
+            $('.airport-list-item').removeClass('active');
+            btn.addClass('active');
+            
+            var marker = markers[code];
+            
+            globalMap.setCenter(marker.getPosition());
+            globalMap.setZoom(6);
+            
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function() {
+                marker.setAnimation(null);
+            }, 1400); // 14 seconds is about how long it takes for two bounces
         }
     };
     
