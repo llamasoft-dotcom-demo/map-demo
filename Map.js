@@ -68,9 +68,9 @@ $(function() {
 
                 $('[data-delete="' + airportCode + '"]').click(MapFcns.deleteMarker);
                 $('[data-code="' + airportCode + '"]').click(MapFcns.selectAirport);
-                
-                ctl.val(null).trigger('change'); // The trigger is so the dropdown actually shows the null value
             }
+            
+            ctl.val(null).trigger('change'); // The trigger is so the dropdown actually shows the null value
         },
         
         deleteMarker: function() {
@@ -78,7 +78,6 @@ $(function() {
             var code = btn.data('delete');
             
             // Deal with marker
-            console.log(airports);
             var airportIndex = _.findIndex(airports, function(item) {
                 return item.Code == code;
             });
