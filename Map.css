@@ -1,44 +1,60 @@
-#airport-settings {
-    width: calc(100% - 8px);
-    border: 2px solid black;
-    height: 128px;
-    padding: 4px;
-    margin: 10px 14px 10px 0px;
+#airport-map {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
-#airport-settings #setting-name {
-    width: 128px;
-    float: left;
-    border-right: 1px solid black;
+#selected-airport-list {
+    margin-top: 15px;
 }
 
-#airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
-    text-align: left;
+.airport-list-item {
+    margin: 2px 10px;
 }
 
-#airport-settings #setting-value div {
-    margin-left: 14px;
-}
-
-#airport-map{
-    width: 800px;
-    height: 600px;
-}
-
-#airport-data {
-    margin: 12px;
-}
-
-#exercise-toggle {
+.airport-list-item:hover {
+    background-color: #E6E6E6;
     cursor: pointer;
 }
 
-#instruction-toggle {
-    line-height: 44px;
-    vertical-align: text-bottom;
-    font-size: 32px;
-    font-weight: bold;
+.main {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+    overflow-x: auto;
+    overflow-y: auto;
+    left: 0
+}
+
+.nopadding {
+   padding: 0 !important;
+}
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -10px;
+}
+
+.footer, .push {
+    height: 10px;
 }
