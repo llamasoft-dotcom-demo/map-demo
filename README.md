@@ -13,6 +13,8 @@
 
 6) An X button was placed on each new panel.  When clicked it removes the panel and its associated marker.
 
+7) Refactored the javascript into a more readable format, and organized some of the functions to group together similar functionality.
+
 ### Known issues
 1) Originally, the map also zoomed in whenever it centered on a new marker.  However, for whatever reason (and it looks like this is related to a known issue), the map would center on Boise when selected, but the marker wouldn't drop until the map was moved manually.
 
