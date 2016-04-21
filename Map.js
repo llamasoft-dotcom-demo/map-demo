@@ -26,7 +26,10 @@ $(function() {
         siteListChange: function() {
             var ctl = $(this),
                 airportCode = ctl.val();
-            if(airportCode && !_.findWhere(airports, { Code: airportCode })) {
+            
+            if (!airportCode) return;    
+            
+            if(!_.findWhere(airports, { Code: airportCode })) {
                 var currAirport = _.findWhere(sites, { Code: airportCode });
                 
                 // The FullSiteNameAbbr property contains some redundant information, in the form of AIRPORT_{Code}_{Name}. We only need the name.
