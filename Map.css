@@ -1,29 +1,17 @@
 #airport-settings {
-    width: calc(100% - 8px);
+    width: 100%;
     border: 2px solid black;
-    height: 128px;
+    height: 150px;
     padding: 4px;
     margin: 10px 14px 10px 0px;
 }
 
-#airport-settings #setting-name {
-    width: 128px;
-    float: left;
-    border-right: 1px solid black;
-}
-
 #airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
+    margin-left: 50px;
     text-align: left;
 }
 
-#airport-settings #setting-value div {
-    margin-left: 14px;
-}
-
-#airport-map{
+#airport-map {
     width: 800px;
     height: 600px;
 }
@@ -40,5 +28,13 @@
     line-height: 44px;
     vertical-align: text-bottom;
     font-size: 32px;
+    font-weight: bold;
+}
+
+table {
+    width: 90%;
+}
+
+#ux {
     font-weight: bold;
 }
