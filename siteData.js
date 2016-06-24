@@ -87,3 +87,11 @@ sites = [{Code: "YEG", City: "Edmonton", State: "AB", FullSiteName: "AIRPORT_YEG
 {Code: "GEG", City: "Spokane", State: "WA", FullSiteName: "AIRPORT_GEG_Spokane International Airport", Latitude: 47.6251, Longitude: -117.538},
 {Code: "BFI", City: "Seattle", State: "WA", FullSiteName: "AIRPORT_BFI_Boeing Field International Airport", Latitude: 47.5375, Longitude: -122.304},
 {Code: "MKE", City: "Milwaukee", State: "WI", FullSiteName: "AIRPORT_MKE_General Mitchell International Airport", Latitude: 42.9472, Longitude: -87.9049}];
+
+sites.sort(function(a,b) {
+  if (a.Code < b.Code)
+    return -1;
+  if (a.Code > b.Code)
+    return 1;
+  return 0;
+});

@@ -1,5 +1,5 @@
 var globalMap;
-
+var activeMarkers = [];
 $(function() {
 
 var MapFcns = {
@@ -14,6 +14,7 @@ var MapFcns = {
     },
     
     siteListChange: function() {
+        debugger;
         var ctl = $(this),
             airportCode = ctl.val();
             if(airportCode) {
@@ -24,13 +25,36 @@ var MapFcns = {
                 $('#setting-fullname').text(currAirport.FullSiteName);
                 $('#setting-lat').text(currAirport.Latitude);
                 $('#setting-long').text(currAirport.Longitude);
+                if(contains(currAirport.Code) !== -1){
+                   var position ={
+                    lat: currAirport.Latitude,
+                    lng: currAirport.Longitude
+                   } 
+                   globalMap.panTo(position)
+                }
+                else{
                 var marker = new google.maps.Marker({
                     position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
                     map: globalMap,
-                    title: currAirport.Code
-                });
+                    title: currAirport.Code,
+
+                        });
+                activeMarkers.push(marker);
+                globalMap.panTo(marker.position);
+
+ google.maps.event.addListener(marker, "rightclick", function(){
+    debugger;
+   var index = activeMarkers.indexOf(marker);
+   activeMarkers.splice(index, 1);
+    marker.setMap(null);
+
+ });
+}
+
             }
     }
+
+    
 }
 
 
@@ -54,9 +78,17 @@ $('#exercise-toggle').click(function() {
 
 
 
+function contains(airportCode){
+    var length = activeMarkers.length;
+    for(var i = 0; i < length; i++){
+        if(airportCode === activeMarkers[i].title){
+            return i;
+        }
+    }
+    return -1;
+}
 
 
-    
 function  initMap() {
   // Callback function to create a map object and specify the DOM element for display.
   globalMap = new google.maps.Map(document.getElementById('airport-map'), {
