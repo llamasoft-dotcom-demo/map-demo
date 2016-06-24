@@ -88,6 +88,11 @@ sites = [{Code: "YEG", City: "Edmonton", State: "AB", FullSiteName: "AIRPORT_YEG
 {Code: "BFI", City: "Seattle", State: "WA", FullSiteName: "AIRPORT_BFI_Boeing Field International Airport", Latitude: 47.5375, Longitude: -122.304},
 {Code: "MKE", City: "Milwaukee", State: "WI", FullSiteName: "AIRPORT_MKE_General Mitchell International Airport", Latitude: 42.9472, Longitude: -87.9049}];
 
+
+/*
+this function sorts the array alphabetically, addressing the following problem:
+Sort the list so it is easier to find airports
+*/
 sites.sort(function(a,b) {
   if (a.Code < b.Code)
     return -1;
