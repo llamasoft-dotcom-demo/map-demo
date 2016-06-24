@@ -14,7 +14,6 @@ var MapFcns = {
     },
     
     siteListChange: function() {
-        debugger;
         var ctl = $(this),
             airportCode = ctl.val();
             if(airportCode) {
@@ -43,7 +42,6 @@ var MapFcns = {
                 globalMap.panTo(marker.position);
 
  google.maps.event.addListener(marker, "rightclick", function(){
-    debugger;
    var index = activeMarkers.indexOf(marker);
    activeMarkers.splice(index, 1);
     marker.setMap(null);
