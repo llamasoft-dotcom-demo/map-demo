@@ -14,7 +14,7 @@ $(function () {
           airportList.append('<option value=""></option>');
       var array = [];
       for (var i in sites) {
-              array.push(sites[i].Code);
+              array.push(sites[i].City);
               array.sort();
             }
       for (var x in array) {
@@ -28,9 +28,9 @@ $(function () {
 //=================================================
       siteListChange: function() {
            var ctl = $(this),
-               airportCode = ctl.val();
-           if (airportCode) {
-               var currAirport = _.findWhere(sites, {Code: airportCode});
+                airportCity = ctl.val();
+           if (airportCity) {
+               var currAirport = _.findWhere(sites, {City: airportCity});
                $('#setting-code').text(currAirport.Code);
                $('#setting-city').text(currAirport.City);
                $('#setting-state').text(currAirport.State);
