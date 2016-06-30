@@ -1,38 +1,102 @@
-#airport-settings {
-    width: calc(100% - 8px);
-    border: 2px solid black;
-    height: 128px;
-    padding: 4px;
-    margin: 10px 14px 10px 0px;
+
+/*llamasoft logo for top of page*/
+#logo img {
+    height: 5rem;
+    margin: 1rem 1rem;
 }
 
-#airport-settings #setting-name {
-    width: 128px;
-    float: left;
-    border-right: 1px solid black;
+h1 {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-weight: 600 !important;
 }
 
-#airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
+/*background for heading*/
+#heading {
+    background-image: url(/img/hero-home-2.jpg);
+    background-size: cover;
+    height: 12rem;
+    color: white;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+
+
+select {
+    margin: auto;
+    width: 100px;
+}
+
+
+/*Keeps each pair of airport settings together as browser changes size*/
+.pan div {
+    display: inline-block;
+    vertical-align: text-top;
+    height: auto;
+}
+
+
+/*border for airport settings display*/
+div.pan {
+    border: 2px solid darkblue;
+    border-radius: 5px;
+}
+
+.info {
+    font-size: 10px;
+}
+
+
+
+.col-sm-2 {
+    margin-bottom: 75px;
     text-align: left;
+    padding-left: 0px;
 }
 
-#airport-settings #setting-value div {
-    margin-left: 14px;
+.col-sm-2 p {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 600 !important;
 }
+
+#airport-controls {
+    margin-left: 20px;
+}
+
+.settings {
+    margin: 5px;
+    min-width: 100px;
+}
+
+
+div strong {
+    margin-right: 5px;
+    display: block;
+}
+
 
 #airport-map{
-    width: 800px;
+    width: auto;
     height: 600px;
+    margin-top: -60px;
 }
 
 #airport-data {
     margin: 12px;
+    margin-left: 16px;
+}
+
+
+#exercise-description {
+    margin: 20px;
 }
 
 #exercise-toggle {
+    margin: 20px;
     cursor: pointer;
 }
 

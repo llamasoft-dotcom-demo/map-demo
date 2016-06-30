@@ -2,18 +2,71 @@
 <html>
     <head>
         <title>Map Sample</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoWWeSF6VmXvcS2j0yjVMkR_pZBxUpvks&callback=initMap"></script>
         <script src="siteData.js"></script>
         <script src="Map.js"></script>
         <link href="Map.css" rel="stylesheet">
     </head>
     <body>
-        <h1>LLamasoft Map Exercise
-        </h1>
+      
+       <div class="container-fluid" id="logo">
+          <img src="/img/LLamasoft_logo.jpg">
+      </div>
+        <div class="container-fluid text-center">
+              <div class="row content">
+                 <div class="col-sm-12" id="heading">
+                   <h1>LLamasoft Map Exercise</h1>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class='row' id="airport-controls">        
+            <h3>Airports:</h3>
+            <select id="airport-list"></select>
+        </div>
+        
+    <div class="col-sm-2">
+    <p>*Click LLama marker to remove airport from map.</p>
+    
+       
+       
+<!--The airport settings section could be removed now since all the information is now displayed on the infowindow once the user selects an airport.-->
+        <div id="airport-data">
+            <div class="pan">
+                <div class='settings'>
+                    <div><strong>Code:</strong></div><div id="setting-code"></div>
+                </div>
+                <div class='settings'>
+                    <div><strong>City:</strong></div><div id="setting-city"></div>
+                </div>
+                <div class='settings'>
+                    <div><strong>State:</strong></div><div id="setting-state"></div>
+                </div>
+                <div class='settings'>
+                    <div><strong>Full Name:</strong></div><div id="setting-name"></div>
+                </div>
+                <div class='settings'>
+                    <div><strong>Latitude:</strong></div><div id="setting-lat"></div>
+                </div>
+                <div class='settings'>
+                    <div><strong>Longitude:</strong></div><div id="setting-long"></div>
+                </div>
+           </div>
+        </div>
+    </div>
+            
 
+    <div class="col-sm-10">
+        <div id="airport-map"></div> 
+    </div>     
+        
         <div id="exercise-description">
+           
             <div id="instruction-toggle"><span>Instructions</span> <span id="exercise-toggle">-</span></div>
 
             <div id="exercise-instructions">
@@ -36,56 +89,31 @@
             
             <p>
             The current code is very simple. Many improvements need to be made:
+            </p>
             <ul>
               <li>Fill in the rest of the data in the table when a user selects an airport.</li>
               <li>Allow a user to remove a marker</li>
               <li>Sort the list so it is easier to find airports</li>
             </ul>
-            </p>
-            
             <p>
             Some more things to think about
+            </p>
             <ul>
               <li>We are constantly struggling with displaying as much data as simply and
               streamlined as possible. Is there something you can do with the layout to show
               the same information using less screen real estate?</li>
-              
+
               <li>Regarding markers, what happens with the existing code when you select an item multiple times?</li>
-              
+
               <li>If a user selects an airport that is not currently shown on the map, how do they find it?
               Can you make this easier?</li>
             </ul>
-            </p>
             </div>
         </div>
         
-        <div id="airport-map">
-        </div>
+    <footer class="container-fluid text-center">
+        <span>&copy; LLamasoft 2016</span>
+    </footer>
         
-        <div id="airport-data">
-            <div id="airport-controls">        
-                Airports: <select id="airport-list">
-                </select>
-            </div>
-            
-            <div id="airport-settings">
-                <div id="setting-name">
-                    <div>Code</div>
-                    <div>City</div>
-                    <div>State</div>
-                    <div>Full Name</div>
-                    <div>Latitude</div>
-                    <div>Longitude</div>
-                </div>
-                <div id="setting-value">
-                    <div id="setting-code"></div>
-                    <div id="setting-city"></div>
-                    <div id="setting-state"></div>
-                    <div id="setting-name"></div>
-                    <div id="setting-lat"></div>
-                    <div id="setting-long"></div>
-                </div>
-            </div>
-        </div>
     </body>
 </html>
