@@ -26,19 +26,6 @@ function  initMap() {
     });
 }
     
-//toggles the instructions on and off
-$('#exercise-toggle').click(function () {
-    var toggleCtl = $(this),
-        toggleVal = toggleCtl.text();
-    if (toggleVal === '-') {
-        toggleCtl.text('+');
-        $('#exercise-instructions').hide();
-    } else {
-        toggleCtl.text('-');
-        $('#exercise-instructions').show();
-    }
-});
-
     
 
 $(function () {
