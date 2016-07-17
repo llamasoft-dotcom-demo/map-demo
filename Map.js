@@ -1,4 +1,9 @@
 var globalMap;
+
+//global array in order to check and access airport codes currently
+//displayed on the map. Array is used to prevent duplicate markers
+//appearing on the map when a user selects it twice without having
+//removed it first
 var gMarkers = [];
 
 $(function () {
@@ -64,7 +69,7 @@ $(function () {
                     $('#setting-long').text(currAirport.Longitude);
             
                     
-                    //Checks array for matching codes from the arrayCheck function,
+                    //Checks array for matching codes from the arrayCheck function in order to prevent duplicate markers,
                     //not equal to -1 means a marker already exists, the two codes
                     //match, and therefore will simply pan to destination 
                     //and not add a new marker
@@ -133,7 +138,7 @@ $(function () {
 });
 
 
-//function checks gMarkers array for matching airport code, if not found returns -1
+//function checks gMarkers array for matching airport code, if not found returns -1.
 function arrayCheck(code){
     var length = gMarkers.length;
     for(var i = 0; i < length; i++){
