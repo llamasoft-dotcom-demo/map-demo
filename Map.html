@@ -2,20 +2,25 @@
 <html>
     <head>
         <title>Map Sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmwSeewPB-NMEdSglIgxaypFtbEtz1bSU&callback=initMap"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmwSeewPB-NMEdSglIgxaypFtbEtz1bSU&libraries=places"></script>
         <script src="siteData.js"></script>
         <script src="Map.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link href="Map.css" rel="stylesheet">
     </head>
     <body>
-        <h1>LLamasoft Map Exercise
-        </h1>
-
+        <div class="jumbotron">
+            <h1>LLamasoft Map Exercise</h1>
+            <p>Presented by Cara Canady</p>
+        </div>
         <div id="exercise-description">
-            <div id="instruction-toggle"><span>Instructions</span> <span id="exercise-toggle">-</span></div>
-
+            <h2>Exercise Instructions</h2> 
+            <p id="exercise-toggle">Click to condense instructions</p>
             <div id="exercise-instructions">
             <p>
             In helping clients understand their supply chains, maps are an important visualization tool.
@@ -29,8 +34,8 @@
             
             <p>
             Currently this page loads a list of airports into a drop down. You can select an airport
-            and it&quot;s code and city will display in the data table. A marker will be placed on the
-            map displaying the airport. If you roll your mouse over the marker the airport&quot;s code
+            and its code and city will display in the data table. A marker will be placed on the
+            map displaying the airport. If you roll your mouse over the marker the airport's code
             will be displayed.
             </p>
             
@@ -42,48 +47,74 @@
               <li>Sort the list so it is easier to find airports</li>
             </ul>
             </p>
+            <div class="carastyle">
+                <p><b>Improvements Made:</b></p>
+                    <ul>
+                        <li>Responsive, bootstrapped project</li>
+                        <li>Better space utilization with table on right-hand side of page</li>
+                        <li>Improved UX (<span class="update">clearly labeled collapsable instructions</span>, updated and sorted dropdown, clearer layout)</li>
+                        <li>Functionality to remove marker with double click</li>
+                        <li>Functionality to display InfoWindow on click.  <span class="update">No more than one InfoWindow will display at once.</span></li>
+                        <li>Auto-zoom on airport selection</li>
+                        <li><span class="update">Database fixes - removed state name from several city items in the sites array, removed unnecessary clutter (e.g. "AIRPORT_DTW")</span></li>
+                    </ul>
+            </div>
             
             <p>
-            Some more things to think about
+            Some more things to think about:
             <ul>
               <li>We are constantly struggling with displaying as much data as simply and
               streamlined as possible. Is there something you can do with the layout to show
-              the same information using less screen real estate?</li>
+              the same information using less screen real estate? <b>Yes! See above UX and layout improvements.</b></li>
               
-              <li>Regarding markers, what happens with the existing code when you select an item multiple times?</li>
-              
-              <li>If a user selects an airport that is not currently shown on the map, how do they find it?
-              Can you make this easier?</li>
+              <li>Regarding markers, what happens with the existing code when you select an item multiple times? <b><span class="update">I removed the option from the dropdown menu after the user selects it.  It should be stated that I don't fully know the scope and intention of the project, so this could be completely off target.  In thinking about how to decrease the cognitive load on the user and keep my code clean and simple, this seemed to be a good option. A tried-and-true alternative is to create an empty, globally-defined array, push selections to an array, check the array for duplicate items, find duplicate item index, remove item with said index, and panTo marker containing this index.</span></b></li>
+                            
+              <li>If a user selects an airport that is not currently shown on the map, how do they find it? Can you make this easier? <b>Fixed.  Auto zoom when user selects an airport.</b></li>
+                
             </ul>
             </p>
             </div>
         </div>
         
-        <div id="airport-map">
-        </div>
-        
-        <div id="airport-data">
+        <div id="ux">
+            <p><b>User Instructions: </b>Select an airport from the dropdown list and your airport will plot on the map.  Click on the marker that displays, and you'll see information about that airport.  Double click on the marker to remove it. The below table also displays information about the airport that you've selected.</p>
+            <div id="airport-data">
             <div id="airport-controls">        
-                Airports: <select id="airport-list">
+                <b>Airports:</b> <select id="airport-list">
                 </select>
             </div>
+        </div>
+        </div> 
+
+        <div class="row">
+            <div class="col-md-6">
+                <div id="airport-map"></div>
+            </div>
+        
             
-            <div id="airport-settings">
-                <div id="setting-name">
-                    <div>Code</div>
-                    <div>City</div>
-                    <div>State</div>
-                    <div>Full Name</div>
-                    <div>Latitude</div>
-                    <div>Longitude</div>
-                </div>
-                <div id="setting-value">
-                    <div id="setting-code"></div>
-                    <div id="setting-city"></div>
-                    <div id="setting-state"></div>
-                    <div id="setting-name"></div>
-                    <div id="setting-lat"></div>
-                    <div id="setting-long"></div>
+            <div class="col-md-6">
+                <div id="airport-settings">
+                    <div id="setting-name">
+                    <table class="table table-striped">
+                        <tr class="even">
+                            <td>Code</td>
+                            <td class="column2" id="setting-code"></td>
+                        <tr class="odd">                      
+                            <td>City</td>
+                            <td class="column2" id="setting-city"></td>
+                        <tr class="even">
+                            <td>State</td>
+                            <td class="column2" id="setting-state"></td>
+                        <tr class="odd">    
+                            <td>Full Name</td>
+                            <td class="column2" id="setting-fullname"></td>
+                        <tr class="even">    
+                            <td>Latitude</td>
+                            <td class="column2" id="setting-lat"></td>
+                        <tr class="odd">    
+                            <td>Longitude</td>
+                            <td class="column2" id="setting-long"></td>
+                    </table>
                 </div>
             </div>
         </div>

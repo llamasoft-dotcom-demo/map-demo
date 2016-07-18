@@ -1,44 +1,95 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    margin-left: 20px;
+}
+
 #airport-settings {
-    width: calc(100% - 8px);
-    border: 2px solid black;
-    height: 128px;
+    width: 100%;
+    height: 150px;
     padding: 4px;
     margin: 10px 14px 10px 0px;
+    float: right;
 }
 
-#airport-settings #setting-name {
-    width: 128px;
-    float: left;
-    border-right: 1px solid black;
+/*.even {
+    background-color: #f5f5dc;
 }
+
+.odd {
+    background-color: #d7d7d7;
+}*/
 
 #airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
+    margin-left: 50px;
     text-align: left;
 }
 
-#airport-settings #setting-value div {
-    margin-left: 14px;
-}
+#airport-map {
+    width: 600px;
+    height: 450px;
+    margin-top: 12px;
 
-#airport-map{
-    width: 800px;
-    height: 600px;
 }
 
 #airport-data {
-    margin: 12px;
+    text-align: center;
+    margin-bottom: 12px;
+    margin-left: -12px;
+    padding-top: -10px;
+    background-color: #eee;
 }
 
 #exercise-toggle {
     cursor: pointer;
+    font-weight: bold;
 }
 
 #instruction-toggle {
     line-height: 44px;
     vertical-align: text-bottom;
     font-size: 32px;
+    font-weight: bold;
+}
+
+table {
+    width: 90%;
+}
+
+#ux {
+    background-color: #eee;
+    margin-left: -20px;
+    padding-left: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+}
+
+.jumbotron {
+    font-weight: bold;
+    margin-left: -20px;
+    padding: 20px;
+}
+
+h1 h2 {
+    font-weight: bold;
+}
+
+.carastyle {
+    background-color: #eee;
+    margin-bottom: 0px;
+    margin-left: -20px;
+    padding-left: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#exercise-toggle {
+   font-style: italic;
+
+}
+
+.update {
+    color: red;
     font-weight: bold;
 }
