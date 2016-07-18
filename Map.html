@@ -19,7 +19,8 @@
             <p>Presented by Cara Canady</p>
         </div>
         <div id="exercise-description">
-            <div id="instruction-toggle"><span>Instructions</span> <span id="exercise-toggle">-</span></div>
+            <h2>Exercise Instructions</h2> 
+            <p id="exercise-toggle">Click to condense instructions</p>
             <div id="exercise-instructions">
             <p>
             In helping clients understand their supply chains, maps are an important visualization tool.
@@ -55,7 +56,7 @@
                         <li>Functionality to remove marker with double click</li>
                         <li>Functionality to display InfoWindow on click</li>
                         <li>Auto-zoom on airport selection</li>
-                        <li>Database fixes - removed state name from several City items in the sites array</li>
+                        <li><span class="update">Database fixes - removed state name from several city items in the sites array, removed unnecessary clutter (e.g. "AIRPORT_DTW")</span></li>
                     </ul>
             </div>
             
@@ -66,7 +67,7 @@
               streamlined as possible. Is there something you can do with the layout to show
               the same information using less screen real estate? <b>Yes! See above UX and layout improvements.</b></li>
               
-              <li>Regarding markers, what happens with the existing code when you select an item multiple times? <b>Marker will not plot multiple times.  User can remove marker with two clicks.</b></li>
+              <li>Regarding markers, what happens with the existing code when you select an item multiple times? <b><span class="update">I removed the option from the dropdown menu after the user selects it.  It should be stated that I don't fully know the scope and intention of the project, so this could be completely off target.  In thinking about how to decrease the cognitive load on the user and keep my code clean and simple, this seemed to be a good option. A tried-and-true alternative is to create an empty, globally-defined array, push selections to an array, check the array for duplicate items, find duplicate item index, remove item with said index, and panTo marker containing this index.</span></b></li>
                             
               <li>If a user selects an airport that is not currently shown on the map, how do they find it? Can you make this easier? <b>Fixed.  Auto zoom when user selects an airport.</b></li>
                 

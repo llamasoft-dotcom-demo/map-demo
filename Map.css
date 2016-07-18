@@ -42,6 +42,7 @@ body {
 
 #exercise-toggle {
     cursor: pointer;
+    font-weight: bold;
 }
 
 #instruction-toggle {
@@ -70,7 +71,7 @@ table {
     padding: 20px;
 }
 
-h1 {
+h1 h2 {
     font-weight: bold;
 }
 
@@ -81,4 +82,14 @@ h1 {
     padding-left: 20px;
     padding-top: 8px;
     padding-bottom: 8px;
+}
+
+#exercise-toggle {
+   font-style: italic;
+
+}
+
+.update {
+    color: red;
+    font-weight: bold;
 }
