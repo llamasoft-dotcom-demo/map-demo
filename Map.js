@@ -1,6 +1,7 @@
 var globalMap;
 
 $(function () {
+  var oldiw = false;
   
 //=================================================
 //this fcn populates the dropdown from siteData.js
@@ -87,8 +88,12 @@ $(function () {
                 });
  
                 marker.addListener('click', function() {
-                  
-                    infowindow.open(globalMap, marker);
+                  if(oldiw) {
+                      oldiw.close();
+                    }
+
+                  oldiw = infowindow;
+                 infowindow.open(globalMap, marker);
                 });
                
            }
