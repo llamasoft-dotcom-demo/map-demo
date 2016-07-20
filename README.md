@@ -25,4 +25,4 @@
 4. Google Maps API
 
 # References
-1. Idea and template for side bar [http://www.jqueryscript.net/demo/Bootstrap-Sidebar-Extension-With-jQuery-CSS-CSS3/] 2. Simple Sidebar Template [http://startbootstrap.com/template-overviews/simple-sidebar/] **Code released under the MIT license. Docs 
+1. Idea and template for side bar [http://www.jqueryscript.net/demo/Bootstrap-Sidebar-Extension-With-jQuery-CSS-CSS3/] 2. Simple Sidebar Template [http://startbootstrap.com/template-overviews/simple-sidebar/] **Code released under the MIT license.**
