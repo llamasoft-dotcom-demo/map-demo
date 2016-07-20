@@ -3,7 +3,7 @@ body {
 	height: 100%;
 }
 
-#map_canvas,
+#map_container,
 #wrapper,
 #page-content-wrapper {
 	height: 100%;

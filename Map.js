@@ -1,8 +1,12 @@
+// Array to hold google markers
 var gmarkers = [];
+// Array to hold lat lang positions
 var lookup = [];
+// Global map variable
 var map = null;
 
 function initialize() {
+    /* ------------------- Content wrapper and sidebar initialization -------------------------*/
     var myWrapper = $("#wrapper");
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
@@ -11,6 +15,9 @@ function initialize() {
             google.maps.event.trigger(map, 'resize');
         });
     });
+        /* --------------------------------------------*/
+
+    /* --------------- Google map initialization ------------------------*/
     var myOptions = {
         zoom: 8,
         center: new google.maps.LatLng(42.2814, -83.7483),
@@ -22,13 +29,16 @@ function initialize() {
         navigationControl: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-    map = new google.maps.Map(document.getElementById("map_canvas"),
+    map = new google.maps.Map(document.getElementById("map_container"),
       myOptions);
 
     google.maps.event.addListener(map, 'click', function () {
         infowindow.close();
     });
+    /* --------------------------------------------*/
 
+    // Load site list function to populate airport drop down
+    // Please not underscore js is used to sort the list before populating 
     function loadSiteList() {
         var airportList = $('#airport-list');
         airportList.html('');
@@ -39,6 +49,9 @@ function initialize() {
             airportList.append(newOption);
         }
     }
+
+    // Site list change function 
+    // Calls core function 'createMarker' of application to create marker and UI elements and to bind functions to it
     function siteListChange(parameters) {
         var airportCode = $(this).val();
         if (airportCode) {
@@ -46,9 +59,15 @@ function initialize() {
             createMarker(currAirport);
         }
     }
+
+    // Create Marker Function
+    // Checks if position is free and creates markers according to that 
+    // Adds event listener to markers single click opens info window
+    // Right click on marker deletes marker from the map and li from sidebar as well
+    // List element on sidebar shows airport details on click in modal display 
     function createMarker(currentAirport) {
         var point = new google.maps.LatLng(currentAirport.Latitude, currentAirport.Longitude);
-        if (isLocationFree([currentAirport.Latitude, currentAirport.Longitude])) {
+        if (isMarkerFree([currentAirport.Latitude, currentAirport.Longitude])) {
             var contentString = currentAirport.FullSiteName;
 
             var marker = new google.maps.Marker({
@@ -99,7 +118,7 @@ function initialize() {
 
         map.panTo(point);
     }
-    function isLocationFree(search) {
+    function isMarkerFree(search) {
         for (var i = 0, l = lookup.length; i < l; i++) {
             if (lookup[i][0] === search[0] && lookup[i][1] === search[1]) {
                 return false;
