@@ -4,6 +4,7 @@ var globalMap;
 $(function() {
 
 var markers= [];
+var uniqueId = 1;
  $(".js-example-basic-single").select2();
 
 var MapFcns = {
@@ -27,20 +28,9 @@ var MapFcns = {
                 $('#setting-state').text(currAirport.State);
                 $('#setting-name').text(currAirport.FullSiteName);
                 $('#setting-lat').text(currAirport.Latitude);
-                $('#setting-long').text(currAirport.Longitude);
-                MapFcns.addToList(currAirport);
                 MapFcns.addToolTip(currAirport);
-                MapFcns.pushMarker(currAirport);
-                MapFcns.removeIndividualAirport();
                 globalMap.setCenter({lat: currAirport.Latitude, lng: currAirport.Longitude});
             }
-    },
-
-    addToList: function(currAirport) {
-      var listText = $('#selectedAirports').text();
-      if(listText.indexOf(currAirport.Code) < 0){
-        $('<li class = "listedAirports"></li>').html(currAirport.Code + currAirport.City + '<span class="delete"> delete</span>').appendTo('#selectedAirports');
-      };
     },
 
     deleteMarkers: function(marker){
@@ -49,52 +39,55 @@ var MapFcns = {
         markers = [];
         $('#selectedAirports').text('');
          });
-        MapFcns.removeIndividualAirport(marker);
-    },
-
-    removeIndividualAirport: function(marker) {
-      $('.delete').on('click', function(){
-        $(this).parent('li').remove();
-        $('marker').remove();
-      });
     },
 
     addToolTip: function(currAirport) {
-      var fullNameSliced = currAirport.FullSiteName.slice(currAirport.FullSiteName.lastIndexOf('_') + 1);
-      var contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">' + currAirport.City + ', ' + currAirport.State + ' (' + currAirport.Code + ')</h1>'+
-            '<div id="bodyContent">'+
-            '<p>' + fullNameSliced +'</p>'+
-            '<p><b>Latitude: </b>'+ currAirport.Latitude + '<b> Longitude: </b>' + currAirport.Longitude + '</p>'
-            '</div>'
-            '</div>';
-
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
-
         var marker = new google.maps.Marker({
             position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
             map: globalMap,
             title: currAirport.Code,
             icon: "images/airportmarker.png",
         });
+        marker.id = uniqueId;
+        uniqueId++;
+        markers.push(marker);
+        $('<li id="'+marker.id+'"></li>').text(currAirport.City + ", " + currAirport.State + ", " + currAirport.Code).appendTo("#selectedAirports");
 
-        marker.addListener('click', function() {
-          infowindow.open(globalMap, marker);
-        });
+         google.maps.event.addListener(marker, "click", function () {
+              var fullNameSliced = currAirport.FullSiteName.slice(currAirport.FullSiteName.lastIndexOf('_') + 1);
+               var content = '<div id="content">'+
+                 '<div id="siteNotice">'+
+                 '</div>'+
+                 '<h1 id="firstHeading" class="firstHeading">' + currAirport.City + ', ' + currAirport.State + ' (' + currAirport.Code + ')</h1>'+
+                 '<div id="bodyContent">'+
+                 '<p>' + fullNameSliced +'</p>'+
+                 '<p><b>Latitude: </b>'+ currAirport.Latitude + '<b> Longitude: </b>' + currAirport.Longitude + '</p>'
+                 '</div>'
+                 '</div>';
+               content += "<br/><input type = 'button' value = 'remove' onclick = 'deleteMarker(" + marker.id + ");' value = 'remove'/>";
+               var infoWindow = new google.maps.InfoWindow({
+                   content: content
+               });
+               infoWindow.open(globalMap, marker);
+           });
 
+           deleteMarker = function (id) {
+        //Find and remove the marker from the Array
+            for (var i = 0; i < markers.length; i++) {
+            if (markers[i].id == id) {
+                //Remove the marker from Map
+                markers[i].setMap(null);
+                //Remove the marker from array.
+                markers.splice(i, 1);
+                //Remove marker from the selected list of airports
+                $('#' + marker.id).remove();
+            }
+        }
+
+
+    };
         MapFcns.deleteMarkers(marker);
     },
-
-    pushMarker: function(currAirport) {
-      if (markers.indexOf(currAirport.Code) < 0){
-          markers.push(currAirport.Code);
-        };
-      },
-
 
 };
 
