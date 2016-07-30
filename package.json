@@ -1,0 +1,23 @@
+{
+  "name": "map-demo-master",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Map.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkron87/map-demo-master.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jkron87/map-demo-master/issues"
+  },
+  "homepage": "https://github.com/jkron87/map-demo-master#readme",
+  "devDependencies": {
+    "gulp-jshint": "^2.0.1",
+    "jshint": "^2.9.2"
+  }
+}

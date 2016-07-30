@@ -1,9 +1,69 @@
+/* The side navigation menu */
+body {
+  color: #5c5c5c;
+}
 
-#airport-map{
-    width: 800px;
-    height: 600px;
+.bold {
+  font-weight: 600;
+}
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 200px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    text-align: center;
 }
 
 .js-example-basic-single {
+  margin: 10px;
+}
+
+
+#selectedAirports {
+  color:#eeeeee;
+  text-align: left;
+  text-transform: uppercase;
+  list-style: none;
+  margin-top: 40px;
+  padding: 5px;
+  padding-left: 10px;
+  border-left: 3px solid #eeeeee;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+}
+
+h1 {
+  color: #eeeeee;
+  border: 1px solid #eeeeee;
+}
+
+#airport-map {
+height: 100%;
+width: 100%;
+position:absolute;
+top: 0;
+left: 0;
+z-index: 0;
+}
+
+button {
+  margin: 20px
+}
+.js-example-basic-single {
   width: 200px;
+}
+
+#sidebar {
+  position: absolute;
+  top; 0;
+  right; 0;
+  width: 400px;
+  background-color: red;
 }
