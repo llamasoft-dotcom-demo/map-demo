@@ -1,4 +1,4 @@
-/* The side navigation menu */
+
 body {
   color: #5c5c5c;
 }
@@ -7,17 +7,17 @@ body {
   font-weight: 600;
 }
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 200px; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.7);
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    overflow-x: hidden;
+    padding-top: 40px;
+    transition: 0.5s;
     text-align: center;
 }
 
@@ -31,7 +31,7 @@ body {
   text-align: left;
   text-transform: uppercase;
   list-style: none;
-  margin-top: 40px;
+  margin-top: 10px;
   padding: 5px;
   padding-left: 10px;
   border-left: 3px solid #eeeeee;
@@ -56,14 +56,62 @@ z-index: 0;
 button {
   margin: 20px
 }
+
 .js-example-basic-single {
   width: 200px;
 }
 
-#sidebar {
+.showOnQuery {
+  display: none;
+}
+
+.footer {
   position: absolute;
-  top; 0;
-  right; 0;
-  width: 400px;
-  background-color: red;
+  bottom: 70px;
+  border: 1px solid;
+  padding: 0 5px;
+}
+
+
+/*******************MEDIA QUERIES********************/
+
+@media (max-width: 700px) {
+
+  .showOnQuery {
+    display: block;
+    color:  #eeeeee;
+    font-size: 1.5em;
+    padding: 5px 0;
+  }
+
+  #removeAllMarkers {
+    height: 30px;
+    line-height: 0;
+  }
+
+
+
+.sidenav {
+    height: 40px;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 50px;
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+button {
+  margin: 0px;
+}
+
+.hideOnQuery {
+  display: none;
+}
+
+
+#title {
+  display: none;
+}
+
+
 }

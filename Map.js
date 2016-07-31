@@ -1,21 +1,25 @@
 var globalMap;
 $(function () {
-    //initializes an array to store all marker objects added to the map and assigns them a uniqueId
+    //initializes an array to store all marker objects added to the map and assigns them an id for lookup purposes
     var markers = [];
     var uniqueId = 1;
-    $('.js-example-basic-single').select2();
     var MapFcns = {
         loadSiteList: function () {
+          //initializes the dropdown menu plugin
+          $('.js-example-basic-single').select2();
             var airportList = $('#airport-list');
             airportList.html('');
             airportList.append('<option value=""></option>');
+            //Using underscore to sort by city name
+             var _sites = _.sortBy(sites, 'City');
             for (var i in sites) {
-              var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].City + ', ' +
-                    sites[i].State + ' (' + sites[i].Code + ')</option>');
+              var newOption = $('<option value="' + _sites[i].Code + '">' + _sites[i].City + ', ' +
+                    _sites[i].State + ' (' + _sites[i].Code + ')</option>');
               airportList.append(newOption);
             }
           },
-
+        //checks to see if the map already has a marker for a given location; used to place a new marker and add airport to selected
+        //list of airports later
         containsMarkerAlready: function(marker, markers) {
             var i;
             for (i = 0; i < markers.length; i++) {
@@ -45,6 +49,8 @@ $(function () {
                 });
             }
         },
+        //adds marker and airport info for selected airport.
+        // Incomplete info that used to appear in a table below is now complete and appears in an info window when the marker is clicked
         addMarker: function(currAirport) {
             var marker = {
                 position: {
@@ -53,20 +59,24 @@ $(function () {
                 },
                 map: globalMap,
                 title: currAirport.Code,
-                icon: "images/airportmarker.png",
+                icon: "images/airportmarker.png"
             };
             if (!(MapFcns.containsMarkerAlready(marker, markers))) {
                 $('#selectedAirports').show();
                 marker = new google.maps.Marker(marker);
                 marker.id = uniqueId;
-                uniqueId++;
+                uniqueId++; //new marker receives a unique ID
                 markers.push(marker);
+                //airports are added to a list of selected airports
                 $('<li id="' + marker.id + '"></li>').html(currAirport.City + ", " + currAirport.State +
                     "<span class=bold>" + " (" + currAirport.Code + ") " + "</span>").appendTo(
                     "#selectedAirports");
+                //info window appears on click
                 google.maps.event.addListener(marker, "click", function() {
+                    //unnecessary character are removed from the "full name" values
                     var fullNameSliced = currAirport.FullSiteName.slice(currAirport.FullSiteName
                         .lastIndexOf('_') + 1);
+                    //info window content below
                     var content = '<div id="content">' + '<div id="siteNotice">' + '</div>' +
                         '<h2 id="firstHeading" class="firstHeading">' + currAirport.City + ', ' +
                         currAirport.State + ' (' + currAirport.Code + ')</h2>' +
@@ -83,6 +93,8 @@ $(function () {
                     });
                     infoWindow.open(globalMap, marker);
                 });
+                //added a delete marker option for any airport marker on the map.
+                //This also removes the airport from the selected list of airports
                 deleteMarker = function(id) {
                     //Find and remove the marker from the Array
                     for (var i = 0; i < markers.length; i++) {
@@ -94,13 +106,11 @@ $(function () {
                             markers.splice(i, 1);
                             //Remove marker from the selected list of airports
                         }
-                        if ($('#selectedAirports:empty').length) {
-                            $('#selectedAirports').hide();
-                        }
                     }
                 };
                 MapFcns.removeAllMarkers(marker);
             }
+        //when the reset button is clicked, airports are removed from the selected list and markers are removed from the array and map
         },
         removeAllMarkers: function(marker) {
             $('#removeAllMarkers').on('click', function() {
@@ -113,17 +123,6 @@ $(function () {
     };
     MapFcns.loadSiteList();
     $('#airport-list').change(MapFcns.siteListChange);
-    $('#exercise-toggle').click(function() {
-        var toggleCtl = $(this),
-            toggleVal = toggleCtl.text();
-        if (toggleVal == '-') {
-            toggleCtl.text('+');
-            $('#exercise-instructions').hide();
-        } else {
-            toggleCtl.text('-');
-            $('#exercise-instructions').show();
-        }
-    });
 });
 
 function initMap() {
@@ -137,6 +136,7 @@ function initMap() {
         streetViewControl: false,
         mapTypeControl: false,
         zoom: 6,
+        //added styling to the map
         styles: [{
             "stylers": [{
                 "saturation": -100
