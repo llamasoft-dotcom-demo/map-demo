@@ -1,60 +1,59 @@
-
 body {
   color: #5c5c5c;
+}
+
+h1 {
+  color: #eee;
+  border: 1px solid #eee;
 }
 
 .bold {
   font-weight: 600;
 }
+
 .sidenav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    overflow-x: hidden;
-    padding-top: 40px;
-    transition: 0.5s;
-    text-align: center;
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.7);
+  overflow-x: hidden;
+  padding-top: 40px;
+  transition: .5s;
+  text-align: center;
 }
 
 .js-example-basic-single {
   margin: 10px;
 }
 
-
 #selectedAirports {
-  color:#eeeeee;
+  color: #eee;
   text-align: left;
   text-transform: uppercase;
   list-style: none;
   margin-top: 10px;
   padding: 5px;
   padding-left: 10px;
-  border-left: 3px solid #eeeeee;
-  background-color: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid #eee;
+  background-color: rgba(0,0,0,0.3);
   display: none;
 }
 
-h1 {
-  color: #eeeeee;
-  border: 1px solid #eeeeee;
-}
-
 #airport-map {
-height: 100%;
-width: 100%;
-position:absolute;
-top: 0;
-left: 0;
-z-index: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
 button {
-  margin: 20px
+  margin: 20px;
 }
 
 .js-example-basic-single {
@@ -72,14 +71,11 @@ button {
   padding: 0 5px;
 }
 
-
 /*******************MEDIA QUERIES********************/
-
 @media (max-width: 700px) {
-
   .showOnQuery {
     display: block;
-    color:  #eeeeee;
+    color: #eee;
     font-size: 1.5em;
     padding: 5px 0;
   }
@@ -89,29 +85,24 @@ button {
     line-height: 0;
   }
 
-
-
-.sidenav {
+  .sidenav {
     height: 40px;
     width: 100%;
     padding: 0;
     padding-bottom: 50px;
     overflow-y: hidden;
-    transition: 0.5s;
-}
+    transition: .5s;
+  }
 
-button {
-  margin: 0px;
-}
+  button {
+    margin: 0;
+  }
 
-.hideOnQuery {
-  display: none;
-}
+  .hideOnQuery {
+    display: none;
+  }
 
-
-#title {
-  display: none;
-}
-
-
+  #title {
+    display: none;
+  }
 }

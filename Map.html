@@ -1,55 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Map Sample</title>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDzzWIA7ZNG2OBqohquK_FP5vBRMr2Ltac&callback=initMap"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet">
-        <script src="siteData.js"></script>
-        <script src="Map.js"></script>
-        <link href="Map.css" rel="stylesheet">
-
-    </head>
-    <body>
-
-      <div id="mySidenav" class="sidenav">
-        <div>
-          <div class="showOnQuery">
-            Airports:
-          </div>
-          <div id="title">
-          <h1>Choose your airports: </h1>
-        </div>
-          <select class="js-example-basic-single" id="airport-list">
-          </select>
-            <button id="removeAllMarkers" class="button-primary">reset</button>
-        </div>
-        <div class="hideOnQuery">
-        <ul id="selectedAirports">
-        </ul>
-        <div class="footer">
-          Designed by Jennifer Kron
-        </div>
+<head>
+  <title>Map Sample</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js">
+  </script>
+  <script async defer src=
+  "https://maps.googleapis.com/maps/api/js?key=AIzaSyDzzWIA7ZNG2OBqohquK_FP5vBRMr2Ltac&callback=initMap">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet">
+  <script src="siteData.js">
+  </script>
+  <script src="Map.js">
+  </script>
+  <link href="Map.css" rel="stylesheet">
+</head>
+<body>
+  <div class="sidenav" id="mySidenav">
+    <div class="showOnQuery">
+      Airports:
+    </div>
+    <div id="title">
+      <h1>Choose your airports:</h1>
+    </div><select class="js-example-basic-single" id="airport-list">
+      </select> <button class="button-primary" id="removeAllMarkers">reset</button>
+    <div class="hideOnQuery">
+      <ul id="selectedAirports"></ul>
+      <div class="footer">
+        Designed by Jennifer Kron
       </div>
-
-      </div>
-
-
-        <div id="map-canvas">
-
-        </div>
-        <div id="airport-map">
-        </div>
-
-      </div>
-
-
-
-
-
-    </body>
+    </div>
+  </div>
+  <div id="map-canvas"></div>
+  <div id="airport-map"></div>
+</body>
 </html>
