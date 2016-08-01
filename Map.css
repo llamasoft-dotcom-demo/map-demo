@@ -1,3 +1,9 @@
+body{
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+p{
+    font-size: 16px;
+}
 #airport-settings {
     width: calc(100% - 8px);
     border: 2px solid black;
@@ -5,7 +11,25 @@
     padding: 4px;
     margin: 10px 14px 10px 0px;
 }
-
+.container{
+    width:100%;
+}
+.col-md-12{
+    background-color: #555559;
+    height:38px;
+    width:100%;
+}
+#grey{
+    background-color: #e5edf4;
+}
+span{
+    font-weight:bold;
+}
+.col-lg-12{
+    text-align:center;
+    background-color: #084c95;
+    color:white;
+}
 #airport-settings #setting-name {
     width: 128px;
     float: left;
@@ -15,8 +39,15 @@
 #airport-settings #setting-value {
     width: calc(100% - 128px);
     margin-left: 128px;
-    min-widtH: 240px;
+    min-width: 240px;
     text-align: left;
+
+}
+/*Hides text when the screen is resized*/
+#setting-full-name{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #airport-settings #setting-value div {
@@ -24,8 +55,11 @@
 }
 
 #airport-map{
-    width: 800px;
-    height: 600px;
+    width: 100%; /* Allow map to fit inside div*/
+    height: 400px;
+}
+.col-md-6{
+    padding:1%;
 }
 
 #airport-data {
@@ -41,4 +75,11 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+    padding-bottom:3%;
+}
+/*Adjust map for smaller screen sizes*/
+@media (max-width: 820px){
+    #airport-map{
+        width:95%;
+    }
 }
