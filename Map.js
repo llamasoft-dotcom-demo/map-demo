@@ -1,12 +1,14 @@
 var globalMap;
 var markers = [];
 
+
+
 $(function() {
 
 var MapFcns = {
     loadSiteList: function () {
         var airportList = $('#airport-list');
-            airportList.html('');
+            airportList.html('');  //***** If the blank space is selected then an error of cannot read property of setmap appears
             airportList.append('<option value=""></option>');
             sites = _.sortBy(sites,'Code');//sort sites array by Code
         for (var i in sites) {
@@ -45,12 +47,20 @@ var MapFcns = {
                 });
             }
             markers.push(marker);//store marker in array
+            showMarkers(); 
+
+// ******When marker is clicked remove from map*****
+            marker.addListener('click', function(){
+                removeMarkers();
+            });
 
         
     },
 
   
 }
+
+
 
 
 MapFcns.loadSiteList();
@@ -71,10 +81,10 @@ $('#exercise-toggle').click(function() {
 
 
 
-// remove markers in array from map view
+// remove last added marker in array from map view
   function removeMarkers(){
-        for(i=0; i<markers.length; i++){
-            markers[i].setMap(null);
+        for(var i=0; i<markers.length; i++){
+            markers[i].setMap();
         }
         $('#setting-code').text("");
         $('#setting-city').text("");
@@ -82,8 +92,26 @@ $('#exercise-toggle').click(function() {
         $('#setting-full-name').text("");
         $('#setting-lat').text("");
         $('#setting-long').text("");
-        initMap();
+        initMap(); 
+        markers.pop();
+        showMarkers();
     }
+// *****Clear markers array and reset map******
+    function removeAllMarkers(){
+        markers = [];
+        removeMarkers();
+    }
+//**** Set markers in array
+    function setMapOnAll(globalMap) {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(globalMap);
+        }
+      }
+//**** Show markers in array
+    function showMarkers() {
+           setMapOnAll(globalMap);
+         }
+
 
     
 function  initMap() {

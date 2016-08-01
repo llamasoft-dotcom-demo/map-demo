@@ -3,11 +3,6 @@
     <head>
         <title>Map Sample</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNqNL7jbQdqJiYJOmP5n1ZAaEpiDzeeH0&callback=initMap"></script>
-        <script src="siteData.js"></script>
-        <script src="Map.js"></script>
         <link href="Map.css" rel="stylesheet">
     </head>
     <body>
@@ -32,24 +27,23 @@
                     <div id="instruction-toggle"><span>Instructions</span> <span id="exercise-toggle">-</span></div>
 
                     <div id="exercise-instructions">
-                    <p>
+                    <p id="grey">
                     In helping clients understand their supply chains, maps are an important visualization tool.
-                    In this exercise we would like you to take some steps to help make this map more useful.
+                    In this exercise, we would like you to take some steps to help make this map more useful.
                     This example uses Google Maps and their maps API to show information about airports. While 
                     we do not use Google Maps and the maps API, the types of visualizations and map interactions
-                    you are allowed with Google Maps are common. In order to do this exercise you will need to get
+                    you are allowed with Google Maps are common. In order to do this exercise, you will need to get
                     an API key for Google Maps if you do not already have one. Put the API key in the appropriate place
                     in this file.
                     </p>
                     
                     <p>
-                    Currently this page loads a list of airports into a drop down. You can select an airport
-                    and it&quot;s code and city will display in the data table. A marker will be placed on the
-                    map displaying the airport. If you roll your mouse over the marker the airport&quot;s code
+                    Currently this page loads a list of airports into a drop down. You can select an airport, and its code and city will display in the data table. A marker will be placed on the
+                    map displaying the airport. If you roll your mouse over the marker, the airport's code
                     will be displayed.
                     </p>
                     
-                    <p>
+                    <p id="grey">
                     The current code is very simple. Many improvements need to be made:
                     <ul>
                       <li>Fill in the rest of the data in the table when a user selects an airport.</li>
@@ -60,7 +54,7 @@
                     
                     <p>
                     Some more things to think about
-                    <ul>
+                    <ul id="grey">
                       <li>We are constantly struggling with displaying as much data as simply and
                       streamlined as possible. Is there something you can do with the layout to show
                       the same information using less screen real estate?</li>
@@ -85,7 +79,8 @@
                     <div id="airport-controls">        
                         Airports: <select id="airport-list">
                         </select>
-                        <input type="button" value="Remove Markers" onclick="removeMarkers()">
+                        <input type="button" value="Remove Markers" onclick="removeAllMarkers()">
+                        <p>Click last added airport marker to remove it.</p>
                     </div>
                     
                     <div id="airport-settings">
@@ -110,5 +105,11 @@
             </div>
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNqNL7jbQdqJiYJOmP5n1ZAaEpiDzeeH0&callback=initMap"></script>
+    <script src="siteData.js"></script>
+    <script src="Map.js"></script>
     </body>
 </html>
