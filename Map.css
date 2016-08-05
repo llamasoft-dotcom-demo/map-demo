@@ -1,3 +1,7 @@
+body {
+	background-color: #cce6ff;
+}
+
 #airport-settings {
     width: calc(100% - 8px);
     border: 2px solid black;
@@ -24,12 +28,13 @@
 }
 
 #airport-map{
-    width: 800px;
-    height: 600px;
+    width: 650px;
+    height: 450px;
 }
 
 #airport-data {
     margin: 12px;
+    width: 600px;
 }
 
 #exercise-toggle {
