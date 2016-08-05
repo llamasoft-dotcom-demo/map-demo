@@ -50,3 +50,12 @@
 .done {
     text-decoration: line-through;
 }
+
+li {
+    list-style: none;
+}
+
+li:hover {
+    cursor: pointer;
+    color: green;
+}
