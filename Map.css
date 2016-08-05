@@ -15,7 +15,7 @@
 #airport-settings #setting-value {
     width: calc(100% - 128px);
     margin-left: 128px;
-    min-widtH: 240px;
+    min-width: 240px;
     text-align: left;
 }
 
@@ -24,12 +24,16 @@
 }
 
 #airport-map{
-    width: 800px;
+    width: 45%;
     height: 600px;
+    float:left;
+    margin-left: 1%;
 }
 
 #airport-data {
     margin: 12px;
+    float:right;
+    width: 45%;
 }
 
 #exercise-toggle {
@@ -41,4 +45,8 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+.done {
+    text-decoration: line-through;
 }
