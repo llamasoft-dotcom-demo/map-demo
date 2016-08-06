@@ -24,16 +24,14 @@
 }
 
 #airport-map{
-    width: 45%;
-    height: 600px;
-    float:left;
-    margin-left: 1%;
+    width: 95%;
+    height: 400px;
+    margin: 5px;
 }
 
 #airport-data {
     margin: 12px;
-    float:right;
-    width: 45%;
+    width: 95%;
 }
 
 #exercise-toggle {
@@ -42,20 +40,44 @@
 
 #instruction-toggle {
     line-height: 44px;
-    vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
 }
 
-.done {
-    text-decoration: line-through;
-}
-
-li {
+.code-list-item {
     list-style: none;
+    display: inline-block;
+    padding: 12px;
+    background-color: orange;
+    border: 2px solid orange;
+    border-radius: 8px;
+    margin: 5px;
+    font-family: monospace;
 }
 
-li:hover {
+.code-list-item:hover {
     cursor: pointer;
-    color: green;
+    color: orange;
+    background-color: white;
+}
+
+@media (min-width: 800px) {
+    #container {
+        position:relative;
+    }
+
+    #airport-map, #airport-data{
+        width: 45%;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+    }
+
+    #airport-map {
+        left: 20px;
+    }
+
+    #airport-data{
+        right: 20px;
+    }
 }

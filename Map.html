@@ -37,9 +37,9 @@
             <p>
             The current code is very simple. Many improvements  need to be made:
             <ul>
-              <li class="done">Fill in the rest of the data in the table when a  user selects an airport.</li>
-              <li class="done">Allow a user to remove a marker</li>
-              <li class="done">Sort the list so it is easier to find airports</li>
+              <li>Fill in the rest of the data in the table when a  user selects an airport.</li>
+              <li>Allow a user to remove a marker</li>
+              <li>Sort the list so it is easier to find airports</li>
             </ul>
             </p>
             
@@ -58,42 +58,53 @@
             </p>
             </div>
         </div>
-        
-        <div id="airport-map">
-        </div>
-        
-        <div id="airport-data">
-            <div id="airport-controls">        
-                Airports by Code: <select id="airport-by-Code">
-                </select>
+        <h3>Interface Instructions:</h3>
+        <ul>
+            <li>Select an airport using the Menu. Airports are organized both by City and by Code for your convenience.</li>
+            <li>Selected airports appear beneath the information table</li>
+            <li>Click any airport Code from that list to view it on the map and view its information.</li> 
+            <li>Alternatively, select an airport from the menu and view its location right away using the 'Locate this Airport' button.</li>
+            <li>Click the Google Maps Marker to remove that airport from your list</li>
+        </ul>
+        <div id="container">
+            <div id="airport-map">
+            </div>
+            
+            <div id="airport-data">
+                <div id="airport-controls">        
+                    Airports by Code: <select id="airport-by-Code">
+                    </select>
+                    <br>
+                    <span>~ or ~</span>
+                    <br>
+                    Airports by City: <select id="airport-by-City"></select>
+                </div>
                 <br>
-                Airports by City: <select id="airport-by-City"></select>
-            </div>
-            <br>
-            <button id="locate">Locate this Airport</button>
-            <div id="airport-settings">
-                <div id="setting-name">
-                    <div>Code</div>
-                    <div>City</div>
-                    <div>State</div>
-                    <div>Full Name</div>
-                    <div>Latitude</div>
-                    <div>Longitude</div>
+                <button id="locate">Locate this Airport</button>
+                <div id="airport-settings">
+                    <div id="setting-name">
+                        <div>Code</div>
+                        <div>City</div>
+                        <div>State</div>
+                        <div>Full Name</div>
+                        <div>Latitude</div>
+                        <div>Longitude</div>
+                    </div>
+                    <div id="setting-value">
+                        <div id="setting-code"></div>
+                        <div id="setting-city"></div>
+                        <div id="setting-state"></div>
+                        <div id="setting-full-name"></div>
+                        <div id="setting-lat"></div>
+                        <div id="setting-long"></div>
+                    </div>
                 </div>
-                <div id="setting-value">
-                    <div id="setting-code"></div>
-                    <div id="setting-city"></div>
-                    <div id="setting-state"></div>
-                    <div id="setting-full-name"></div>
-                    <div id="setting-lat"></div>
-                    <div id="setting-long"></div>
-                </div>
+                <h2>Selected Airports:</h2>
+                <p>Click the airport code below to view it on the map and see its details above.</p>
+                <ul id="code-list">
+                    
+                </ul>
             </div>
-            <h2>Selected Airports:</h2>
-            <p>Click the airport code below to view it on the map</p>
-            <ul id="code-list">
-                
-            </ul>
         </div>
     </body>
 </html>
