@@ -1,11 +1,13 @@
 #airport-settings {
-    width: calc(100% - 8px);
-    border: 2px solid black;
     height: 128px;
     padding: 4px;
     margin: 10px 14px 10px 0px;
+	display: none;
 }
-
+#airport-settings h2{
+	margin: 5px 0;
+	font-size: 14px;
+}
 #airport-settings #setting-name {
     width: 128px;
     float: left;
