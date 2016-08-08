@@ -1,9 +1,19 @@
+* {
+  font-family: arial;
+}
 #airport-settings {
-    width: calc(100% - 8px);
-    border: 2px solid black;
-    height: 128px;
+  position: relative;
+  top:-163px;
+  left: 85px;
+  background-color: rgba(155,155,155,0.9);
+  width: 600px;
+  height: 103px;
+  border-radius: 3px;
     padding: 4px;
     margin: 10px 14px 10px 0px;
+}
+#airport-settings:hover {
+  opacity: 0.3;
 }
 
 #airport-settings #setting-name {
@@ -24,12 +34,25 @@
 }
 
 #airport-map{
+    position: relative;
     width: 800px;
     height: 600px;
 }
 
 #airport-data {
+
     margin: 12px;
+}
+
+#airport-controls {
+  position: relative;
+  top: -540px;
+  background-color: rgba(155,155,155, 0.8);
+  padding-top: 5px;
+  padding-left: 5px;
+  width: 125px;
+  height: 25px;
+  border-radius: 3px 3px 3px 0px;
 }
 
 #exercise-toggle {
@@ -41,4 +64,47 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+#markerList {
+  z-index: 1000;
+  position: relative;
+  top: -671px;
+  left: 0px;
+  background-color: rgba(155,155,155, 0.8);
+  padding-top: 0px;
+  padding-bottom: 2px;
+  width: 85px;
+  border-radius: 0px 0px 3px 3px;
+}
+#markerList div:hover {
+  background-color: rgba(120,120,120,1);
+}
+#markerList p {
+  text-align: center;
+}
+#markerList div {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-left:2px;
+  width: 70px;
+  height: 20px;
+  margin: 10px auto;
+}
+#markerList div p {
+  text-align: left;
+  display: inline;
+  margin-right: 13px;
+  pointer-events: none;
+}
+#markerList div button {
+  float: right;
+  background-color: rgba(255, 0, 0, 0.5);
+  border: 0;
+  margin-top: 1px;
+  border-radius: 5px;
+  margin-bottom: 1px;
+  margin-right: 1px;
+}
+#markerList div button:hover {
+  background-color: rgba(255,0,0,0.8);
 }
