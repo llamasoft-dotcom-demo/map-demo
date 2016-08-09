@@ -99,7 +99,7 @@ var MapFcns = {
         $(airport).append("<div class='name' title='" + airport_data.AirportName + "'>" + airport_data.AirportName + "</div><div class='remove_airport'>x</div>"
             + "<div class='city'>" + airport_data.CityStateLabel + " (" + airport_data.Code + ")</div>"
             + "<div class='coords'><div class='lat'>" + airport_data.Latitude + " lat</div><div class='lon'>" + airport_data.Longitude + " lon</div></div>"
-            + "<div class=controls><div class='center' title='center map on airport'><i class='fa fa-bullseye'></i></div><div class='show include' title='add to view'><i class='fa fa-map-marker'></i></div></div>");
+            + "<div class=controls><div class='center' title='center map on airport'><i class='fa fa-bullseye'></i></div><div class='show include' title='fit into map view'><i class='fa fa-map-marker'></i></div></div>");
 
         // set click events for three controls in 'airport' div
         $(airport).find("div.remove_airport").click(function () {
