@@ -1,3 +1,7 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 #airport-settings {
     width: calc(100% - 8px);
     border: 2px solid black;
@@ -24,12 +28,35 @@
 }
 
 #airport-map{
-    width: 800px;
+    width: 70%;
     height: 600px;
+}
+
+#airport-controls {
+    position: absolute;
+    top: -1.75em;
+    right: 4em;
+}
+
+#exercise.show_list div#airport-map {
+    width: 100%;
+}
+
+#airport-wrapper {
+    width: 25%;
+    float: right;
+    margin-left: 1em;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+#exercise.show_list div#airport-wrapper {
+    display: none;
 }
 
 #airport-data {
     margin: 12px;
+    display: none;
 }
 
 #exercise-toggle {
@@ -42,3 +69,91 @@
     font-size: 32px;
     font-weight: bold;
 }
+
+#exercise {
+    display: flex;
+    position: relative;
+    margin-top: 3em;
+}
+
+div.airport {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: #f8fcff;
+    font-size: smaller;
+    position: relative;
+}
+
+    div.airport div.remove_airport {
+        position: absolute;
+        font-weight: bold;
+        top: 0.35em;
+        right: 0.35em;
+        cursor: pointer;
+    }
+
+    div.airport div.city {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 0.5em;
+    }
+
+    div.airport div.name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bold;
+        margin-right: 0.5em;
+        margin-bottom: 0.25em;
+    }
+
+    div.airport div.controls {
+        height: 1em;
+        width: 100%;
+    }
+
+    div.airport div.controls div {
+        float: right;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        font-size: small;
+        cursor: pointer;
+    }
+
+div.show.include {
+    color: #3137FD;
+}
+
+    div.airport div.coords {
+        margin-left: 2em;
+        height: 1.5em;
+        font-style: italic;
+        font-size: x-small;
+    }
+
+        div.airport div.coords div {
+            float: left;
+            margin-right: 1em;
+        }
+
+div.counter {
+    font-size: x-small;
+    font-style:italic;
+    float: right;
+    margin-top: 0.25em;
+    margin-left: 0.5em;
+}
+
+div.list_toggle {
+    float: right;
+    margin-left: 1em;
+    cursor: pointer;
+    color: black;
+}
+
+    div.list_toggle.show_list {
+        color: #3137FD;
+    }
