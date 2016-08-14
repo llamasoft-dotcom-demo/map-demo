@@ -3,7 +3,7 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
 
 	controller.init = function() {
 	    controller.seletedAirports = [];
-		controller.airports = $window.init.sites;
+		controller.airports = _.sortBy($window.init.sites, 'Code');;
 		controller.options = _.map(controller.airports, function(airport){ 
 		      return { name : airport.Code, value : airport}; 
 		    });
@@ -13,7 +13,9 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
 	controller.airportSelected = function() {
 	    var latLng = new google.maps.LatLng(controller.airport.Latitude, controller.airport.Longitude);
 	
+	    
 	    if (_.findWhere(controller.seletedAirports, controller.airport) == null) {
+	        
 	        var marker = new google.maps.Marker({
 	            position: latLng,
 	            map: controller.map,
