@@ -17,10 +17,14 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
 	        var marker = new google.maps.Marker({
 	            position: latLng,
 	            map: controller.map,
+	            icon : {
+	                url : "https://ipsumimage.appspot.com/40x20?f=ffffff&b=000000&s=15&t=png&l="+controller.airport.Code
+	            },
 	            title: controller.airport.Code
 	        });	 
 	        
 	        marker.addListener('click', function() {
+	            controller.activeMarker = this;
 	            controller.airport = _.findWhere(controller.airports, {Code: this.title});
 	            // update the UI
 	            $scope.$apply();
@@ -28,11 +32,17 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
 	        controller.seletedAirports.push(controller.airport);
         }
         controller.map.panTo(latLng);
+        controller.activeMarker = null;
 	};
 	
    controller.initGoogleMap = function(map) {
        controller.map = map;
     };
 	
+    controller.deleteMarker = function() {
+        controller.activeMarker.setMap(null);
+        controller.activeMarker = null;
+    };
+     
 	controller.init();
 });

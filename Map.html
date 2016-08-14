@@ -41,6 +41,8 @@
 		  <p class="navbar-text">Full Name: <span ng-bind="controller.airport.FullSiteName"></span></p>
 		  <p class="navbar-text">Latitude: <span ng-bind="controller.airport.Latitude"></span></p>
 		  <p class="navbar-text">Longitude: <span ng-bind="controller.airport.Longitude"></span></p>
+		  <p class="navbar-text"><button ng-click="controller.deleteMarker()" ng-show="controller.activeMarker != null" type="button" class="btn btn-xs btn-danger">Remove {{controller.activeMarker.title}}</button></p>
+		
 		</div>
 	</nav>
 
