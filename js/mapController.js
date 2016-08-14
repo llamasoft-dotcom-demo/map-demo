@@ -3,14 +3,15 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
 
 
 	controller.init = function() {
-		controller.airports = [];
-		controller.airport = {
-		        code : "TEST"
-		}
+		controller.airports = $window.init.sites;
+		controller.options = _.map(controller.airports, function(airport){ 
+		      return { name : airport.Code, value : airport}; 
+		    });
+		controller.airport = controller.airports[0];
 	};
 
-	controller.select = function() {
-		
+	controller.airportSelected = function() {
+		alert(controller.airport.Code);
 	};
 	
 	controller.init();

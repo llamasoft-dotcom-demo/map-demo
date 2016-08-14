@@ -3,15 +3,7 @@ var globalMap;
 $(function() {
 
 var MapFcns = {
-    loadSiteList: function () {
-        var airportList = $('#airport-list');
-            airportList.html('');
-            airportList.append('<option value=""></option>');
-        for (var i in sites) {
-            var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
-            airportList.append(newOption);
-        }
-    },
+    
     
     siteListChange: function() {
         var ctl = $(this),
@@ -31,7 +23,6 @@ var MapFcns = {
 }
 
 
-MapFcns.loadSiteList();
 $('#airport-list').change(MapFcns.siteListChange);
 $('#exercise-toggle').click(function() {
     var  toggleCtl = $(this),
