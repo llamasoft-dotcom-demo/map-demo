@@ -2,14 +2,43 @@
 <html>
     <head>
         <title>Map Sample</title>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbxW-M77Nmvs332i1lJgl_PSpWlpy3P1M&callback=initMap"></script>
         <script src="siteData.js"></script>
         <script src="Map.js"></script>
-        <link href="Map.css" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="css/theme.min.css" rel="stylesheet">
+        <link href="css/Map.css" rel="stylesheet">
     </head>
     <body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">WEA Anlagen Management</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class=""><a href="./">Login<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div id="airport-map"></div>    
+    <!-- 
+    
+    
         <h1>LLamasoft Map Exercise
         </h1>
 
@@ -59,9 +88,7 @@
             </div>
         </div>
         
-        <div id="airport-map">
-        </div>
-        
+         -->
         <div id="airport-data">
             <div id="airport-controls">        
                 Airports: <select id="airport-list">

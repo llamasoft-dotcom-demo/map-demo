@@ -1,3 +1,16 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#airport-map {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    position: relative;
+    top: 0;
+}
+
 #airport-settings {
     width: calc(100% - 8px);
     border: 2px solid black;
@@ -23,10 +36,6 @@
     margin-left: 14px;
 }
 
-#airport-map{
-    width: 800px;
-    height: 600px;
-}
 
 #airport-data {
     margin: 12px;
