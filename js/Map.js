@@ -7,6 +7,8 @@ function  initMap() {
     zoom: 5
   });
   
-  angular.element('body').scope().controller.initGoogleMap(globalMap);
+  // set map to angular controller
+  var scope = angular.element(document.getElementById("main")).scope()
+  scope.controller.initGoogleMap(globalMap);
   
 }
