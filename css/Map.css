@@ -30,6 +30,9 @@ html, body {
     width: 145px;
 }
 
+.navbar .navbar-text.delete{
+    margin-bottom: 4px;
+}
 
 #airport-map {
     height: 100%;

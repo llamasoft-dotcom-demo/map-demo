@@ -3,7 +3,14 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
 
 	controller.init = function() {
 	    controller.seletedAirports = [];
-		controller.airports = _.sortBy($window.init.sites, 'Code');;
+	    // get the sorted list
+		controller.airports = _.sortBy($window.init.sites, 'Code');
+		// clean up the names
+		controller.airports = _.map(controller.airports, function(airport){ 
+		    var niceName = airport.FullSiteName.replace("AIRPORT_"+airport.Code+"_", "");
+		    airport.FullSiteName = niceName;
+            return airport; 
+          });		
 		controller.options = _.map(controller.airports, function(airport){ 
 		      return { name : airport.Code, value : airport}; 
 		    });
