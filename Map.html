@@ -3,12 +3,8 @@
     <head>
         <title>Map Sample</title>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbxW-M77Nmvs332i1lJgl_PSpWlpy3P1M&callback=initMap"></script>
         <script src="js/siteData.js"></script>
-        <script src="js/Map.js"></script>
-        <script src="js/mapController.js"></script>
         <script>
             // pass sites to angular
             window.init = { sites: sites};
@@ -33,7 +29,7 @@
 				</div>
 			</form>
             <p class="navbar-text">Code: <span ng-bind="controller.airport.Code"></span></p>
-			<p class="navbar-text">City: <span ng-bind="controller.airport.City"></span><span ng-show="controller.airport.State != null">(<span ng-bind="controller.airport.State"></span>)</span> 
+			<p class="navbar-text">City: <span ng-bind="controller.airport.City"></span><span ng-show="controller.airport.State != null"> (<span ng-bind="controller.airport.State"></span>)</span> 
 			</p>
 		</div>
 		<div class="container">
@@ -103,5 +99,9 @@
         
        
         -->
+        <script src="js/Map.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbxW-M77Nmvs332i1lJgl_PSpWlpy3P1M&callback=initMap"></script>
+        <script src="js/mapController.js"></script>
     </body>
 </html>

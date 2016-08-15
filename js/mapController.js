@@ -14,7 +14,7 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
 	    var latLng = new google.maps.LatLng(controller.airport.Latitude, controller.airport.Longitude);
 	
 	    
-	    if (_.findWhere(controller.seletedAirports, controller.airport) == null) {
+	    if (!_.contains(controller.seletedAirports, controller.airport.Code)) {
 	        
 	        var marker = new google.maps.Marker({
 	            position: latLng,
@@ -31,7 +31,7 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
 	            // update the UI
 	            $scope.$apply();
 	        });
-	        controller.seletedAirports.push(controller.airport);
+	        controller.seletedAirports.push(controller.airport.Code);
         }
         controller.map.panTo(latLng);
         controller.activeMarker = null;
@@ -43,6 +43,7 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
 	
     controller.deleteMarker = function() {
         controller.activeMarker.setMap(null);
+        controller.seletedAirports = _.without(controller.seletedAirports, controller.airport.Code) ;
         controller.activeMarker = null;
     };
      
