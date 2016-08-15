@@ -1,6 +1,6 @@
 #airport-settings {
     width: calc(100% - 8px);
-    border: 2px solid black;
+   color: grey;
     height: 128px;
     padding: 4px;
     margin: 10px 14px 10px 0px;
@@ -24,7 +24,7 @@
 }
 
 #airport-map{
-    width: 800px;
+    width: 100%;
     height: 600px;
 }
 
@@ -39,6 +39,7 @@
 #instruction-toggle {
     line-height: 44px;
     vertical-align: text-bottom;
+    font-family: sans-serif;
     font-size: 32px;
     font-weight: bold;
 }

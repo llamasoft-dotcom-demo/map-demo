@@ -72,9 +72,12 @@
             
             <div id="airport-data">
             <div id="airport-controls">        
-                Airports: <select id="airport-list">
+                Airports: <select class="btn btn-default" id="airport-list" color="grey">
                 </select>
             </div>
+            
+  <div class="panel panel-default">
+  <div class="panel-body" >
   
             <div id="airport-settings">
                 <div id="setting-name">
@@ -84,6 +87,12 @@
                     <div>Full Name</div>
                     <div>Latitude</div>
                     <div>Longitude</div>
+                    <div>
+						<button id="deleteB" type="button" class="btn btn-danger btn-xs">
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove Pin
+						</button>                    
+                    </div>
+                	
       
                 </div>
                 <div id="setting-value">
@@ -94,7 +103,13 @@
                     <div id="setting-lat"></div>
                     <div id="setting-long"></div>
                 </div>
+                <div>
+                </div>
             </div>
+            
+            </div>
+            </div>
+            
         </div>
         </div>
         

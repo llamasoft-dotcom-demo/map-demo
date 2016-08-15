@@ -4,16 +4,19 @@ $(function() {
 
 var MapFcns = {
     loadSiteList: function () {
+  	
         var airportList = $('#airport-list');
             airportList.html('');
+            sites = _.sortBy(sites, function(airport){ return airport.Code; });
             airportList.append('<option value=""></option>');
         for (var i in sites) {
             var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
             airportList.append(newOption);
+            
         }
     },
     
-    //Hilfmethode weil daten doppel
+    //Method to select
     selectAirport: function (airportCode) {
     	 var currAirport = _.findWhere(sites, {Code: airportCode});
          $('#setting-code').text(currAirport.Code);
@@ -29,7 +32,7 @@ var MapFcns = {
 
     
     siteListChange: function() {
-        var ctl = $(this),
+    		var ctl = $(this),
             airportCode = ctl.val();
             if(airportCode) {
                 var currAirport = _.findWhere(sites, {Code: airportCode});
@@ -50,9 +53,14 @@ var MapFcns = {
                 google.maps.event.addListener(marker,'click',function() {
                 //get the airport code with this.title
                 	MapFcns.selectAirport(this.title);
-                	  //map.setZoom(9);
-                	 // map.setCenter(marker.getPosition());
-                	  }); 
+                	  //save the selected airport in the variable (this = airport with marker)
+                	var markerSave = $(this);
+                	google.maps.event.addListener(marker,'click',function() {
+                		alert(hello);
+                		
+                		  });
+                	
+                }); 
                 
                 
                 
@@ -80,8 +88,9 @@ $('#exercise-toggle').click(function() {
 
 
 
-//$('#map_canvas').gmap('clearMarkers');
-
+//sortUnorderedList("ID_OF_LIST");
+//$("ul#demoOne").sortList();
+//$("#airport-list").sortList();
 
 
     
