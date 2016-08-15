@@ -9,8 +9,27 @@ html, body {
 }
 
 .navbar>.container .navbar-brand {
-    margin-left: 0px;
+    margin-left: 0;
+    width: 460px;
 }
+
+.navbar .navbar-text.name {
+	width: 430px;
+}
+
+.navbar .navbar-text.airport{
+    margin-right: 0;
+    width: 50px;
+}
+
+.navbar .navbar-form.code{
+    width: 110px;
+}
+
+.navbar .navbar-text.lat{
+    width: 145px;
+}
+
 
 #airport-map {
     height: 100%;
@@ -18,45 +37,4 @@ html, body {
     left: 0;
     position: relative;
     top: 0;
-}
-
-#airport-settings {
-    width: calc(100% - 8px);
-    border: 2px solid black;
-    height: 128px;
-    padding: 4px;
-    margin: 10px 14px 10px 0px;
-}
-
-#airport-settings #setting-name {
-    width: 128px;
-    float: left;
-    border-right: 1px solid black;
-}
-
-#airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
-    text-align: left;
-}
-
-#airport-settings #setting-value div {
-    margin-left: 14px;
-}
-
-
-#airport-data {
-    margin: 12px;
-}
-
-#exercise-toggle {
-    cursor: pointer;
-}
-
-#instruction-toggle {
-    line-height: 44px;
-    vertical-align: text-bottom;
-    font-size: 32px;
-    font-weight: bold;
 }

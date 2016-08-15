@@ -20,23 +20,22 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">LLamasoft Map Exercise</a>
 			</div>
-            <p class="navbar-text">Airport:</p>
-			<form class="navbar-form navbar-left form-inline">
+            <p class="navbar-text airport">Airport:</p>
+			<form class="navbar-form navbar-left form-inline code">
 				<div class="form-group">
 				    <select class="form-control" id="airport-list" ng-change="controller.airportSelected()"  ng-options="item as item.Code for item in controller.airports track by item.Code" ng-model="controller.airport">
 				        <option value="">Select...</option>
 				    </select>
 				</div>
 			</form>
-            <p class="navbar-text">Code: <span ng-bind="controller.airport.Code"></span></p>
-			<p class="navbar-text">City: <span ng-bind="controller.airport.City"></span><span ng-show="controller.airport.State != null"> (<span ng-bind="controller.airport.State"></span>)</span> 
+			<p class="navbar-text city">City: <span ng-bind="controller.airport.City"></span><span ng-show="controller.airport.State != null"> (<span ng-bind="controller.airport.State"></span>)</span> 
 			</p>
 		</div>
 		<div class="container">
-		  <p class="navbar-text">Full Name: <span ng-bind="controller.airport.FullSiteName"></span></p>
-		  <p class="navbar-text">Latitude: <span ng-bind="controller.airport.Latitude"></span></p>
-		  <p class="navbar-text">Longitude: <span ng-bind="controller.airport.Longitude"></span></p>
-		  <p class="navbar-text"><button ng-click="controller.deleteMarker()" ng-show="controller.activeMarker != null" type="button" class="btn btn-xs btn-danger">Remove {{controller.activeMarker.title}}</button></p>
+		  <p class="navbar-text name">Full Name: <span ng-bind="controller.airport.FullSiteName"></span></p>
+		  <p class="navbar-text lat">Latitude: <span ng-bind="controller.airport.Latitude"></span></p>
+		  <p class="navbar-text lng">Longitude: <span ng-bind="controller.airport.Longitude"></span></p>
+		  <p class="navbar-text delete"><button ng-click="controller.deleteMarker()" ng-show="controller.activeMarker != null" type="button" class="btn btn-xs btn-danger">Remove {{controller.activeMarker.title}}</button></p>
 		
 		</div>
 	</nav>
