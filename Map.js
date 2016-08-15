@@ -1,7 +1,8 @@
 var globalMap;
 
 //declare variable
-var markerSave = null;   
+var markerSave = null;  
+
 $(function() {
 
 var MapFcns = {
@@ -56,7 +57,7 @@ var MapFcns = {
                 //get the airport code with this.title
                 	MapFcns.selectAirport(this.title);
                 	  //save the selected airport in the variable (this = airport with marker)
-                markerSave = this;   	
+                markerSave = this;     
                 	
                 }); 
                 
