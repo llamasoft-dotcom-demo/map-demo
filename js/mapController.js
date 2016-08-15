@@ -77,6 +77,7 @@ angular.module('mapApp', []).controller('MapController', function($scope, $http,
         controller.activeMarker.setMap(null);
         controller.seletedAirports = _.without(controller.seletedAirports, controller.airport.Code) ;
         controller.activeMarker = null;
+        controller.airport = null;
     };
      
 	controller.init();
