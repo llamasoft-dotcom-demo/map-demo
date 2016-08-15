@@ -55,10 +55,7 @@ var MapFcns = {
                 	MapFcns.selectAirport(this.title);
                 	  //save the selected airport in the variable (this = airport with marker)
                 	var markerSave = $(this);
-                	google.maps.event.addListener(marker,'click',function() {
-                		alert(hello);
-                		
-                		  });
+                	
                 	
                 }); 
                 
