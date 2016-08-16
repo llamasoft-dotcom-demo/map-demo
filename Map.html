@@ -10,11 +10,12 @@
         <link href="Map.css" rel="stylesheet">
     </head>
     <body>
+        <div id="container">
         <h1>LLamasoft Map Exercise
         </h1>
 
         <div id="exercise-description">
-            <div id="instruction-toggle"><span>Instructions</span> <span id="exercise-toggle">-</span></div>
+            <div id="instruction-toggle"><span>Instructions</span> <span id="exercise-toggle">+</span></div>
 
             <div id="exercise-instructions">
             <p>
@@ -29,22 +30,25 @@
             
             <p>
             Currently this page loads a list of airports into a drop down. You can select an airport
-            and it&quot;s code and city will display in the data table. A marker will be placed on the
-            map displaying the airport. If you roll your mouse over the marker the airport&quot;s code
+            and its code and city will display in the data table. A marker will be placed on the
+            map displaying the airport. If you roll your mouse over the marker, the airport&#39;s code
             will be displayed.
             </p>
             
             <p>
             The current code is very simple. Many improvements need to be made:
+            </p>
+
             <ul>
               <li>Fill in the rest of the data in the table when a user selects an airport.</li>
               <li>Allow a user to remove a marker</li>
               <li>Sort the list so it is easier to find airports</li>
             </ul>
-            </p>
             
             <p>
-            Some more things to think about
+            Some more things to think about:
+            </p>
+
             <ul>
               <li>We are constantly struggling with displaying as much data as simply and
               streamlined as possible. Is there something you can do with the layout to show
@@ -55,37 +59,48 @@
               <li>If a user selects an airport that is not currently shown on the map, how do they find it?
               Can you make this easier?</li>
             </ul>
-            </p>
             </div>
         </div>
         
-        <div id="airport-map">
+        <div class="airport-container">
+            <div id="button-panel">
+                <input class="btn-panel" onclick="clearAllMarkers();" type=button value="Hide All Markers">
+                <input class="btn-panel" onclick="showMarkers();" type=button value="Show All Markers">
+                <input class="btn-panel" onclick="deleteMarkers();" type=button value="Delete All Markers">
+            </div>
+            <div id="airport-map">
+            </div>
+            <div id="info">
+                <p>Select airports to view on map. Click on its marker or + to view its full details.</p>
+            </div>
+            <div id="airport-data">
+                <div id="airport-controls">        
+                    Airports: <select id="airport-list">
+                    </select>
+                </div>
+                <div id="short-result"></div>
+                <div id="show-results"><span id="display-toggle"></span></div>
+                <div id="remove-marker"></div>
+                <div id="airport-settings">
+                    <div id="setting-name">
+                        <div>Code</div>
+                        <div>City</div>
+                        <div>State</div>
+                        <div>Full Name</div>
+                        <div>Latitude</div>
+                        <div>Longitude</div>
+                    </div>
+                    <div id="setting-value">
+                        <div id="setting-code"></div>
+                        <div id="setting-city"></div>
+                        <div id="setting-state"></div>
+                        <div id="setting-fullname"></div>
+                        <div id="setting-lat"></div>
+                        <div id="setting-long"></div> 
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div id="airport-data">
-            <div id="airport-controls">        
-                Airports: <select id="airport-list">
-                </select>
-            </div>
-            
-            <div id="airport-settings">
-                <div id="setting-name">
-                    <div>Code</div>
-                    <div>City</div>
-                    <div>State</div>
-                    <div>Full Name</div>
-                    <div>Latitude</div>
-                    <div>Longitude</div>
-                </div>
-                <div id="setting-value">
-                    <div id="setting-code"></div>
-                    <div id="setting-city"></div>
-                    <div id="setting-state"></div>
-                    <div id="setting-name"></div>
-                    <div id="setting-lat"></div>
-                    <div id="setting-long"></div>
-                </div>
-            </div>
         </div>
     </body>
 </html>
