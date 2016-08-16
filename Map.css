@@ -1,21 +1,87 @@
+#container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#button-panel{  
+    max-width: 800px;
+    margin-top: 10px;
+}
+
+.btn-panel{
+    color: red;
+    padding: 5px 8px;
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#info p  {
+    font-size: 1.1em;  
+}
+
+#airport-info #setting-name {
+    float: left;
+    border-right: 1px #000 solid ;
+    margin-bottom: 30px;
+    padding:0px 10px 0px 15px;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    color: #aaa;
+}
+
+#airport-info #setting-value {
+    float: left;
+    padding: 0px 20px;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    line-height: 1.5em;
+    color: #000;
+}
+
+#airport-info h3 {
+    padding: 15px 0px 0px 20px;
+    color:#6699ff;
+    font-size: 20px;
+}
+
+#airport-info #remover {
+    float: right;
+    padding: 5px 8px;
+    color: red;
+}
+
 #airport-settings {
-    width: calc(100% - 8px);
+    //width: calc(100% - 8px);
+    //height: 128px;
     border: 2px solid black;
-    height: 128px;
     padding: 4px;
-    margin: 10px 14px 10px 0px;
+    margin: 10px 0px;
+    display: none;
 }
 
 #airport-settings #setting-name {
-    width: 128px;
-    float: left;
+    //width: 128px;
+    //float: left;
+    display: inline-block;
     border-right: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 20px;
 }
 
 #airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
+    //width: calc(100% - 128px);
+    //margin-left: 128px;
+    //min-widtH: 240px;
+    float: left;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    padding-left: 15px;
+    padding-right: 20px;
     text-align: left;
 }
 
@@ -23,17 +89,65 @@
     margin-left: 14px;
 }
 
+#remove-marker{
+    float: right;
+    margin-top: 10px;
+}
+
+#remover2 {
+    color: red;
+    padding: 5px 8px;
+}
+
 #airport-map{
     width: 800px;
     height: 600px;
 }
 
+#display-toggle {
+    cursor: pointer;
+}
+
+#show-results {
+    display: inline-block;
+    color: #6699ff;
+    font-size: 1em;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
 #airport-data {
+    max-width: 800px; //to match set fixed-width already on the Google Map
     margin: 12px;
+}
+
+#airport-data #airport-controls {
+    display: inline-block; 
+    font-size: 30px;
+    color: #6699ff;
+}
+
+#airport-data #short-result {
+   display: inline-block;
+   margin-left: 30px;
+   color: orange;
+   font-size: 1.4em;
+}
+
+#display-toggle {
+    cursor: pointer;
+    color: orange;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 48px;
 }
 
 #exercise-toggle {
     cursor: pointer;
+}
+
+#exercise-instructions{
+    display: none;
 }
 
 #instruction-toggle {
