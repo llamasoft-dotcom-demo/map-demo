@@ -1,0 +1,43 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+
+.navbar {
+    min-height: 100px;
+}
+
+.navbar>.container .navbar-brand {
+    margin-left: 0;
+    width: 460px;
+}
+
+.navbar .navbar-text.name {
+	width: 430px;
+}
+
+.navbar .navbar-text.airport{
+    margin-right: 0;
+    width: 50px;
+}
+
+.navbar .navbar-form.code{
+    width: 110px;
+}
+
+.navbar .navbar-text.lat{
+    width: 145px;
+}
+
+.navbar .navbar-text.delete{
+    margin-bottom: 4px;
+}
+
+#airport-map {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    position: relative;
+    top: 0;
+}
