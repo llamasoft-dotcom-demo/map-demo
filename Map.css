@@ -4,6 +4,7 @@
     height: 128px;
     padding: 4px;
     margin: 10px 14px 10px 0px;
+    display: inline-block;
 }
 
 #airport-settings #setting-name {
@@ -15,8 +16,9 @@
 #airport-settings #setting-value {
     width: calc(100% - 128px);
     margin-left: 128px;
-    min-widtH: 240px;
+    min-width: 240px;
     text-align: left;
+
 }
 
 #airport-settings #setting-value div {
@@ -24,12 +26,14 @@
 }
 
 #airport-map{
-    width: 800px;
+    width: 600px;
     height: 600px;
+    display: inline-block;
 }
 
 #airport-data {
     margin: 12px;
+    display: inline-block;
 }
 
 #exercise-toggle {
