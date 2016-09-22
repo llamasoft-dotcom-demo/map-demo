@@ -4,10 +4,14 @@
         <title>Map Sample</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv6LbPV8Y761lsz3ILdC5tceu8OWSgKG4&callback=initMap"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="siteData.js"></script>
         <script src="Map.js"></script>
         <link href="Map.css" rel="stylesheet">
+        <link href="jquery-ui.css" rel="stylesheet">
+        <link href="jquery-ui.theme.css" rel="stylesheet">
     </head>
     <body>
         <h1>LLamasoft Map Exercise
@@ -58,34 +62,51 @@
             </p>
             </div>
         </div>
-        
-        <div id="airport-map">
-        </div>
-        
+
         <div id="airport-data">
             <div id="airport-controls">        
-                Airports: <select id="airport-list">
-                </select>
+                <b>Search Airports by City or Code:</b>
+                <div id="matterSearch" class="ui-widget"><input type="text" autofocus name="matterSearchTerm" id="matterSearchTerm" size="30" /></div>
             </div>
+            <table id="gridTable1" class="table-bordered table-striped table-mystyle">
+                <thead>
+                    <tr>
+                        <th class="col-md-1">
+                            Code
+                        </th>
+                        <th class="col-md-1">
+                            City
+                        </th>
+                        <th class="col-md-1">
+                            State
+                        </th>
+                        <th class="col-md-1">
+                            Full Name
+                        </th>
+                        <th class="col-md-1">
+                            Latitude
+                        </th>
+                        <th class="col-md-1">
+                            Longitude
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="gridBody1">
+                    <tr>
+                        <td class="col-md-1"> <div id="setting-code"></div></tdclass="col-md-1">
+                        <td class="col-md-1"> <div id="setting-city"></div></td>
+                        <td class="col-md-1"> <div id="setting-state"></div></td>
+                        <td class="col-md-1"> <div id="setting-name"></div></td>
+                        <td class="col-md-1"> <div id="setting-lat"></div></td>
+                        <td class="col-md-1"> <div id="setting-long"></div></tdclass="col-md-1">
+                        <td class="col-md-1"><input id="btnRemove" value="Remove" type="button" /></td>
+                    </tr>
+                </tbody>
+            </table>
             
-            <div id="airport-settings">
-                <div id="setting-name">
-                    <div>Code</div>
-                    <div>City</div>
-                    <div>State</div>
-                    <div>Full Name</div>
-                    <div>Latitude</div>
-                    <div>Longitude</div>
-                </div>
-                <div id="setting-value">
-                    <div id="setting-code"></div>
-                    <div id="setting-city"></div>
-                    <div id="setting-state"></div>
-                    <div id="setting-name"></div>
-                    <div id="setting-lat"></div>
-                    <div id="setting-long"></div>
-                </div>
-            </div>
+        </div>
+        <div id="airport-map">
         </div>
     </body>
 </html>
