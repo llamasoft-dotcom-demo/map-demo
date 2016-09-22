@@ -1,38 +1,18 @@
 var globalMap;
-
+var autoCompleteData;
+var markers;
 $(function() {
+    autoCompleteData = new Array();
+    markers = new Array();
+    $("#gridTable1").hide();
 
-var MapFcns = {
-    loadSiteList: function () {
-        var airportList = $('#airport-list');
-            airportList.html('');
-            airportList.append('<option value=""></option>');
-        for (var i in sites) {
-            var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
-            airportList.append(newOption);
-        }
-    },
-    
-    siteListChange: function() {
-        var ctl = $(this),
-            airportCode = ctl.val();
-            if(airportCode) {
-                var currAirport = _.findWhere(sites, {Code: airportCode});
-                $('#setting-code').text(currAirport.Code);
-                $('#setting-city').text(currAirport.City);
-                
-                var marker = new google.maps.Marker({
-                    position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
-                    map: globalMap,
-                    title: currAirport.Code
-                });
-            }
+    for (i = 0; i < sites.length; i++) {
+        var newsite = { label: sites[i].City + ' - ' + sites[i].Code, value: sites[i].Code };
+        autoCompleteData.push(newsite);
     }
-}
+    _.sortBy(autoCompleteData, 'label');
 
 
-MapFcns.loadSiteList();
-$('#airport-list').change(MapFcns.siteListChange);
 $('#exercise-toggle').click(function() {
     var  toggleCtl = $(this),
          toggleVal = toggleCtl.text();
@@ -44,14 +24,45 @@ $('#exercise-toggle').click(function() {
         $('#exercise-instructions').show();
     }
 });
+    $("#matterSearchTerm").autocomplete({
+        source: autoCompleteData,
+        minLength: 1,
+        select: function (event, ui) {
 
+            var currAirport = _.findWhere(sites, { Code: ui.item.value });
+            $('#setting-code').text(currAirport.Code);
+            $('#setting-city').text(currAirport.City);
+            $('#setting-state').text(currAirport.State);
+            $('#setting-name').text(currAirport.FullSiteName.substring(currAirport.FullSiteName.lastIndexOf('_') + 1)); // Trimming start because always the same and makes it less readable.
+            $('#setting-lat').text(currAirport.Latitude);
+            $('#setting-long').text(currAirport.Longitude);
+
+            var latLng = { lat: currAirport.Latitude, lng: currAirport.Longitude }
+            var marker = _.findWhere(markers, { title: currAirport.Code });
+            if (typeof marker == 'undefined') {
+                
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: globalMap,
+                    title: currAirport.Code
+                });
+                markers.push(marker);
+                $("#gridTable1").show();
+            }
+            
+            globalMap.setCenter(latLng);
+        }
+    });
+    $("#btnRemove").click(function () {
+
+        var marker = _.findWhere(markers, { title: $('#setting-code').text() });
+        marker.setMap(null);
+        markers.pop(marker);
+        if (markers.length == 0) {
+            $("#gridTable1").hide();
+        }
+    });
 });
-
-
-
-
-
-
 
     
 function  initMap() {
