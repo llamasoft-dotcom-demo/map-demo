@@ -1,3 +1,8 @@
+/* Changed font across site */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 #airport-settings {
     width: calc(100% - 8px);
     border: 2px solid black;
@@ -23,9 +28,14 @@
     margin-left: 14px;
 }
 
-#airport-map{
-    width: 800px;
+/* Changed size of map to allow menu to be displayed next to the map
+floated menu, and set margins to allow for menu on right */
+#airport-map {
+    float: right;
+    width: 750px;
     height: 600px;
+    margin-left: auto;
+    margin-right: 2em;
 }
 
 #airport-data {
@@ -41,4 +51,28 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+/* Table formatting for table in infoWindow */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    text-align: center;
+    border: 1px solid #dddddd;
+}
+
+/* Formatting for airport selection menu */
+.menu {
+    float: left;
+    border: 2px solid #e6e9ef;
+    border-radius: 5px;
+    height: 600px;
+    background-color: #4286f4;
+    color: #e6e9ef;
+    margin-left: 2em;
+    margin-right: auto;
+
 }
