@@ -1,91 +1,52 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Map Sample</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap"></script>
-        <script src="siteData.js"></script>
-        <script src="Map.js"></script>
-        <link href="Map.css" rel="stylesheet">
-    </head>
-    <body>
-        <h1>LLamasoft Map Exercise
-        </h1>
+<html lang="en-US">
+<!-- Let's speak american english here, might as well hope for a localized future -->
 
-        <div id="exercise-description">
-            <div id="instruction-toggle"><span>Instructions</span> <span id="exercise-toggle">-</span></div>
+<head>
+	<meta charset="utf-8">
+	<!-- Let's use utf-8 so we can write our characters and emoji directly. I like my @ signs -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags. thanks bootstrap-->
+	<meta name="description" content="An excercise for Llamasoft mapping">
+	<meta name="author" content="Mark Jazayeri">
 
-            <div id="exercise-instructions">
-            <p>
-            In helping clients understand their supply chains, maps are an important visualization tool.
-            In this exercise we would like you to take some steps to help make this map more useful.
-            This example uses Google Maps and their maps API to show information about airports. While 
-            we do not use Google Maps and the maps API, the types of visualizations and map interactions
-            you are allowed with Google Maps are common. In order to do this exercise you will need to get
-            an API key for Google Maps if you do not already have one. Put the API key in the appropriate place
-            in this file.
-            </p>
-            
-            <p>
-            Currently this page loads a list of airports into a drop down. You can select an airport
-            and it&quot;s code and city will display in the data table. A marker will be placed on the
-            map displaying the airport. If you roll your mouse over the marker the airport&quot;s code
-            will be displayed.
-            </p>
-            
-            <p>
-            The current code is very simple. Many improvements need to be made:
-            <ul>
-              <li>Fill in the rest of the data in the table when a user selects an airport.</li>
-              <li>Allow a user to remove a marker</li>
-              <li>Sort the list so it is easier to find airports</li>
-            </ul>
-            </p>
-            
-            <p>
-            Some more things to think about
-            <ul>
-              <li>We are constantly struggling with displaying as much data as simply and
-              streamlined as possible. Is there something you can do with the layout to show
-              the same information using less screen real estate?</li>
-              
-              <li>Regarding markers, what happens with the existing code when you select an item multiple times?</li>
-              
-              <li>If a user selects an airport that is not currently shown on the map, how do they find it?
-              Can you make this easier?</li>
-            </ul>
-            </p>
-            </div>
-        </div>
-        
-        <div id="airport-map">
-        </div>
-        
-        <div id="airport-data">
-            <div id="airport-controls">        
-                Airports: <select id="airport-list">
-                </select>
-            </div>
-            
-            <div id="airport-settings">
-                <div id="setting-name">
-                    <div>Code</div>
-                    <div>City</div>
-                    <div>State</div>
-                    <div>Full Name</div>
-                    <div>Latitude</div>
-                    <div>Longitude</div>
-                </div>
-                <div id="setting-value">
-                    <div id="setting-code"></div>
-                    <div id="setting-city"></div>
-                    <div id="setting-state"></div>
-                    <div id="setting-name"></div>
-                    <div id="setting-lat"></div>
-                    <div id="setting-long"></div>
-                </div>
-            </div>
-        </div>
-    </body>
+	<title>Llamasoft Map Sample</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/Map.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="contianer-fluid">
+		<div class="row">
+			<!-- The SideBar -->
+			<div class="sidebar col-sm-3 col-md-2">
+				<div class="panel panel-default panel-container">
+					<div class="panel-heading">
+						<strong>Llamasoft</strong> <em>Map Excercise</em><br>
+                        <small>Hints: Select an airport to drop a marker.<br>Select a marker to display more information about that airport.</small><br>
+						<small>&copy; LLamasoft 2016</small> 
+					</div>
+
+					<!-- The list of airports -->
+					<ul class="list-group" id="airport-list-group">
+					</ul>
+				</div>
+			</div>
+
+			<!-- The Map -->
+			<div class="col-sm-9 col-md-10 map-container" id="airport-map">
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnApJHxsBqVnMX_96yZ_a23atuRSQ1_Wg&callback=GoogleMapApi.initMap"></script>
+    <script src="js/GoogleMapAPI.js"></script>
+	<script src="js/siteData.js"></script>
+	<script src="js/Map.js"></script>
+</body>
+
 </html>
