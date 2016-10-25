@@ -1,44 +1,88 @@
-#airport-settings {
-    width: calc(100% - 8px);
-    border: 2px solid black;
-    height: 128px;
-    padding: 4px;
-    margin: 10px 14px 10px 0px;
+
+
+/* Specific element type styling */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from body */
+  background-color: #fff;
+  border: 1px solid #fff;
 }
 
-#airport-settings #setting-name {
-    width: 128px;
-    float: left;
-    border-right: 1px solid black;
+/* body content */
+html,
+body {
+  background-color: #333;
+  font-family: 'Lucida Console', Monaco, monospace;
 }
 
-#airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
-    text-align: left;
+/* for overall readability */
+body {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
-#airport-settings #setting-value div {
-    margin-left: 14px;
+tr {
+	cursor: pointer;
+}
+
+select {
+	width: 150px;
+}
+
+
+
+
+/* Custom classes */
+.skinny-padding {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.margin-strip {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.shifted-down-xs {
+	margin-top: 25px;
+}
+
+.shifted-down-sm {
+	margin-top: 50px;
+}
+
+.hidden-content {
+	display: none;
+}
+
+.color-override {
+	color: black;
+	text-shadow: none; /* Prevent inheritance from `body` */
+}
+
+
+
+/* Specific element styling */
+#map-container {
+	height: 500px;
+	margin-top: 20px;
+	margin-right: 0px;
+    padding-right: 40px;
+}
+
+
+#directionModal {
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 #airport-map{
-    width: 800px;
-    height: 600px;
+	width: 100%;
+    height: 100%;
 }
 
-#airport-data {
-    margin: 12px;
-}
 
-#exercise-toggle {
-    cursor: pointer;
-}
 
-#instruction-toggle {
-    line-height: 44px;
-    vertical-align: text-bottom;
-    font-size: 32px;
-    font-weight: bold;
-}
+
