@@ -64,12 +64,14 @@ $(function() {
 	 */
 	var mapApi = {
 		loadSiteList: function () {
+			//Sort the data... a no brainer
 			var sortedData = _.sortBy(airportData.sites, function (site) { return getFormattedLocation(site); });
 			var airportList = $("#airport-list");
 			
 			airportList.html("");
 			airportList.append("<option value=''>" + defaultOption + "</option>");
 			
+			//Populate the combo box
 			for (var i in sortedData) {
 				var formattedString = getFormattedLocation(sortedData[i]) + " - " + getFormattedAirportName(sortedData[i]) + " (" + sortedData[i].Code + ") ";
 				var newOption = $("<option value='" + sortedData[i].Code + "'>" + formattedString + "</option>");
@@ -83,6 +85,7 @@ $(function() {
 			var airportCode = ctl.val();
 			
 			if (airportCode) {
+				//Give me the airport with the given code
 				var airportObject = _.findWhere(airportData.sites, {Code: airportCode});
 				
 				//First make sure row isn't already there...
@@ -106,6 +109,7 @@ $(function() {
 			var marker;
 			//First see if we already have a marker object at this location
 			if (markerMap[airportObject.Code] === undefined) {
+				//No it isn't there. Create a new Marker object
 				marker = new google.maps.Marker({
 						position: { 
 							lat: airportObject.Latitude,
@@ -114,7 +118,7 @@ $(function() {
 						map: map,
 						title: airportObject.Code
 				});
-				
+				//And "cache" it
 				markerMap[airportObject.Code] = marker;
 			} else {
 				marker = markerMap[airportObject.Code];
@@ -149,8 +153,9 @@ $(function() {
 				$("select>option:eq(0)").prop("selected", true);
 			});
 		},
-	
+		
 		panToAirport: function(airportObject, marker) {
+			//Pan over to the Marker
 			if (isNullOrUndefined(marker)) {
 				marker = markerMap[airportObject.Code];
 			}
@@ -160,7 +165,7 @@ $(function() {
 	};
 	
 	
-	
+	//Load the combo box at start up
 	mapApi.loadSiteList();
 	
 	
@@ -170,7 +175,7 @@ $(function() {
 	 */
 	$('#airport-list').change(mapApi.siteListChange);
 	
-	//When you click on a table row, pan to the airport. This makes the application easier to navigate
+	//When you click on a table row, pan to the airport
 	$("body").on("click", "tr.data-table-row-click", function() {
 		var obj = $(this);
 		var tableRowValue = $(this).data("value");
