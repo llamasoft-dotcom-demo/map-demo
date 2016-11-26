@@ -1,9 +1,13 @@
-var globalMap;
+ // Not a fan of global variables but I followed suit. 
+
+ // If using Angular 2 I would have created a map service 
+ // that would be injected into various components.
+ // (Angular 2 implements Dependency Injection & more OO structure)
+var globalMap; 
 var globalMarkerCluster;
 var globalAddedMarkers;
 
 $(function() {
-
     var MapFcns = {
         loadSiteList: function () {
             var airportList = $('#airport-list');
@@ -24,12 +28,31 @@ $(function() {
                     var currentAirport = _.findWhere(sites, {Code: airportCode});
 
                     setSelectedAirportData(currentAirport);             
-                    createMarker(currentAirport);
+                    MapFcns.createMarker(currentAirport);
                     
                     globalMap.setZoom(7);
                     globalMap.panTo({lat: currentAirport.Latitude, lng: currentAirport.Longitude});
                 }
-        }   
+        },
+
+        createMarker: function(currentAirport) {
+            var index = _.findIndex(globalAddedMarkers, { title: currentAirport.Code});
+            if(index > -1) {
+                messageSystem.showMessageType(currentAirport.Code + " Airport already Added", "info");
+                return;
+            }
+
+            var marker = new google.maps.Marker({
+                                position: {lat: currentAirport.Latitude, lng: currentAirport.Longitude},
+                                icon: './selectedAirport.PNG',
+                                title: currentAirport.Code,
+                                map: globalMap,
+                            });
+
+            globalAddedMarkers.push(marker);
+            initMarkerInfoWindow(currentAirport, marker);
+            messageSystem.showMessageType(currentAirport.Code + " Airport Added Successfully", "success");
+        } 
     }
 
     MapFcns.loadSiteList();
@@ -37,8 +60,8 @@ $(function() {
 
 });
 
-function deleteMarker(code) {
-    var index = _.findIndex(globalAddedMarkers, { title: code.name});
+function deleteMarker(element) {
+    var index = _.findIndex(globalAddedMarkers, { title: element.name});
     if (index > -1) {
         globalAddedMarkers[index].setMap(null);
         globalAddedMarkers.splice(index, 1);
@@ -47,25 +70,6 @@ function deleteMarker(code) {
     else {
         messageSystem.showMessageType("Unable to delete Airport Marker!", "failure");
     }
-}
-
-function createMarker(currentAirport) {
-    var index = _.findIndex(globalAddedMarkers, { title: currentAirport.Code});
-    if(index > -1) {
-        messageSystem.showMessageType(currentAirport.Code + " Airport already Added", "info");
-        return;
-    }
-
-    var marker = new google.maps.Marker({
-                        position: {lat: currentAirport.Latitude, lng: currentAirport.Longitude},
-                        icon: './selectedAirport.PNG',
-                        title: currentAirport.Code,
-                        map: globalMap,
-                    });
-
-    globalAddedMarkers.push(marker);
-    initMarkerInfoWindow(currentAirport, marker);
-    messageSystem.showMessageType(currentAirport.Code + " Airport Added Successfully", "success");
 }
 
 function initMap() {
@@ -82,6 +86,7 @@ function initMap() {
     messageSystem.showMessageType("Map Loaded", "info");
 }
 
+// Initialize all markers for preview of all airport locations
 function initAllMarkers() {
     for(var i = 0; i < sites.length; i++) {
         var infoWindow = new google.maps.InfoWindow();
@@ -96,10 +101,11 @@ function initAllMarkers() {
     }
 }
 
+// Initialize Info Window which appears upon clicking added Airport
 function initMarkerInfoWindow(currentAirport, marker) {
     var infoWindow = new google.maps.InfoWindow();
 
-    var shortSitePattern = /^[A-Z]+_[A-Z]+_(.+)$/g;
+    var shortSitePattern = /^[A-Z]+_[A-Z]+_(.+)$/g; // Parses common Airport name
     var shortSiteName = shortSitePattern.exec(currentAirport.FullSiteName)[1];
 
     var html = "<strong>" + currentAirport.Code + "</strong>" +
@@ -119,13 +125,14 @@ function initMarkerInfoWindow(currentAirport, marker) {
     infoWindow.open(globalMap, marker);
 }
 
+
 function setSelectedAirportData(currAirport) {
-        $('#setting-code').text(currAirport.Code);
-        $('#setting-city').text(currAirport.City);
-        $('#setting-state').text(currAirport.State);
-        $('#setting-fullSiteName').text(currAirport.FullSiteName);
-        $('#setting-lat').text(currAirport.Latitude);
-        $('#setting-long').text(currAirport.Longitude);
+    $('#setting-code').text(currAirport.Code);
+    $('#setting-city').text(currAirport.City);
+    $('#setting-state').text(currAirport.State);
+    $('#setting-fullSiteName').text(currAirport.FullSiteName);
+    $('#setting-lat').text(currAirport.Latitude);
+    $('#setting-long').text(currAirport.Longitude);
 }
 
 $("#airport-settings").hide();
@@ -141,6 +148,7 @@ $("#showAllSites").click(function() {
         globalMarkers[i].setVisible(true);
     }
 
+    // Create clusters of markers for better visibility
     globalMarkerCluster = new MarkerClusterer(globalMap, globalMarkers,
         {ignoreHidden: true, imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
