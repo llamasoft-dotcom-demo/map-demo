@@ -1,65 +1,83 @@
-var globalMap;
+(function AirportDropDown($, AirPortmarker, global){
 
-$(function() {
+    function CreateDropDown() {
+        let AllOps = $.map(sites, function(x,index) {
+          return {code: x.Code,label:`${x.Code} - ${x.City}`}  
+        } );   
 
-var MapFcns = {
-    loadSiteList: function () {
-        var airportList = $('#airport-list');
-            airportList.html('');
-            airportList.append('<option value=""></option>');
-        for (var i in sites) {
-            var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
-            airportList.append(newOption);
-        }
-    },
-    
-    siteListChange: function() {
-        var ctl = $(this),
-            airportCode = ctl.val();
-            if(airportCode) {
-                var currAirport = _.findWhere(sites, {Code: airportCode});
-                $('#setting-code').text(currAirport.Code);
-                $('#setting-city').text(currAirport.City);
+        const sel = $('#airport-list').selectize({
+            valueField: 'code',
+            labelField: 'label',
+            options: AllOps,
+            searchField: ['code', 'label'],
+            sortField: 'text',
+            onChange: function(airPort){
+                console.log('test');
+                AirPortmarker.MarkAirport(airPort);
                 
-                var marker = new google.maps.Marker({
-                    position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
-                    map: globalMap,
-                    title: currAirport.Code
-                });
-            }
+                let ctrl = sel[0].selectize;                
+                ctrl.clear();
+            },
+            open: CorrectAbnormalScrolling              
+        });
+    };
+
+    function CorrectAbnormalScrolling(){
+    //taken from issue #889's proposed solution
+            //this prevents the screen from scolling when inside the select
+            var self = this;
+            if (self.isLocked || self.isOpen || (self.settings.mode === 'multi' && self.isFull())) return;
+            self.focus();
+            self.isOpen = true;
+            self.refreshState();
+            self.$dropdown.css({ visibility: 'hidden', display: 'block' });
+            self.positionDropdown();
+            self.$dropdown.css({ visibility: 'visible' });
+            self.trigger('dropdown_open', self.$dropdown);
+
+            //byBerny: disable scroll on page
+            self.$dropdown_content.on('mousewheel', function(e) {
+                var event = e.originalEvent, d = event.wheelDelta || -event.detail;
+                this.scrollTop += (d < 0 ? 1 : -1) * 30;
+                e.preventDefault();
+            });
+        //End issue #889's fix
+    };
+    
+    
+    global.initMap = function  initialize() {     
+         console.log('init map tirewqreqrqweme!') 
+         $(function(){
+             console.log('init map time!')
+            // Callback function to create a map object and specify the DOM element for display.
+            AirPortmarker.AssociateWithMap( new google.maps.Map(document.getElementById('airport-map'), {
+                center: {lat: 42.2814, lng: -83.7483},
+                scrollwheel: true,
+                zoom: 6
+            }));            
+            CreateDropDown();
+        }); 
     }
-}
-
-
-MapFcns.loadSiteList();
-$('#airport-list').change(MapFcns.siteListChange);
-$('#exercise-toggle').click(function() {
-    var  toggleCtl = $(this),
-         toggleVal = toggleCtl.text();
-    if (toggleVal == '-') {
-        toggleCtl.text('+');
-        $('#exercise-instructions').hide();
-    } else {
-        toggleCtl.text('-');
-        $('#exercise-instructions').show();
-    }
-});
-
-});
-
-
-
-
-
-
 
     
-function  initMap() {
-  // Callback function to create a map object and specify the DOM element for display.
-  globalMap = new google.maps.Map(document.getElementById('airport-map'), {
-    center: {lat: 42.2814, lng: -83.7483},
-    scrollwheel: true,
-    zoom: 6
-  });
-  
-    }
+
+       
+
+})(jQuery, AirPortmarker, window);
+
+
+$(function() {  
+    $('#hideInstructions').click(function TransitionFromInstructionsToAirportSelector() {      
+        $("#airport-data").fadeOut(200);
+        $("#airport-controls").fadeOut(200);
+        $('#exercise-description').fadeOut(500,function done(){        
+            $('#hideInstructions').off('click');
+            $('#exercise-description').remove();    
+            $("#airport-controls").appendTo('#left-col')   
+            $("#airport-data").appendTo('#left-col')    
+            $("#airport-data").fadeIn(400);
+            $("#airport-controls").fadeIn(400);
+        });    
+    });
+});
+
