@@ -1,5 +1,7 @@
 var globalMap, airportList;
 $(function () {
+    var instructions = $("#exercise-instructions");
+    instructions.hide();
     var MapFcns = {
         loadSiteList: function () {
             airportList = $("#airport-list");
@@ -13,10 +15,17 @@ $(function () {
             var ctl = $(this), airportCode = ctl.val();
             if (airportCode) {
                 var currAirport = _.findWhere(sites, {Code: airportCode});
-                $("setting-code").text(currAirport.Code);
+                $("#setting-code").text(currAirport.Code);
                 $("#setting-city").text(currAirport.City);
+                $("#setting-state").text(currAirport.State);
+                $("#setting-name").text(currAirport.FullSiteName);
+                $("#setting-lat").text(currAirport.Latitude);
+                $("#setting-long").text(currAirport.Longitude);
                 var marker = new google.maps.Marker({
-                    position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
+                    position: {
+                        lat: currAirport.Latitude, 
+                        lng: currAirport.Longitude
+                    },
                     map: globalMap,
                     title: currAirport.Code
                 });
@@ -26,7 +35,6 @@ $(function () {
     MapFcns.loadSiteList();
     airportList.change(MapFcns.siteListChange);
     $("#exercise-toggle").click(function () {
-        var instructions = $("#exercise-instructions");
         var toggleCtl = $(this), toggleVal = toggleCtl.text();
         if (toggleVal == '-') {
             toggleCtl.text('+');
