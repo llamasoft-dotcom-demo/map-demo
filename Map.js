@@ -14,7 +14,7 @@ $(function () {
         siteListChange: function () {
             var ctl = $(this), airportCode = ctl.val();
             if (airportCode) {
-                var currAirport = _.findWhere(sites, {Code: airportCode});
+                var currAirport = _.findWhere(sites, { Code: airportCode });
                 $("#setting-code").text(currAirport.Code);
                 $("#setting-city").text(currAirport.City);
                 $("#setting-state").text(currAirport.State);
@@ -23,12 +23,14 @@ $(function () {
                 $("#setting-long").text(currAirport.Longitude);
                 var marker = new google.maps.Marker({
                     position: {
-                        lat: currAirport.Latitude, 
+                        lat: currAirport.Latitude,
                         lng: currAirport.Longitude
                     },
                     map: globalMap,
                     title: currAirport.Code
                 });
+                var airportLocation = new google.maps.LatLng(currAirport.Latitude, currAirport.Longitude);
+                globalMap.setCenter(airportLocation);
             }
         }
     };
@@ -47,8 +49,11 @@ $(function () {
 });
 function initMap() {
     // Callback function to create a map object and specify the DOM element for display.
-    globalMap = new google.maps.Map(document.getElementById('airport-map'), {
-        center: {lat: 42.2814, lng: -83.7483},
+    globalMap = new google.maps.Map(document.getElementById("airport-map"), {
+        center: {
+            lat: 42.2814,
+            lng: -83.7483
+        },
         scrollwheel: true,
         zoom: 6
     });

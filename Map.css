@@ -10,16 +10,10 @@ h1 {
     margin: 5px 0;
 }
 #airport-settings {
-    border: 2px solid black;
-    height: 128px;
-    margin: 10px 14px 10px 0;
+    border: 4px solid black;
+    margin: auto;
     padding: 4px;
-    width: calc(100% - 8px);
-}
-#airport-settings #setting-name {
-    border-right: 1px solid black;
-    float: left;
-    width: 128px;
+    width: 80%;
 }
 #airport-settings #setting-value {
     margin-left: 128px;
@@ -36,6 +30,9 @@ h1 {
 }
 #airport-data {
     margin: 12px;
+    position: absolute;
+    top: 100px;
+    left: 800px;
 }
 #exercise-toggle {
     cursor: pointer;
