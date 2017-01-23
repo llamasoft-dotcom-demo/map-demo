@@ -54,6 +54,7 @@ h1 {
 /* Buttons */
 /*----------------------------------------*/
 .button {
+    background: whitesmoke;
     border: 2px solid #463730;
     border-radius: 5px;
     cursor: pointer;
@@ -110,7 +111,7 @@ h1 {
 }
 #airport-data #airport-controls select {
     border: 2px solid #463730;
-    font-size: 0.7em;
+    font-size: 0.6em;
 }
 #airport-data #airport-settings {
     padding: 0 25px 10px 25px;

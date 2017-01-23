@@ -1,8 +1,22 @@
-var globalMap, airportList, confirmPopup, page, currAirport;
-var markers = [];
+var globalMap,
+    airportList,
+    confirmPopup,
+    page,
+    currAirport,
+    controlButtons,
+    instructions,
+    removeButton,
+    goToButton,
+    selectedAirport;
+var markers = {};
 $(function () {
-    var instructions = $("#exercise-instructions");
+    instructions = $("#exercise-instructions");
+    controlButtons = $(".button");
+    console.log("%o", controlButtons);
+    removeButton = $("#removeMarkerButton");
+    goToButton = $("#goToMarkerButton");
     instructions.hide();
+    controlButtons.hide();
     var MapFcns = {
         loadSiteList: function () {
             airportList = $("#airport-list");
@@ -34,14 +48,28 @@ $(function () {
                     map: globalMap,
                     title: currAirport.Code
                 });
-                markers.push(marker);
-                moveMap(currAirport.Latitude, currAirport.Longitude);
-                //confirmation("Zoom map to selected Airport?");
+                markers[currAirport.Code] = marker;
+                //moveMap(currAirport.Latitude, currAirport.Longitude);
+                controlButtons.show();
+            } else {
+                controlButtons.hide();
             }
+        },
+        removeMarker: function () {
+            selectedAirport = airportList.val();
+            if (selectedAirport && selectedAirport != -1) {
+                console.log("Removing marker...");
+                markers[currAirport.Code].setMap(null);
+            }
+        },
+        goToLocation: function () {
+            moveMap(currAirport.Latitude, currAirport.Longitude);
         }
     };
     MapFcns.loadSiteList();
     airportList.change(MapFcns.siteListChange);
+    removeButton.click(MapFcns.removeMarker);
+    goToButton.click(MapFcns.goToLocation);
     $("#instruction-toggle").click(function () {
         var toggleCtl = $(this).find("#exercise-toggle"), toggleVal = toggleCtl.text();
         if (toggleVal == '-') {
