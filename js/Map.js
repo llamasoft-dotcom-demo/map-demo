@@ -1,4 +1,5 @@
 var globalMap, airportList, confirmPopup, page, currAirport;
+var markers = [];
 $(function () {
     var instructions = $("#exercise-instructions");
     instructions.hide();
@@ -15,7 +16,7 @@ $(function () {
         },
         siteListChange: function () {
             var ctl = $(this), airportCode = ctl.val();
-            if (airportCode) {
+            if (airportCode && airportCode != -1) {
                 currAirport = _.findWhere(sites, {Code: airportCode});
                 var siteName = currAirport.FullSiteName;
                 var formattedSiteName = siteName.substring(siteName.lastIndexOf("_")+1);
@@ -33,6 +34,7 @@ $(function () {
                     map: globalMap,
                     title: currAirport.Code
                 });
+                markers.push(marker);
                 moveMap(currAirport.Latitude, currAirport.Longitude);
                 //confirmation("Zoom map to selected Airport?");
             }
@@ -40,14 +42,14 @@ $(function () {
     };
     MapFcns.loadSiteList();
     airportList.change(MapFcns.siteListChange);
-    $("#exercise-toggle").click(function () {
-        var toggleCtl = $(this), toggleVal = toggleCtl.text();
+    $("#instruction-toggle").click(function () {
+        var toggleCtl = $(this).find("#exercise-toggle"), toggleVal = toggleCtl.text();
         if (toggleVal == '-') {
             toggleCtl.text('+');
-            instructions.hide();
+            instructions.slideUp();
         } else {
             toggleCtl.text('-');
-            instructions.show();
+            instructions.slideDown();
         }
     });
 });
@@ -68,7 +70,7 @@ function confirmation(title) {
     var yesButton = $("<input type='button' id='confirmUpdate' value='yes'/>");
     var noButton = $("<input type='button' id='cancelUpdate' value='no'/>");
     buttonContainer.append(confirm);
-    buttonContainer.append(cancel);
+    buttonContainer.append(noButton);
     confirmPopup.append("<h3>" + title + "</h3>");
     confirmPopup.append(buttonContainer);
     //confirmPopup.css("top", header.height());
