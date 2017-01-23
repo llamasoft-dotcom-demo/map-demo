@@ -21,7 +21,7 @@
         </p>
         <p>
             Currently this page loads a list of airports into a drop down. You can select an airport
-            and it&quot;s code and city will display in the data table. A marker will be placed on the
+            and its code and city will display in the data table. A marker will be placed on the
             map displaying the airport. If you roll your mouse over the marker the airport&quot;s code
             will be displayed.
         </p>
@@ -54,22 +54,30 @@
         <label for="airport-list">Airports:</label>
         <select id="airport-list"></select>
     </div>
-    <div id="airport-settings">
-        <div id="setting-field">
-            <div>Code</div>
-            <div>City</div>
-            <div>State</div>
-            <div>Full Name</div>
-            <div>Latitude</div>
-            <div>Longitude</div>
+    <div class="table" id="airport-settings">
+        <div class="row" id="setting-code">
+            <div class="cell field">Code</div>
+            <div class="cell value"></div>
         </div>
-        <div id="setting-value">
-            <div id="setting-code"></div>
-            <div id="setting-city"></div>
-            <div id="setting-state"></div>
-            <div id="setting-name"></div>
-            <div id="setting-lat"></div>
-            <div id="setting-long"></div>
+        <div class="row" id="setting-city">
+            <div class="cell field">City</div>
+            <div class="cell value"></div>
+        </div>
+        <div class="row" id="setting-state">
+            <div class="cell field">State</div>
+            <div class="cell value"></div>
+        </div>
+        <div class="row" id="setting-name">
+            <div class="cell field">Full Name</div>
+            <div class="cell value"></div>
+        </div>
+        <div class="row" id="setting-lat">
+            <div class="cell field">Latitude</div>
+            <div class="cell value"></div>
+        </div>
+        <div class="row" id="setting-long">
+            <div class="cell field">Longitude</div>
+            <div class="cell value"></div>
         </div>
     </div>
 </div>

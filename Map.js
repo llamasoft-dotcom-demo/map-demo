@@ -1,26 +1,30 @@
-var globalMap, airportList;
+var globalMap, airportList, confirmPopup, page, currAirport;
 $(function () {
     var instructions = $("#exercise-instructions");
     instructions.hide();
     var MapFcns = {
         loadSiteList: function () {
             airportList = $("#airport-list");
-            airportList.html("<option value='-- Select an Airport --'></option>");
-            for (var i in sites) {
-                var newOption = $("<option value='" + sites[i].Code + "'>" + sites[i].Code + "</option>");
-                airportList.append(newOption);
+            airportList.html("<option value='-1'>-- Select an Airport --</option>");
+            var ordSites = sortByKey(sites, "Code");
+
+            for (var s in ordSites) {
+                var airport = $("<option value='" + ordSites[s].Code + "'>" + ordSites[s].Code + " - " + ordSites[s].City + "</option>");
+                airportList.append(airport);
             }
         },
         siteListChange: function () {
             var ctl = $(this), airportCode = ctl.val();
             if (airportCode) {
-                var currAirport = _.findWhere(sites, { Code: airportCode });
-                $("#setting-code").text(currAirport.Code);
-                $("#setting-city").text(currAirport.City);
-                $("#setting-state").text(currAirport.State);
-                $("#setting-name").text(currAirport.FullSiteName);
-                $("#setting-lat").text(currAirport.Latitude);
-                $("#setting-long").text(currAirport.Longitude);
+                currAirport = _.findWhere(sites, {Code: airportCode});
+                var siteName = currAirport.FullSiteName;
+                var formattedSiteName = siteName.substring(siteName.lastIndexOf("_")+1);
+                $("#setting-code").find("div.value").text(currAirport.Code);
+                $("#setting-city").find("div.value").text(currAirport.City);
+                $("#setting-state").find("div.value").text(currAirport.State);
+                $("#setting-name").find("div.value").text(formattedSiteName);
+                $("#setting-lat").find("div.value").text(currAirport.Latitude);
+                $("#setting-long").find("div.value").text(currAirport.Longitude);
                 var marker = new google.maps.Marker({
                     position: {
                         lat: currAirport.Latitude,
@@ -29,8 +33,8 @@ $(function () {
                     map: globalMap,
                     title: currAirport.Code
                 });
-                var airportLocation = new google.maps.LatLng(currAirport.Latitude, currAirport.Longitude);
-                globalMap.setCenter(airportLocation);
+                moveMap(currAirport.Latitude, currAirport.Longitude);
+                //confirmation("Zoom map to selected Airport?");
             }
         }
     };
@@ -56,5 +60,48 @@ function initMap() {
         },
         scrollwheel: true,
         zoom: 6
+    });
+}
+function confirmation(title) {
+    confirmPopup = $("<div class='popup'></div>");
+    var buttonContainer = $("<div id='buttonContainer'></div>");
+    var yesButton = $("<input type='button' id='confirmUpdate' value='yes'/>");
+    var noButton = $("<input type='button' id='cancelUpdate' value='no'/>");
+    buttonContainer.append(confirm);
+    buttonContainer.append(cancel);
+    confirmPopup.append("<h3>" + title + "</h3>");
+    confirmPopup.append(buttonContainer);
+    //confirmPopup.css("top", header.height());
+    confirmPopup.append(confirmPopup);
+    page.prepend(confirmPopup);
+    bindEnterKey(yesButton);
+    yesButton.click(function () {
+        moveMap(currAirport.Latitude, currAirport.Longitude);
+        bindEnterKey(submit);
+    });
+    noButton.click(function () {
+        confirmPopup.fadeOut(function () {
+            confirmPopup.remove();
+        });
+        bindEnterKey(submit);
+    });
+}
+function moveMap(lat, long) {
+    globalMap.setCenter(new google.maps.LatLng(lat, long));
+    globalMap.setZoom(13);
+}
+function bindEnterKey(button) {
+    $(document).unbind("keypress.key13");
+    $(document).bind("keypress.key13", function (e) {
+        if (e.which == 13) {
+            e.preventDefault();
+            button.click();
+        }
+    });
+}
+function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key]; var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
 }
