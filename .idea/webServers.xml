@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="cb72121c-6895-4e69-a55d-712580be0e3b" name="ajbrainerd.com" url="http://ajbrainerd.com/map">
+      <webServer id="cb72121c-6895-4e69-a55d-712580be0e3b" name="ajbrainerd.com" url="http://ajbrainerd.com/">
         <fileTransfer host="ajbrainerd.com" port="22" rootFolder="/var/www/html/" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />

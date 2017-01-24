@@ -12,7 +12,7 @@ var markers = {};
 $(function () {
     instructions = $("#exercise-instructions");
     controlButtons = $(".button");
-    console.log("%o", controlButtons);
+    //console.log("%o", controlButtons);
     removeButton = $("#removeMarkerButton");
     goToButton = $("#goToMarkerButton");
     instructions.hide();
@@ -49,6 +49,7 @@ $(function () {
                     title: currAirport.Code
                 });
                 markers[currAirport.Code] = marker;
+                printMarkers();
                 //moveMap(currAirport.Latitude, currAirport.Longitude);
                 controlButtons.show();
             } else {
@@ -60,7 +61,9 @@ $(function () {
             if (selectedAirport && selectedAirport != -1) {
                 console.log("Removing marker...");
                 markers[currAirport.Code].setMap(null);
+                delete markers[currAirport.Code];
             }
+            printMarkers();
         },
         goToLocation: function () {
             moveMap(currAirport.Latitude, currAirport.Longitude);
@@ -81,6 +84,13 @@ $(function () {
         }
     });
 });
+function printMarkers() {
+    console.clear();
+    for (var m in markers) {
+        console.log(m + ": %o", markers[m]);
+    }
+
+}
 function initMap() {
     // Callback function to create a map object and specify the DOM element for display.
     globalMap = new google.maps.Map(document.getElementById("airport-map"), {

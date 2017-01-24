@@ -5,7 +5,7 @@
       <paths name="ajbrainerd.com">
         <serverdata>
           <mappings>
-            <mapping deploy="/map" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/llama/map" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
