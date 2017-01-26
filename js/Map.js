@@ -6,15 +6,13 @@ var globalMap,
     controlButtons,
     instructions,
     removeButton,
-    goToButton,
-    selectedAirport;
+    selectedAirport,
+    infoWindow;
 var markers = {};
 $(function () {
     instructions = $("#exercise-instructions");
     controlButtons = $(".button");
-    //console.log("%o", controlButtons);
     removeButton = $("#removeMarkerButton");
-    goToButton = $("#goToMarkerButton");
     instructions.hide();
     controlButtons.hide();
     var MapFcns = {
@@ -34,23 +32,34 @@ $(function () {
                 currAirport = _.findWhere(sites, {Code: airportCode});
                 var siteName = currAirport.FullSiteName;
                 var formattedSiteName = siteName.substring(siteName.lastIndexOf("_")+1);
-                $("#setting-code").find("div.value").text(currAirport.Code);
-                $("#setting-city").find("div.value").text(currAirport.City);
-                $("#setting-state").find("div.value").text(currAirport.State);
-                $("#setting-name").find("div.value").text(formattedSiteName);
-                $("#setting-lat").find("div.value").text(currAirport.Latitude);
-                $("#setting-long").find("div.value").text(currAirport.Longitude);
-                var marker = new google.maps.Marker({
-                    position: {
-                        lat: currAirport.Latitude,
-                        lng: currAirport.Longitude
-                    },
-                    map: globalMap,
-                    title: currAirport.Code
+                $(".row.code").find("div.value").text(currAirport.Code);
+                $(".row.city").find("div.value").text(currAirport.City);
+                $(".row.state").find("div.value").text(currAirport.State);
+                $(".row.name").find("div.value").text(formattedSiteName);
+                $(".row.latitude").find("div.value").text(currAirport.Latitude);
+                $(".row.longitude").find("div.value").text(currAirport.Longitude);
+
+                infoWindow = new google.maps.InfoWindow({
+                    content: "<div class='table'>" + $("#airport-settings").html() + "</div>",
+                    maxWidth: 400
                 });
-                markers[currAirport.Code] = marker;
-                printMarkers();
-                //moveMap(currAirport.Latitude, currAirport.Longitude);
+                if (!(currAirport.Code in markers)) {
+                    var marker = new google.maps.Marker({
+                        position: {
+                            lat: currAirport.Latitude,
+                            lng: currAirport.Longitude
+                        },
+                        map: globalMap,
+                        title: currAirport.Code,
+                        animation: google.maps.Animation.DROP
+                    });
+                    //infoWindow.open(globalMap, marker);
+                    marker.addListener('click', function() {
+                        infoWindow.open(globalMap, marker);
+                    });
+                    markers[currAirport.Code] = marker;
+                }
+                MapFcns.goToLocation();
                 controlButtons.show();
             } else {
                 controlButtons.hide();
@@ -59,11 +68,11 @@ $(function () {
         removeMarker: function () {
             selectedAirport = airportList.val();
             if (selectedAirport && selectedAirport != -1) {
-                console.log("Removing marker...");
                 markers[currAirport.Code].setMap(null);
                 delete markers[currAirport.Code];
+                airportList.val(-1).trigger("change");
+                $("div.value").text("");
             }
-            printMarkers();
         },
         goToLocation: function () {
             moveMap(currAirport.Latitude, currAirport.Longitude);
@@ -72,7 +81,6 @@ $(function () {
     MapFcns.loadSiteList();
     airportList.change(MapFcns.siteListChange);
     removeButton.click(MapFcns.removeMarker);
-    goToButton.click(MapFcns.goToLocation);
     $("#instruction-toggle").click(function () {
         var toggleCtl = $(this).find("#exercise-toggle"), toggleVal = toggleCtl.text();
         if (toggleVal == '-') {
