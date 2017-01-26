@@ -102,42 +102,9 @@ function initMap() {
         zoom: 6
     });
 }
-function confirmation(title) {
-    confirmPopup = $("<div class='popup'></div>");
-    var buttonContainer = $("<div id='buttonContainer'></div>");
-    var yesButton = $("<input type='button' id='confirmUpdate' value='yes'/>");
-    var noButton = $("<input type='button' id='cancelUpdate' value='no'/>");
-    buttonContainer.append(confirm);
-    buttonContainer.append(noButton);
-    confirmPopup.append("<h3>" + title + "</h3>");
-    confirmPopup.append(buttonContainer);
-    //confirmPopup.css("top", header.height());
-    confirmPopup.append(confirmPopup);
-    page.prepend(confirmPopup);
-    bindEnterKey(yesButton);
-    yesButton.click(function () {
-        moveMap(currAirport.Latitude, currAirport.Longitude);
-        bindEnterKey(submit);
-    });
-    noButton.click(function () {
-        confirmPopup.fadeOut(function () {
-            confirmPopup.remove();
-        });
-        bindEnterKey(submit);
-    });
-}
 function moveMap(lat, long) {
     globalMap.panTo(new google.maps.LatLng(lat, long));
     globalMap.setZoom(13);
-}
-function bindEnterKey(button) {
-    $(document).unbind("keypress.key13");
-    $(document).bind("keypress.key13", function (e) {
-        if (e.which == 13) {
-            e.preventDefault();
-            button.click();
-        }
-    });
 }
 function sortByKey(array, key) {
     return array.sort(function(a, b) {
