@@ -127,7 +127,7 @@ function confirmation(title) {
     });
 }
 function moveMap(lat, long) {
-    globalMap.setCenter(new google.maps.LatLng(lat, long));
+    globalMap.panTo(new google.maps.LatLng(lat, long));
     globalMap.setZoom(13);
 }
 function bindEnterKey(button) {
