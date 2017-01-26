@@ -2,12 +2,11 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="cb72121c-6895-4e69-a55d-712580be0e3b" name="ajbrainerd.com" url="http://ajbrainerd.com/map">
-        <fileTransfer host="ajbrainerd.com" port="22" rootFolder="/var/www/html/" accessType="SFTP">
+      <webServer id="cb72121c-6895-4e69-a55d-712580be0e3b" name="ajbrainerd.com" url="http://ajbrainerd.com/">
+        <fileTransfer host="ajbrainerd.com" port="22" rootFolder="/var/www/html/" accessType="SFTP" password="df92df9bdf9adf9adf9adf93df99df9f" username="abrainerd">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
-          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
     </option>
