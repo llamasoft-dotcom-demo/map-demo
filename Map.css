@@ -23,13 +23,24 @@
     margin-left: 14px;
 }
 
+#excercise-heading{
+	text-align: center;
+	line-height: 44px;
+    vertical-align: text-bottom;
+    font-size: 52px;
+    font-weight: bold;
+}
+
+
 #airport-map{
     width: 800px;
     height: 600px;
+	margin-left: 228px;
 }
 
 #airport-data {
     margin: 12px;
+	color:#660066;
 }
 
 #exercise-toggle {
@@ -41,4 +52,8 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+body {
+	background-color: #ffa366;
 }
