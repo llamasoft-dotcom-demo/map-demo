@@ -4,14 +4,15 @@
         <title>Map Sample</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c9_u5DLONLFWVBmlYMtqmXSznQj0I80&callback=initMap"></script>
         <script src="siteData.js"></script>
         <script src="Map.js"></script>
-        <link href="Map.css" rel="stylesheet">
+        <link href="Map.css" rel="stylesheet">		
     </head>
     <body>
-        <h1>LLamasoft Map Exercise
-        </h1>
+       <div id = "excercise-heading"> <span>LLamasoft Map Exercise</span>
+        
+		</div>
 
         <div id="exercise-description">
             <div id="instruction-toggle"><span>Instructions</span> <span id="exercise-toggle">-</span></div>
@@ -66,8 +67,8 @@
             <div id="airport-controls">        
                 Airports: <select id="airport-list">
                 </select>
-            </div>
-            
+				<input onclick="deleteMarker();" type = button value ="Remove Marker">
+			 </div>
             <div id="airport-settings">
                 <div id="setting-name">
                     <div>Code</div>
@@ -81,7 +82,7 @@
                     <div id="setting-code"></div>
                     <div id="setting-city"></div>
                     <div id="setting-state"></div>
-                    <div id="setting-name"></div>
+                    <div id="setting-airportname"></div>
                     <div id="setting-lat"></div>
                     <div id="setting-long"></div>
                 </div>
