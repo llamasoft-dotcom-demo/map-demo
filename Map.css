@@ -24,8 +24,8 @@
 }
 
 #airport-map{
-    width: 800px;
-    height: 600px;
+    width: 600px;
+    height: 400px;
 }
 
 #airport-data {
@@ -41,4 +41,8 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+.deleteMarkerButton {
+    margin-top: 5px;
 }
