@@ -7,17 +7,18 @@ html {
 body {
     background: #1F5673;
     color: white;
-    font-family: 'Fira Sans Extra Condensed', sans-serif;
-    font-size: 2vw;
+    /*font-family: 'Fira Sans Extra Condensed', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
     margin: 20px auto;
     width: 95%;
+}
+input, select {
+    font-family: inherit;
 }
 h1 {
     margin: 5px 0;
 }
-
-/* Table Structure */
-/*----------------------------------------*/
 .table {
     display: table;
 }
@@ -45,8 +46,6 @@ h1 {
     color: #1F5673;
     font-size: 1.3em;
 }
-/*----------------------------------------*/
-
 .button {
     background: whitesmoke;
     border: 2px solid #463730;
@@ -89,17 +88,56 @@ h1 {
     margin: 10px 50px;
 }
 #exercise-instructions {
-    margin: 20px;
+    border: 2px solid;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+#content {
+    margin: auto;
+    min-width: 500px;
+    position: relative;
+    width: 800px;
 }
 #airport-map {
-    /*border: 6px outset black;*/
     border: 3px solid #463730;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 600px;
     margin: auto;
     min-width: 500px;
-    width: 800px;
+    width: 100%;
+}
+#airport-overlay {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+#airport-search {
+    border-radius: 3px;
+    font-size: 16px;
+    padding: 5px;
+    transition: border 0.5s;
+}
+#airport-search:focus {
+    border-color: #1F5673;
+}
+#search-results {
+    background: white;
+    border-bottom: 2px solid gainsboro;
+    border-left: 2px solid gainsboro;
+    border-right: 2px solid gainsboro;
+    color: black;
+}
+#search-results li {
+    cursor: default;
+    font-size: 0.8em;
+    padding: 5px;
+    transition: background 0.3s;
+}
+#search-results li:hover {
+    /*background: #c7d8e4;*/
+    background: #d5e2ea;
 }
 #airport-data {
     background: #759FBC;
@@ -113,7 +151,7 @@ h1 {
     width: 800px;
 }
 #airport-data > div {
-    padding: 10px 25px 5px 25px;
+    padding: 10px 25px 10px 25px;
 }
 #airport-data #airport-header {
     color: whitesmoke;
@@ -126,6 +164,9 @@ h1 {
 #airport-data #airport-controls select {
     border: 2px solid #463730;
     font-size: 0.6em;
+}
+#airport-list {
+    display: none;
 }
 #airport-settings {
     display: none;
@@ -140,9 +181,11 @@ h1 {
     margin-left: 14px;
 }
 @media screen and (max-width: 860px) {
+    #content {
+        width: 90%;
+    }
     #airport-map {
         height: 500px;
-        width: 90%;
     }
     #airport-header {
         font-size: 4vw;
@@ -155,7 +198,7 @@ h1 {
     }
 }
 @media screen and (min-width: 1390px) {
-    #airport-map {
+    #content {
         width: 60%;
     }
     #airport-data {
