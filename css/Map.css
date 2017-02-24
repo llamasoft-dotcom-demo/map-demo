@@ -115,9 +115,10 @@ h1 {
 }
 #airport-search {
     border-radius: 3px;
-    font-size: 16px;
+    font-size: 14px;
     padding: 5px;
     transition: border 0.5s;
+    width: 200px;
 }
 #airport-search:focus {
     border-color: #1F5673;
@@ -128,6 +129,7 @@ h1 {
     border-left: 2px solid gainsboro;
     border-right: 2px solid gainsboro;
     color: black;
+    width: 200px;
 }
 #search-results li {
     cursor: default;
@@ -179,6 +181,11 @@ h1 {
 }
 #setting-value div {
     margin-left: 14px;
+}
+@media screen and (max-width: 860px) {
+    body {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 860px) {
     #content {
