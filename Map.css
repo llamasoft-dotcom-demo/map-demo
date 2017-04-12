@@ -6,7 +6,7 @@
     margin: 10px 14px 10px 0px;
 }
 
-#airport-settings #setting-name {
+#airport-settings #setting-headers {
     width: 128px;
     float: left;
     border-right: 1px solid black;
@@ -41,4 +41,17 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+.tooltip-picture {
+    display:inline-block;
+    vertical-align:middle;
+    padding-right: 2px;
+}
+
+.tooltip-content {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 2px;
+    text-align: center;
 }
