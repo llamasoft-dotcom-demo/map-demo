@@ -27,7 +27,7 @@ $(function() {
                 $('#setting-code').text(currAirport.Code);
                 $('#setting-city').text(currAirport.City);
                 $('#setting-state').text(currAirport.State);
-                $('#setting-fullname').text(currAirport.FullSiteName);
+                $('#setting-fullname').text(cleanFullName(currAirport.FullSiteName));
                 $('#setting-lat').text(currAirport.Latitude);
                 $('#setting-long').text(currAirport.Longitude);
 
@@ -67,8 +67,17 @@ $(function() {
 
 });
 
+function cleanFullName(fullName) {
+    'use strict';
+    // The current format of the full name is AIRPORT_<code>_<the string we actually want>
+    var lastUnderscorePosition = fullName.lastIndexOf('_');
+    if (lastUnderscorePosition === -1) return fullName;
+    return fullName.substring(lastUnderscorePosition + 1);
+}
+
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
+    'use strict';
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(map);
     }
@@ -76,6 +85,7 @@ function setMapOnAll(map) {
 
 // Removes the markers from the map, but keeps them in the array.
 function clearMarkers() {
+    'use strict';
     setMapOnAll(null);
 }
 
@@ -88,14 +98,15 @@ function deleteMarkers() {
 
 // Shows any markers currently in the array.
 function showMarkers() {
+    'use strict';
     setMapOnAll(globalMap);
-    
+
     // zoom out to include all markers shown. 
     // from https://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-visible-markers
     var bounds = new google.maps.LatLngBounds();
-    for (i = 0; i < markers.length; i++) {
-        bounds.extend(markers[i].getPosition());
-    }
+    _.each(markers, function(marker) {
+        bounds.extend(marker.getPosition());
+    });
     globalMap.fitBounds(bounds);
 }
 
