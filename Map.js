@@ -40,6 +40,12 @@ $(function() {
                     title: currAirport.Code
                 });
                 markers.push(marker);
+
+                // from https://stackoverflow.com/questions/10917648/google-maps-api-v3-recenter-the-map-to-a-marker
+                if (!globalMap.getBounds().contains(marker.getPosition())) {
+                    globalMap.setCenter(marker.getPosition());
+                    //OR map.panTo(marker.getPosition());  
+                }
             }
         }
     };
@@ -83,6 +89,14 @@ function deleteMarkers() {
 // Shows any markers currently in the array.
 function showMarkers() {
     setMapOnAll(globalMap);
+    
+    // zoom out to include all markers shown. 
+    // from https://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-visible-markers
+    var bounds = new google.maps.LatLngBounds();
+    for (i = 0; i < markers.length; i++) {
+        bounds.extend(markers[i].getPosition());
+    }
+    globalMap.fitBounds(bounds);
 }
 
 function initMap() {
@@ -93,7 +107,7 @@ function initMap() {
             lat: 42.2814,
             lng: -83.7483
         },
-        scrollwheel: true,
+        scrollwheel: false,
         zoom: 6
     });
 
