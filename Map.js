@@ -24,6 +24,10 @@ $(function () {
                 });
                 $('#setting-code').text(currAirport.Code);
                 $('#setting-city').text(currAirport.City);
+                $('#setting-state').text(currAirport.State);
+                $('#setting-fullname').text(currAirport.FullSiteName);
+                $('#setting-lat').text(currAirport.Latitude);
+                $('#setting-long').text(currAirport.Longitude);
 
                 var marker = new google.maps.Marker({
                     position: {
