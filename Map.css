@@ -45,6 +45,9 @@
 
 #marker-control-panel {
     /*position: absolute;*/
+    width: 800px;
+    margin: 12px;
+
     top: 10px;
     left: 25%;
     z-index: 5;

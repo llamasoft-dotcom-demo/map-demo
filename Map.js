@@ -2,6 +2,7 @@
 
 var globalMap;
 var markers = [];
+var startingPosition = { lat: 42.2814, lng: -83.7483 };
 
 $(function() {
     'use strict';
@@ -78,10 +79,11 @@ function cleanFullName(fullName) {
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
     'use strict';
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-    }
+    _.each(markers, function(marker) {
+        marker.setMap(map);
+    });
 }
+
 
 // Removes the markers from the map, but keeps them in the array.
 function clearMarkers() {
@@ -94,6 +96,7 @@ function deleteMarkers() {
     'use strict';
     clearMarkers();
     markers = [];
+    globalMap.setCenter(startingPosition);
 }
 
 // Shows any markers currently in the array.
@@ -101,23 +104,22 @@ function showMarkers() {
     'use strict';
     setMapOnAll(globalMap);
 
-    // zoom out to include all markers shown. 
-    // from https://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-visible-markers
-    var bounds = new google.maps.LatLngBounds();
-    _.each(markers, function(marker) {
-        bounds.extend(marker.getPosition());
-    });
-    globalMap.fitBounds(bounds);
+    if (markers.length > 0) {
+        // zoom out to include all markers, if there are any. 
+        // from https://stackoverflow.com/questions/19304574/center-set-zoom-of-map-to-cover-all-visible-markers
+        var bounds = new google.maps.LatLngBounds();
+        _.each(markers, function(marker) {
+            bounds.extend(marker.getPosition());
+        });
+        globalMap.fitBounds(bounds);
+    }
 }
 
 function initMap() {
     'use strict';
     // Callback function to create a map object and specify the DOM element for display.
     globalMap = new google.maps.Map(document.getElementById('airport-map'), {
-        center: {
-            lat: 42.2814,
-            lng: -83.7483
-        },
+        center: startingPosition,
         scrollwheel: false,
         zoom: 6
     });
