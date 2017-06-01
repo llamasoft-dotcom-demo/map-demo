@@ -1,16 +1,17 @@
 /*global $, jQuery*/
 
 var globalMap;
+var markers = [];
 
-$(function () {
+$(function() {
     'use strict';
     var MapFcns = {
-        loadSiteList: function () {
+        loadSiteList: function() {
             var airportList = $('#airport-list');
             airportList.html('');
             airportList.append('<option value=""></option>');
-            var sortedSites = _.sortBy(sites,'Code');
-            _.each(sortedSites, function(site) { 
+            var sortedSites = _.sortBy(sites, 'Code');
+            _.each(sortedSites, function(site) {
                 var newOption = $('<option value="' + site.Code + '">' + site.Code + '</option>');
                 airportList.append(newOption);
             });
@@ -38,6 +39,7 @@ $(function () {
                     map: globalMap,
                     title: currAirport.Code
                 });
+                markers.push(marker);
             }
         }
     };
@@ -59,7 +61,29 @@ $(function () {
 
 });
 
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
 
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+    setMapOnAll(null);
+}
+
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+    'use strict';
+    clearMarkers();
+    markers = [];
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+    setMapOnAll(globalMap);
+}
 
 function initMap() {
     'use strict';
