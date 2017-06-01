@@ -9,10 +9,11 @@ $(function () {
             var airportList = $('#airport-list');
             airportList.html('');
             airportList.append('<option value=""></option>');
-            for (var i in sites) {
-                var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
+            var sortedSites = _.sortBy(sites,'Code');
+            _.each(sortedSites, function(site) { 
+                var newOption = $('<option value="' + site.Code + '">' + site.Code + '</option>');
                 airportList.append(newOption);
-            }
+            });
         },
 
         siteListChange: function() {
