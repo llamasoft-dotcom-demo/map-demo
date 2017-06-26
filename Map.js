@@ -7,17 +7,10 @@ var MapFcns = {
 
         sites = _.sortBy(sites, 'Code');
 
-        var airportList = $('#airport-list');
-            airportList.html('');
-            airportList.append('<option value=""></option>');
         var cityList = $('#city-list');
             cityList.html('');
             cityList.append('<option value=""></option>');
 
-        for (var i in sites) {
-            var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
-            airportList.append(newOption);
-        }
         for (var i in sites) {
             var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].City + '</option>');
             cityList.append(newOption);
