@@ -25,7 +25,7 @@ var MapFcns = {
     },
 
     siteListChange: function() {
-        var ctl = $(this),
+        var ctl = $("#city-input"),
             airportCode = ctl.val();
             if(airportCode) {
                 var currAirport = _.findWhere(sites, {Code: airportCode});
@@ -67,8 +67,9 @@ var MapFcns = {
 }
 
 MapFcns.loadSiteList();
-    $('#city-input').change(MapFcns.siteListChange);
-    $('#exercise-toggle').trigger(function() {
+    $('.btn.btn-success').click(MapFcns.siteListChange);
+
+    $('#exercise-toggle').click(function() {
         var  toggleCtl = $(this),
              toggleVal = toggleCtl.text();
         if (toggleVal == '-') {
@@ -85,13 +86,6 @@ MapFcns.loadSiteList();
         }
     });
 });
-
-
-
-
-
-
-
 
 function  initMap() {
   // Callback function to create a map object and specify the DOM element for display.
