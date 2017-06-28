@@ -1,35 +1,10 @@
-#airport-settings {
-    width: calc(100% - 8px);
-    border: 2px solid black;
-    height: 128px;
-    padding: 4px;
-    margin: 10px 14px 10px 0px;
-}
-
-#airport-settings #setting-name {
-    width: 128px;
-    float: left;
-    border-right: 1px solid black;
-}
-
-#airport-settings #setting-value {
-    width: calc(100% - 128px);
-    margin-left: 128px;
-    min-widtH: 240px;
-    text-align: left;
-}
-
-#airport-settings #setting-value div {
-    margin-left: 14px;
-}
-
-#airport-map{
-    width: 800px;
-    height: 600px;
+#airport-map {
+    height: 400px;
 }
 
 #airport-data {
     margin: 12px;
+    display: inline-block;
 }
 
 #exercise-toggle {
@@ -41,4 +16,54 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+#airport-list {
+    overflow-y: auto;
+}
+
+.main-content {
+    padding: 15px;
+}
+
+#exercise-description {
+    padding: 0 25px;
+}
+
+.jumbotron {
+    padding-left: 25px;
+}
+
+.filter-panel {
+    height: 400px;
+    border: 1px solid black;
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+    padding: 10px 0 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-panel {
+    padding: 0;
+}
+
+.airport-filter {
+    padding: 10px;
+}
+
+.site-row {
+  border-bottom: 1px solid lightgrey;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-button {
+  align-self: flex-end;
+}
+
+.filter-field {
+    width: 150px;
 }
