@@ -56,7 +56,11 @@
                 <a id="clearall" class="col-md-1" href="#">Clear All</a>
                 </div>
                 <div class="row">
-                    <div id="airport-list-group" class="list-group col-md-2 col-md-2"></div>
+                    <div id="airport-list-group" class="list-group col-md-2 col-md-2">
+                        <div class="list-group-item">
+                            <input id="searchbox" type="text" class="form-control" placeholder="Search" onkeyup="search()">
+                        </div>
+                    </div>
                     <div id="airport-map" class="col-md-6 col-md-6"></div>
                     <div id="airport-data" class="col-md-4 col-md-4">
                         <div id="airport-settings">

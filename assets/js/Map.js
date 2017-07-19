@@ -16,7 +16,7 @@ var MapFcns = {
     loadSiteList : function()
     {
         var airportList = $('#airport-list-group');
-        airportList.html('');
+        //airportList.html('');
         sites.sort(MapFcns.sortSites);
         for(var i in sites)
         {
@@ -33,6 +33,7 @@ $(function () {
 $('#clearall').on('click',function()
 {
     removeAll();
+    showAllListItems();
 });
 $('#selectall').on('click', function()
 {
@@ -47,6 +48,35 @@ function addAll()
     {
         enableListItem(sites[i].Code);
         addMarker(sites[i]);
+    }
+}
+
+function showAllListItems()
+{
+    var li = $('#airport-list-group').find('a');
+    var filter = $('#searchbox').val();
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        var code = li[i].text;
+        li[i].style.display = '';
+    }
+}
+
+function search()
+{
+    var li = $('#airport-list-group').find('a');
+    var filter = $('#searchbox').val();
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        var code = li[i].text;
+        if(code.toUpperCase().indexOf(filter.toUpperCase()) > -1)
+        {
+           li[i].style.display = '';
+        }
+        else
+        {
+            li[i].style.display = 'none';
+        }
     }
 }
 
@@ -90,6 +120,7 @@ function getIndexByCode(code)
     }
     return -1;
 }
+
 function toggleListItem(code)
 {
     if($('#airport-list-group #'+code+'-list-item').length)
