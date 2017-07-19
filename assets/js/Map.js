@@ -40,7 +40,7 @@ $('#selectall').on('click', function()
     addAll();
 });
 });
-
+// add markers for all airports
 function addAll()
 {
     for(var i in sites)
@@ -49,7 +49,7 @@ function addAll()
         addMarker(sites[i]);
     }
 }
-
+// show entire list of airports
 function showAllListItems()
 {
     var li = $('#airport-list-group').find('a');
@@ -60,7 +60,7 @@ function showAllListItems()
         li[i].style.display = '';
     }
 }
-
+//search airports in list
 function search()
 {
     var li = $('#airport-list-group').find('a');
@@ -78,7 +78,7 @@ function search()
         }
     }
 }
-
+// remove all markers from map and remove active status of list items
 function removeAll()
 {
     for(var i = 0; i < markers.length;i++)
@@ -88,7 +88,7 @@ function removeAll()
     }
     markers = [];
 }
-
+// set active status of list item by airport code
 function enableListItem(code)
 {
     if($('#airport-list-group #'+code+'-list-item').length)
@@ -98,6 +98,7 @@ function enableListItem(code)
             item.addClass('active');
     }
 }
+// Remove Active status of list item by airport code
 function disableListItem(code)
 {
     if($('#airport-list-group #'+code+'-list-item').length)
@@ -107,7 +108,7 @@ function disableListItem(code)
             item.removeClass('active');
     }
 }
-
+// Get index of the marker in markers array by airport code.
 function getIndexByCode(code)
 {
     for(var i = 0; i < markers.length;i++)
@@ -119,7 +120,7 @@ function getIndexByCode(code)
     }
     return -1;
 }
-
+// Toggle active status of list item
 function toggleListItem(code)
 {
     if($('#airport-list-group #'+code+'-list-item').length)
@@ -135,7 +136,7 @@ function toggleListItem(code)
         }
     }
 }
-
+// Toggle Marker. If the marker currently exists, remove it.  If not, add it.
 function toggleMarker(code, loadTable)
 {
 	var loadDetails = false;
@@ -173,7 +174,7 @@ function toggleMarker(code, loadTable)
         }
     }   
 }
-
+// Add Marker and associated InfoWindow to Map
 function addMarker(currAirport)
 {
     var p = {lat: currAirport.Latitude, lng: currAirport.Longitude}
@@ -236,7 +237,7 @@ function addMarker(currAirport)
         markers.push(marker);
     globalMap.setCenter(p);
 }
-
+// Remove Marker from Map and from markers array
 function removeMarker(code)
 {
     var itemIndex = getIndexByCode(code);
@@ -247,7 +248,7 @@ function removeMarker(code)
     }
 }
 
-
+// Format full name of airport
 function formatName(name)
 {
     return name.substring(name.lastIndexOf('_')+1);
