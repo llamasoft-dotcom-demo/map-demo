@@ -19,7 +19,7 @@ var MapFcns = {
         sites.sort(MapFcns.sortSites);
         for(var i in sites)
         {
-            var airportListItem = $('<a class="list-group-item" href="#" onclick="toggleMarker(\''+ sites[i].Code+'\',true)" id="'+ sites[i].Code+'-list-item">' + sites[i].Code + '</a>' );
+            var airportListItem = $('<a class="list-group-item" href="#" value="'+sites[i].Code+'" onclick="toggleMarker(\''+ sites[i].Code+'\',true)" id="'+ sites[i].Code+'-list-item">' + sites[i].Code + ' - '+ sites[i].City + ', ' + sites[i].State + '</a>' );
             airportList.append(airportListItem);
         }
     }
@@ -31,6 +31,7 @@ $(function () {
 });
 $('#clearall').on('click',function()
 {
+    $('#searchbox').val('');
     removeAll();
     showAllListItems();
 });
@@ -53,8 +54,6 @@ function addAll()
 function showAllListItems()
 {
     var li = $('#airport-list-group').find('a');
-    var filter = $('#searchbox').val();
-    // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
         var code = li[i].text;
         li[i].style.display = '';
@@ -156,7 +155,7 @@ function toggleMarker(code, loadTable)
         else
         {
             item.addClass('active');
-            airportCode = item.text();
+            airportCode = code;
             if(airportCode) 
             {
                 var currAirport = _.findWhere(sites, {Code: airportCode});
