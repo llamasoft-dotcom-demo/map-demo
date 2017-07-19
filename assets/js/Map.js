@@ -16,7 +16,6 @@ var MapFcns = {
     loadSiteList : function()
     {
         var airportList = $('#airport-list-group');
-        //airportList.html('');
         sites.sort(MapFcns.sortSites);
         for(var i in sites)
         {
@@ -125,7 +124,7 @@ function toggleListItem(code)
 {
     if($('#airport-list-group #'+code+'-list-item').length)
     {
-    var item = $('#airport-list-group #'+code+'-list-item');
+        var item = $('#airport-list-group #'+code+'-list-item');
         if(item.hasClass('active'))
         {
             item.removeClass('active');
@@ -223,20 +222,19 @@ function addMarker(currAirport)
                     '</div>'+
                     '<a onclick="toggleMarker(\''+currAirport.Code+'\');">Clear Marker<a>' +
                     '</div>';
-                var infoWindow = new google.maps.InfoWindow(
+    var infoWindow = new google.maps.InfoWindow(
                     {
                         content: contentText
                     }
                 );
-                marker.addListener('click',function()
+    marker.addListener('click',function()
                 {
                     infoWindow.open(globalMap,marker);
                 });
-                var currentMarker = _.findWhere(markers, {title: currAirport.Code});
-                if(!currentMarker)
-                    markers.push(marker);
-                
-                globalMap.setCenter(p);
+    var currentMarker = _.findWhere(markers, {title: currAirport.Code});
+    if(!currentMarker)
+        markers.push(marker);
+    globalMap.setCenter(p);
 }
 
 function removeMarker(code)
@@ -252,7 +250,7 @@ function removeMarker(code)
 
 function formatName(name)
 {
-return name.substring(name.lastIndexOf('_')+1);
+    return name.substring(name.lastIndexOf('_')+1);
 }
 
 
@@ -266,5 +264,4 @@ function  initMap() {
     scrollwheel: true,
     zoom: 4
   });
-  
-    }
+}
