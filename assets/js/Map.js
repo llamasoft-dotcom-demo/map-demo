@@ -31,7 +31,7 @@ $(function () {
 });
 $('#clearall').on('click',function()
 {
-    $('#searchbox').val('');
+    clearSearch();
     removeAll();
     showAllListItems();
 });
@@ -41,6 +41,13 @@ $('#selectall').on('click', function()
     addAll();
 });
 });
+
+// clear search box to reset list
+function clearSearch()
+{
+    $('#searchbox').val('');
+    showAllListItems();
+}
 // add markers for all airports
 function addAll()
 {
@@ -53,7 +60,7 @@ function addAll()
 // show entire list of airports
 function showAllListItems()
 {
-    var li = $('#airport-list-group').find('a');
+    var li = $('#airport-list-group').find("a[id$='-list-item']");
     for (i = 0; i < li.length; i++) {
         var code = li[i].text;
         li[i].style.display = '';
@@ -62,7 +69,7 @@ function showAllListItems()
 //search airports in list
 function search()
 {
-    var li = $('#airport-list-group').find('a');
+   var li = $('#airport-list-group').find("a[id$='-list-item']");
     var filter = $('#searchbox').val();
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {

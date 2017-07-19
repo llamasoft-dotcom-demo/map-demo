@@ -57,8 +57,9 @@
                 </div>
                 <div class="row">
                     <div id="airport-list-group" class="list-group col-md-2 col-md-2">
-                        <div class="list-group-item">
+                        <div class="list-group-item" id="searchItem">
                             <input id="searchbox" type="text" class="form-control" placeholder="Search" onkeyup="search()">
+                            <a id="resetSearch" href="#" onclick="clearSearch()">Reset</a>
                         </div>
                     </div>
                     <div id="airport-map" class="col-md-6 col-md-6"></div>
