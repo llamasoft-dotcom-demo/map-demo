@@ -73,6 +73,7 @@ function markerHandler(currAirport) {
 		});
 		
 		marker.addListener('rightclick', function() {
+			infowindow.close();
 			marker.setMap(null);
 		});
 		
