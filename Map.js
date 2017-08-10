@@ -10,6 +10,11 @@ var MapFcns = {
         for (var i in sites) {
             var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
             airportList.append(newOption);
+        // sorting the ariport codes in ascending order
+            $("#airport-list").append($("#airport-list option").remove().sort(function(param1,param2) {
+            var code1 = $(param1).text(), code2 = $(param2).text();
+            return (code1 < code2)?1:((code1 > code2)?-1:0);
+             }));  
         }
     },
     
@@ -20,12 +25,29 @@ var MapFcns = {
                 var currAirport = _.findWhere(sites, {Code: airportCode});
                 $('#setting-code').text(currAirport.Code);
                 $('#setting-city').text(currAirport.City);
+                $('#setting-state').text(currAirport.State);
+                $('#setting-fsname').text(currAirport.FullSiteName);
+                $('#setting-lat').text(currAirport.Latitude);
+                $('#setting-long').text(currAirport.Longitude);
+                // added extra code to display complete airport information
                 
                 var marker = new google.maps.Marker({
                     position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
                     map: globalMap,
                     title: currAirport.Code
                 });
+
+             
+
+                
+                // adding code to listen the clicks on marker and make them null ( remove my the user click)
+                google.maps.event.addListener(marker,"click", function() {
+                marker.setMap(null);
+                });
+                
+                // centering the map view to the most recent selected airport heping user to find the airport easily
+                globalMap.setCenter(marker.position);
+
             }
     }
 }

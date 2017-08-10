@@ -4,14 +4,15 @@
         <title>Map Sample</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap"></script>
+        <!-- updated google maps api key  -->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXfPUcfHuYwkHCE_gj070GNxAvl1wGrZ4&callback=initMap"></script>
         <script src="siteData.js"></script>
         <script src="Map.js"></script>
         <link href="Map.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://bootswatch.com/4-alpha/superhero/bootstrap.min.css"> 
     </head>
     <body>
-        <h1>LLamasoft Map Exercise
-        </h1>
+        <h1 class="jumbotron">LLamasoft Map Exercise</h1>
 
         <div id="exercise-description">
             <div id="instruction-toggle"><span>Instructions</span> <span id="exercise-toggle">-</span></div>
@@ -58,17 +59,15 @@
             </p>
             </div>
         </div>
-        
-        <div id="airport-map">
-        </div>
-        
-        <div id="airport-data">
+<!-- added some css to make the map and list look much more easy for user -->
+<div id="full_width_div">
+  <div class="right_part">     
+        <div id="airport-data" >
             <div id="airport-controls">        
                 Airports: <select id="airport-list">
                 </select>
-            </div>
-            
-            <div id="airport-settings">
+            </div>            
+            <div id="airport-settings" class="card-block"> 
                 <div id="setting-name">
                     <div>Code</div>
                     <div>City</div>
@@ -81,11 +80,17 @@
                     <div id="setting-code"></div>
                     <div id="setting-city"></div>
                     <div id="setting-state"></div>
-                    <div id="setting-name"></div>
+                    <div id="setting-fsname"></div>
                     <div id="setting-lat"></div>
                     <div id="setting-long"></div>
                 </div>
             </div>
         </div>
+  </div>
+    <div class="left_part">        
+        <div id="airport-map">
+        </div>
+  </div>
+</div>
     </body>
 </html>
