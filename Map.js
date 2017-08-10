@@ -10,6 +10,11 @@ var MapFcns = {
         for (var i in sites) {
             var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
             airportList.append(newOption);
+        // sorting the ariport codes in ascending order
+            $("#airport-list").append($("#airport-list option").remove().sort(function(param1,param2) {
+            var code1 = $(param1).text(), code2 = $(param2).text();
+            return (code1 < code2)?1:((code1 > code2)?-1:0);
+             }));  
         }
     },
     
@@ -31,6 +36,9 @@ var MapFcns = {
                     map: globalMap,
                     title: currAirport.Code
                 });
+
+             
+
                 
                 // adding code to listen the clicks on marker and make them null ( remove my the user click)
                 google.maps.event.addListener(marker,"click", function() {
