@@ -44,6 +44,9 @@ var MapFcns = {
                 google.maps.event.addListener(marker,"click", function() {
                 marker.setMap(null);
                 });
+                
+                // centering the map view to the most recent selected airport heping user to find the airport easily
+                globalMap.setCenter(marker.position);
 
             }
     }
