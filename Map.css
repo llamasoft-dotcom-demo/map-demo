@@ -1,7 +1,7 @@
 #airport-settings {
-    width: calc(100% - 8px);
+    width: 650px;
     border: 2px solid black;
-    height: 128px;
+    height: 150px;
     padding: 4px;
     margin: 10px 14px 10px 0px;
 }
@@ -24,12 +24,12 @@
 }
 
 #airport-map{
-    width: 800px;
-    height: 600px;
+    width: 600px;
+    height:400px;
 }
 
 #airport-data {
-    margin: 12px;
+    margin: 14px;
 }
 
 #exercise-toggle {
@@ -41,4 +41,17 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+#full_width_div {
+    width:100%;
+}
+.left_part {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.right_part {
+   float:right;
+   white-space:nowrap;
 }
