@@ -31,6 +31,12 @@ var MapFcns = {
                     map: globalMap,
                     title: currAirport.Code
                 });
+                
+                // adding code to listen the clicks on marker and make them null ( remove my the user click)
+                google.maps.event.addListener(marker,"click", function() {
+                marker.setMap(null);
+                });
+
             }
     }
 }
