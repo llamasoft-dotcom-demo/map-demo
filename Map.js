@@ -2,34 +2,73 @@ var globalMap;
 
 $(function() {
 
+// Hashtable of all markers, key is airportCode
+var globalMarkers = {};
+
+// 
+var currAirportCode = '';
+
 var MapFcns = {
     loadSiteList: function () {
+        var sortedSites = _.sortBy(sites, function(site) {
+            return site.Code;
+        });
+
         var airportList = $('#airport-list');
             airportList.html('');
             airportList.append('<option value=""></option>');
-        for (var i in sites) {
-            var newOption = $('<option value="' + sites[i].Code + '">' + sites[i].Code + '</option>');
+        for (var i in sortedSites) {
+            var newOption = $('<option value="' + sortedSites[i].Code + '">' + sortedSites[i].Code + '</option>');
             airportList.append(newOption);
         }
     },
     
-    siteListChange: function() {
+    siteListChange: function() {        
         var ctl = $(this),
             airportCode = ctl.val();
-            if(airportCode) {
-                var currAirport = _.findWhere(sites, {Code: airportCode});
-                $('#setting-code').text(currAirport.Code);
-                $('#setting-city').text(currAirport.City);
-                
-                var marker = new google.maps.Marker({
+
+        if(airportCode) {
+            var currAirport = _.findWhere(sites, {Code: airportCode});
+            currAirportCode = currAirport.Code;
+            
+            var siteName = currAirport.FullSiteName.split('_')[2];
+            
+            $('#airport-code').text(currAirport.Code);
+            $('#airport-city').text(currAirport.City);
+            $('#airport-state').text(currAirport.State);
+            $('#airport-name').text(siteName);
+            $('#airport-lat').text(currAirport.Latitude);
+            $('#airport-long').text(currAirport.Longitude);
+            
+            var marker;
+
+            // Create marker if it doesn't exist already
+            if (!globalMarkers.hasOwnProperty(currAirportCode)) {
+                marker = new google.maps.Marker({
                     position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
                     map: globalMap,
                     title: currAirport.Code
                 });
+                
+                globalMarkers[currAirport.Code] = marker; 
+            } else {
+                marker = globalMarkers[currAirport.Code];
             }
+            
+            // If marker is not within bounds of map, jump to marker
+            if (!globalMap.getBounds().contains(marker.getPosition())) {
+                globalMap.setCenter(marker.getPosition());                            
+            }
+        }
     }
 }
 
+$('#deleteAirportButton').click(function() {
+    if (globalMarkers.hasOwnProperty(currAirportCode)) {
+        globalMarkers[currAirportCode].setMap(null);
+        delete globalMarkers[currAirportCode];
+    }
+});
 
 MapFcns.loadSiteList();
 $('#airport-list').change(MapFcns.siteListChange);
@@ -44,6 +83,7 @@ $('#exercise-toggle').click(function() {
         $('#exercise-instructions').show();
     }
 });
+
 
 });
 
@@ -61,5 +101,4 @@ function  initMap() {
     scrollwheel: true,
     zoom: 6
   });
-  
-    }
+}
