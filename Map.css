@@ -3,8 +3,9 @@
     border: 2px solid black;
     height: 128px;
     padding: 4px;
-    margin: 10px 14px 10px 0px;
+    margin: 10px 10px 10px 0px;
 }
+
 
 #airport-settings #setting-name {
     width: 128px;
@@ -24,8 +25,8 @@
 }
 
 #airport-map{
-    width: 800px;
-    height: 600px;
+    width: 600px;
+    height: 400px;
 }
 
 #airport-data {
@@ -41,4 +42,15 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+#left-layout {
+    width: 614px;
+    float: left;
+    border-right: 1px solid black;
+}
+
+#right-layout {
+    width: calc(100% - 600px);
+    margin-left: 614px;
 }
