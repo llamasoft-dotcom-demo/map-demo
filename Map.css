@@ -1,5 +1,5 @@
 #airport-settings {
-    width: calc(100% - 8px);
+    width: 200px;
     border: 2px solid black;
     height: 128px;
     padding: 4px;
@@ -15,7 +15,7 @@
 #airport-settings #setting-value {
     width: calc(100% - 128px);
     margin-left: 128px;
-    min-widtH: 240px;
+    min-width: 240px;
     text-align: left;
 }
 
@@ -24,12 +24,14 @@
 }
 
 #airport-map{
-    width: 800px;
+    width: 40%;
     height: 600px;
 }
 
 #airport-data {
+    vertical-align:top;
     margin: 12px;
+    width: 20%;
 }
 
 #exercise-toggle {
@@ -41,4 +43,16 @@
     vertical-align: text-bottom;
     font-size: 32px;
     font-weight: bold;
+}
+
+ul#marked-airports li {
+    display:inline;
+}
+
+#container{
+    width: 2000px;
+}
+
+#container div {
+  display: inline-block;
 }
