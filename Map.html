@@ -4,7 +4,7 @@
         <title>Map Sample</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfQtJbYPKvosp76VupnrQwRS5NRrl5Srs&callback=initMap"></script>
         <script src="siteData.js"></script>
         <script src="Map.js"></script>
         <link href="Map.css" rel="stylesheet">
@@ -59,32 +59,42 @@
             </div>
         </div>
         
-        <div id="airport-map">
-        </div>
-        
-        <div id="airport-data">
-            <div id="airport-controls">        
-                Airports: <select id="airport-list">
-                </select>
-            </div>
+        <div id="container">
             
-            <div id="airport-settings">
-                <div id="setting-name">
-                    <div>Code</div>
-                    <div>City</div>
-                    <div>State</div>
-                    <div>Full Name</div>
-                    <div>Latitude</div>
-                    <div>Longitude</div>
+            
+            
+
+            <div id="airport-data">
+                <div id="airport-controls">        
+                    Airports: <select id="airport-list">
+                    </select>
                 </div>
-                <div id="setting-value">
-                    <div id="setting-code"></div>
-                    <div id="setting-city"></div>
-                    <div id="setting-state"></div>
-                    <div id="setting-name"></div>
-                    <div id="setting-lat"></div>
-                    <div id="setting-long"></div>
+                <p><button id="clearAll">Clear All Markers</button></p>
+
+                
+                
+                <div id="airport-settings">
+                    <div id="setting-name">
+                        <div>Code</div>
+                        <div>City</div>
+                        <div>State</div>
+                        <div>Full Name</div>
+                        <div>Latitude</div>
+                        <div>Longitude</div>
+                    </div>
+                    <div id="setting-value">
+                        <div id="setting-code"></div>
+                        <div id="setting-city"></div>
+                        <div id="setting-state"></div>
+                        <div id="setting-long-name"></div>
+                        <div id="setting-lat"></div>
+                        <div id="setting-long"></div>
+                    </div>
                 </div>
+                <p id="onMapList">Airports Marked on Map:</p>
+                <ol id="marked-airports"></ol>
+            </div>
+            <div id="airport-map">
             </div>
         </div>
     </body>
