@@ -27,7 +27,7 @@ var MapFcns = {
     },
     
     siteListChange: function() {
-        var ctl = $(this),
+        var ctl = $(this);
             airportCode = ctl.val();
             if(airportCode) {
                 var currAirport = _.findWhere(sites, {Code: airportCode});
@@ -40,35 +40,37 @@ var MapFcns = {
                 
                 globalMap.panTo(new google.maps.LatLng(currAirport.Latitude, currAirport.Longitude));
 
-                var marker = new google.maps.Marker({
-                    position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
-                    map: globalMap,
-                    title: currAirport.Code
-                });
+                
 
                 // check if marker in saved markers
                 var inMarkers = false;
                 for (var i in markers){
-                    if (markers[i].title == marker.title){
+                    if (markers[i].title == currAirport.Code){
                         inMarkers = true;
                         break;
                     }
                 }
                 if (! inMarkers){
+                    var marker = new google.maps.Marker({
+                        position: {lat: currAirport.Latitude, lng: currAirport.Longitude},
+                        map: globalMap,
+                        title: currAirport.Code
+                    });
+                    google.maps.event.addListener(marker, 'click', function(event) {
+                        this.setMap(null);
+                        for (var i in markers){
+                            if (markers[i].title == marker.title){
+                                markers.splice(i, 1);
+                                updateMarkerList();
+                                break;
+                            }
+                        }
+                    });
                     markers.push(marker);
                     updateMarkerList();
                 }
 
-                google.maps.event.addListener(marker, 'click', function(event) {
-                    this.setMap(null);
-                    for (var i in markers){
-                        if (markers[i].title == marker.title){
-                            markers.splice(i, 1);
-                            updateMarkerList();
-                            break;
-                        }
-                    }
-                });
+                
                 
                 
 
@@ -100,7 +102,6 @@ function updateMarkerList (){
         title = markers[i].title;
         $("#"+title).click(function(e){
             e.preventDefault();
-            console.log("panning to "+$(this).attr("id")+" "+$(this).attr("lat") + " " + $(this).attr("long"));
             globalMap.panTo(new google.maps.LatLng( $(this).attr("lat"), $(this).attr("long")));
         });
     }
