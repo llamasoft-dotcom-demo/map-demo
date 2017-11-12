@@ -24,8 +24,10 @@
 }
 
 #airport-map{
+    margin-right: 15px;
     width: 800px;
     height: 600px;
+    float: left;
 }
 
 #airport-data {
@@ -42,3 +44,46 @@
     font-size: 32px;
     font-weight: bold;
 }
+
+
+#markersContainer {
+    width: 400px;
+    overflow: auto;
+    cursor: pointer;
+
+}
+
+#airportList {
+    width: 145px;
+    margin-bottom: 8px;
+}
+
+.currentMarkerText {
+    background-color: #cccccc;
+    border: 1px solid black;
+    padding: 2px 0px 2px 15px;
+    margin-bottom: 2px;
+    width: 200px;
+    height:45px;
+    float: left;
+}
+.currentMarkerText:hover {
+    background-color: #808080;
+}
+
+.currentMarkerDelete {
+    font-size:26px;
+    padding-left: 10px;
+    padding-top: 7px;
+    background-color: #cccccc;
+    width: 30px;
+    overflow: auto;
+    height:42px;
+    border: 1px solid black;
+    margin-bottom: 2px;
+}
+
+.currentMarkerDelete:hover {
+    background-color: red;
+}
+
